@@ -80,8 +80,6 @@
                                     <a href="https://id.linkedin.com/company/pt-sebastian-jaya-metal" class="linkedin" title="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                                 <li>
                                     <a href="https://www.instagram.com/ptsebastianjayametal/" class="instagram" title="instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                                <li>
-                                    <a href="https://plus.google.com/" class="googlePlus" title="gmail" target="_blank"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                             
                         </div>

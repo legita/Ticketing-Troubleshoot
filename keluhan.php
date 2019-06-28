@@ -18,7 +18,6 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 <head>
   <title>PT. Sebastian Jaya Metal</title>
   <meta charset="utf-8">
-  <!-- Site Icons -->
   <link rel="shortcut icon" href="images/logos/logo.jpg" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -48,6 +47,18 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 
       @-webkit-keyframes animasi-ketik{
         from { width: 0; }
+      }
+
+      .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
       }
 
       .active, .collapsible:hover {
@@ -166,7 +177,7 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <div class="col-12">
           <center>
             <div class="animasi-teks">
-              <h1 style="color: black; font-size: 48px;">Laporan Troubleshooting</h1>
+              <h1 style="color: black; font-size: 48px;">Keluhan Troubleshooting</h1>
             </div>
           </center>
         </div>
@@ -174,59 +185,59 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
   </div>
 
   <div class="col-sm-12">
-    <form action="config/tambah_laporan.php" class="form-horizontal" role="form" method="POST">
+    <form class="form-horizontal" role="form" method="POST">
       <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
       <input type="hidden" name="tgl" value="<?php $tgl=date('d-m-Y'); echo $tgl;?>">
       <hr style="background-color: #cdd51f;">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color: red;"><sub><span class="label label-danger">Penting</span> Input Laporan Troubleshooting yang Terjadi Pada Perangkat Anda !</sub></i><hr><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color: red;"><sub><span class="label label-danger">Penting</span> Input Keluhan Troubleshooting yang Terjadi Pada Perangkat Anda !</sub></i><hr><br>
       
       <div class="form-group" align="center">
         <label class="col-sm-2" for="username" style="text-align: left;">Username</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="username" name="username" value="<?php echo $_SESSION['username']; ?>" readonly>
+        <input class="form-control" type="text" value="<?php echo $_SESSION['username']; ?>" disabled>
         </label>
       </div>
       <div class="form-group" align="center">
-        <label class="col-sm-2" for="no_laporan" style="text-align: left;">Nomor Laporan</label>
+        <label class="col-sm-2" for="no_ticket" style="text-align: left;">Nomor Ticket</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="random" id="no_laporan" name="no_laporan" value="<?php echo rand(100,1000000);?>" / name="no_laporan" readonly>
+        <input class="form-control" type="random" value="<?php echo rand(100,1000000);?>" / name="no_ticket" disabled>
+        </label>
+      </div>
+      <div class="form-group" align="center">
+        <label class="col-sm-2" for="keluhan" style="text-align: left;">Keluhan</label>
+        <label class="col-sm-1">:</label>
+        <label class="col-sm-5">
+        <input class="form-control" type="text" id="keluhan" name="keluhan" placeholder="Nama Keluhan" value="">
         </label>
       </div>    
       <div class="form-group" align="center">
-        <label class="col-sm-2" for="id_lama" style="text-align: left;">ID Perangkat</label>
+        <label class="col-sm-2" for="id_barang" style="text-align: left;">ID Perangkat</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="id_lama" name="id_lama" placeholder="ID Perangkat" value="">
+        <input class="form-control" type="text" id="id_barang" name="id_barang" placeholder="ID Perangkat" value="">
         </label>
       </div>
       <div class="form-group" align="center">
         <label class="col-sm-2" for="jenis" style="text-align: left;">Jenis Perangkat</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="jenis" name="jenis" readonly>
+        <input class="form-control" type="text" id="jenis" name="jenis" disabled>
         </label>
       </div>
       <div class="form-group" align="center">
         <label class="col-sm-2" for="user" style="text-align: left;">User</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="user" name="user" readonly>
+        <input class="form-control" type="text" id="user" name="user" disabled>
         </label>
       </div>
       <div class="form-group" align="center">
         <label class="col-sm-2" for="lokasi" style="text-align: left;">Lokasi Perangkat</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="lokasi" name="lokasi" readonly>
-        </label>
-      </div>
-      <div class="form-group" align="center">
-        <label class="col-sm-2" for="laporan" style="text-align: left;">Laporan Perangkat</label>
-        <label class="col-sm-1">:</label>
-        <label class="col-sm-5">
-        <input class="form-control" type="text" id="laporan" name="laporan" placeholder="Laporan" value="">
+        <input class="form-control" type="text" id="lokasi" name="lokasi" disabled>
         </label>
       </div>
       <div class="form-group" align="center">
@@ -246,7 +257,14 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <label class="col-sm-5">
         <input class="form-control" type="text" id="alasan" name="alasan" placeholder="Isi Alasannya" value="">
         </label>
-      </div>  
+      </div>
+      <!--<div class="form-group" align="center">
+        <label class="col-sm-2" for="penanganan" style="text-align: left;">Keluhan</label>
+        <label class="col-sm-1">:</label>
+        <label class="col-sm-5">
+        <input class="form-control" type="text" id="penanganan" name="penanganan"  value="" disabled>
+        </label>
+      </div>-->
       <label class="col-sm-10"></label>
       <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Kirim">Kirim</button>
     </form>
@@ -255,7 +273,42 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
   <hr>
   <hr style="background-color: #cdd51f;"><br>
 
+  <div class="col-md-10 offset-md-1" style="color:darkslategray;">
+    <p><b><i class="fa fa-angle-double-right" aria-hidden="true" style="color: #cdd51f;"></i> 3 Rekomendasi Penanganan Teratas <i class="fa fa-angle-double-left" aria-hidden="true" style="color: #cdd51f;"></i></b></p>
+    <button class="collapsible">Open Section 1</button>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <button class="collapsible">Open Section 2</button>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <button class="collapsible">Open Section 3</button>
+    <div class="content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div><hr style="background-color: #cdd51f;"><br>
+
 <?php include 'footer.php'; ?>
+
+
+<!-- Coding Collapsible -->
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
 
 <!-- Memanggil jQuery.js -->
 <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -263,17 +316,31 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 <!-- Memanggil Autocomplete.js -->
 <script src="assets/js/jquery.autocomplete.min.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
 
-<!-- Autocomplete perangkat -->
+        // Selector input yang akan menampilkan autocomplete keluhan.
+        $( "#keluhan" ).autocomplete({
+            serviceUrl: "source.php",   // Kode php untuk prosesing data.
+            dataType: "JSON",           // Tipe data JSON.
+            onSelect: function (suggestion) {
+                $( "#keluhan" ).val("" + suggestion.keluhan);
+                //$( "#penanganan" ).val("" + suggestion.penanganan);
+            }
+        });
+    })
+</script>
+
+<!-- Autocomplete barang/perangkat -->
 <script type="text/javascript">
     $(document).ready(function() {
 
         // Selector input yang akan menampilkan autocomplete.
-        $( "#id_lama" ).autocomplete({
-            serviceUrl: "id_lama.php",   // Kode php untuk prosesing data.
+        $( "#id_barang" ).autocomplete({
+            serviceUrl: "id_barang.php",   // Kode php untuk prosesing data.
             dataType: "JSON",           // Tipe data JSON.
             onSelect: function (suggestion) {
-                $( "#id_lama" ).val("" + suggestion.id_lama);
+                $( "#id_barang" ).val("" + suggestion.id_barang);
                 $( "#jenis" ).val("" + suggestion.jenis);
                 $( "#user" ).val("" + suggestion.user);
                 $( "#lokasi" ).val("" + suggestion.lokasi);

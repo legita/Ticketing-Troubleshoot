@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-error_reporting(0);
+//error_reporting(0);
 
 $id1 = $_SESSION['id'];
 $id2 = session_id();
@@ -47,6 +47,18 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman']; else $halaman="home";
 
 </head>
 
+
+<!-- Notif Laporan -->
+<?php
+include '../config/koneksi.php';
+
+    $queryNotif="SELECT * FROM tbl_laporan WHERE status = '0'";
+    $sqlNotif = mysqli_query($konek,$queryNotif) or die (mysqli_error($konek));
+    $countNotif  = mysqli_num_rows($sqlNotif);
+
+?>
+
+
 <body id="page-top">
 
   <nav class="navbar navbar-expand navbar-dark static-top" style="background-color: #3300FF;">
@@ -56,52 +68,16 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman']; else $halaman="home";
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        
         <div class="input-group-append">
-          <button class="btn btn-primary" type="button">
-            <i class="fas fa-search"></i>
-          </button>
+         
         </div>
       </div>
     </form>
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bell fa-fw"></i>
-          <span class="badge badge-danger">9+</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-envelope fa-fw"></i>
-          <span class="badge badge-danger">7</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-cogs fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Activity Log</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-        </div>
-      </li>
+       <?php include 'notif.php'; ?>
     </ul>
 
   </nav>
@@ -138,10 +114,11 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman']; else $halaman="home";
             else if($halaman=="management-user")       include "management-user.php"; 
             else if($halaman=="edit-user")             include "edit-user.php";
 
+            else if($halaman=="management-idperangkat") include "management-idperangkat.php";
+            else if($halaman=="edit-idperangkat")      include "edit-idperangkat.php";
+            
             else if($halaman=="management-komputer")   include "management-komputer.php";
-            else if($halaman=="management-idkomputer") include "management-idkomputer.php";
             else if($halaman=="edit-komputer")         include "edit-komputer.php";
-            else if($halaman=="edit-idkomputer")       include "edit-idkomputer.php";
             else if($halaman=="tambah-komputer")       include "tambah-komputer.php";
 
             else if($halaman=="data-trouble")          include "data-trouble.php";
@@ -150,13 +127,14 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman']; else $halaman="home";
 
             else if($halaman=="keluhan")               include "keluhan.php";
             else if($halaman=="laporan")               include "laporan.php";
+            else if($halaman=="laporan-masuk")         include "laporan-masuk.php";
 
             else if($halaman=="komentarmenu")          include "komentarmenu.php";
             else if($halaman=="komentarweb")           include "komentarweb.php";
             else if($halaman=="edit-komen")            include "edit-komen.php";
             else if($halaman=="edit-komentar")         include "edit-komentar.php";
                   
-            else if($halaman=="contoh")                include "contoh.php";
+            else if($halaman=="rekap")                 include "rekap.php";
         
 
       ?>
@@ -191,10 +169,10 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman']; else $halaman="home";
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Pilih "Logout" di bawah ini jika Anda ingin keluar.</div>
+        <div class="modal-body">Pilih Tombol "Keluar" di bawah ini jika Anda ingin keluar.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="../config/logout.php">Logout</a>
+          <a class="btn btn-primary" href="../config/logout.php">Keluar</a>
         </div>
       </div>
     </div>
@@ -208,7 +186,6 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman']; else $halaman="home";
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Page level plugin JavaScript-->
-  <script src="vendor/chart.js/Chart.min.js"></script>
   <script src="vendor/datatables/jquery.dataTables.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
@@ -217,7 +194,23 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman']; else $halaman="home";
 
   <!-- Demo scripts for this page-->
   <script src="js/demo/datatables-demo.js"></script>
-  <script src="js/demo/chart-area-demo.js"></script>
+
+  <script>
+  var last = 0;
+  function check(){
+      var url = 'cek.php?last='+last;
+      $.get(url, {}, function(resp){
+          if(resp.result != false){
+              $("#notif").html(resp.result);
+              last = resp.last;
+          }
+          setTimeout("check()", 1000);
+      }, 'json');
+  }
+  $(document).ready(function(){
+      check();
+  });
+  </script>
 
 </body>
 

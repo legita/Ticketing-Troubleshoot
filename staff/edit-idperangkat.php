@@ -4,9 +4,9 @@
 
   include '../config/koneksi.php';
 
-  $id_kom = $_GET['id'];
+  $id_jenis = $_GET['id'];
 
-  $edit    = "SELECT * FROM database_komputer WHERE id_kom = '$id_kom'";
+  $edit    = "SELECT * FROM tbl_jenis WHERE id_jenis = '$id_jenis'";
   $hasil   = mysqli_query($konek, $edit)or die(mysql_error());
   $data    = mysqli_fetch_array($hasil);
 
@@ -19,32 +19,39 @@
           <li class="breadcrumb-item">
             <a href="index.php">Home</a>
           </li>
-          <li class="breadcrumb-item active">Edit ID Komputer</li>
+          <li class="breadcrumb-item active">Edit ID Perangkat</li>
         </ol>
-        <a href="index.php?halaman=update_idkomputer" class="btn btn-danger"><span class="fa fa-plus"></span> Tambah</a>
         <hr>
-        <!-- DataTables Example -->
+        <!-- Form Example -->
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-edit"></i>
-            Ubah ID Komputer</div>
+            Ubah ID Perangkat</div>
           <div class="card-body">
-          <form action="../config/update_idkomputer.php" method="POST" class="form-horizontal" enctype="multipart/form-data">
-            <input type="hidden" name="id_kom" value="<?php echo $data['id_kom']; ?>">
+          <form action="../config/update_idperangkat.php" method="POST" class="form-horizontal" enctype="multipart/form-data">
+            <input type="hidden" name="id_jenis" value="<?php echo $data['id_jenis']; ?>">
             <div class="form-group input-group">
             <div class="col-md-1"></div>
-              <label class="col-md-3">ID Komputer Lama</label>
+              <label class="col-md-3">ID Perangkat Lama</label>
               <label class="col-md-1">:</label>
               <div class="col-md-6">          
-                <input type="text" name="id_komputer" class="form-control" id="id_komputer" value="<?php echo $data['id_komputer']; ?>" readonly>
+                <input type="text" name="id_lama" class="form-control" id="id_lama" value="<?php echo $data['id_lama']; ?>" readonly>
               </div>
             </div>
             <div class="form-group input-group">
             <div class="col-md-1"></div>
-              <label class="col-md-3">ID Komputer Baru</label>
+              <label class="col-md-3">ID Perangkat Baru</label>
               <label class="col-md-1">:</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" id="idk" name="idkkonfirm" onkeypress="return hanyaAngka(event)"/ maxlength="7">
+              </div>
+            </div>
+            <div class="form-group input-group">
+            <div class="col-md-1"></div>
+              <label class="col-md-3">Jenis Perangkat</label>
+              <label class="col-md-1">:</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="jenis" name="jenis" value="<?php echo $data['jenis']; ?>" readonly>
               </div>
             </div>
             <div class="form-group input-group">

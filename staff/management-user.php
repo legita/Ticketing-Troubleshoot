@@ -59,7 +59,6 @@
                             <td><center><?php echo $no++; ?></center></td>
                             <td><center><?php echo $data['nik']; ?></center></td>
                             <td><center><?php echo $data['nm_pegawai']; ?></center></td>
-                            <td><center><?php echo $data['tlp']; ?></center></td>
                             <td><center><?php echo $data['divisi']; ?></center></td>
                             <td><center><?php echo $data['username']; ?></center></td>
                             <td><center><?php echo $data['password']; ?></center></td>

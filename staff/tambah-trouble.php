@@ -9,7 +9,7 @@
               <!-- Welcome -->
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h2 style="color: maroon;"> &nbsp;&nbsp;&nbsp;<i class="fas fa-spinner fa-pulse"></i> Form Tambah Trouble <i class="fas fa-spinner fa-pulse"></i></h2>
+                  <h2 style="color: maroon;"> &nbsp;&nbsp;&nbsp; Form Tambah Trouble</h2>
                 </div>
                 <div class="panel-heading">        
                   <div class="panel-body">

@@ -19,7 +19,9 @@
                   <thead>
                       <tr>
                         <th><center>No</center></th>
-                        <th><center>ID Komputer</center></th>
+                        <th><center>ID Perangkat</center></th>
+                        <th><center>ID Perangkat Baru</center></th>
+                        <th><center>Jenis Perangkat</center></th>
                         <th><center>Tanggal Beli</center></th>
                         <th><center>Aksi</center></th>
                       </tr>
@@ -27,7 +29,9 @@
                   <tfoot>
                       <tr>
                         <th><center>No</center></th>
-                        <th><center>ID Komputer</center></th>
+                        <th><center>ID Perangkat</center></th>
+                        <th><center>ID Perangkat Baru</center></th>
+                        <th><center>Jenis Perangkat</center></th>
                         <th><center>Tanggal Beli</center></th>
                         <th><center>Aksi</center></th>
                       </tr>
@@ -36,7 +40,7 @@
                       <?php
                       $no = 1;
                       include '../config/koneksi.php';
-                      $query = mysqli_query($konek, "SELECT * FROM database_komputer") or die(mysqli_error());
+                      $query = mysqli_query($konek, "SELECT * FROM tbl_jenis") or die(mysqli_error());
                         if(mysqli_num_rows($query) == 0){
                           echo '<tr><td collspan="4" align="center">Tidak ada data!</td></tr>';
                         }
@@ -45,10 +49,12 @@
                             ?>
                         <tr>
                             <td><center><?php echo $no++; ?></center></td>
-                                <td><center><?php echo $data['id_komputer']; ?></center></td>
+                                <td><center><?php echo $data['id_lama']; ?></center></td>
+                                <td><center><?php echo $data['id_baru']; ?></center></td>
+                                <td><center><?php echo $data['jenis']; ?></center></td>
                                 <td><center><?php echo ($data['tgl_beli']); ?></center></td>
                                 <td><center>
-                                  <a href="index.php?halaman=edit-idkomputer&id=<?php echo $data['id_kom'];?>" title="Edit Data"><span class="fa fa-edit"></span></a>
+                                  <a href="index.php?halaman=edit-idperangkat&id=<?php echo $data['id_jenis'];?>" title="Edit Data"><span class="fa fa-edit"></span></a>
                                 </td>
                         </tr>
                           <?php

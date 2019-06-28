@@ -1,3 +1,9 @@
+  <?php 
+  if(isset($_GET['berhasil'])){
+    echo "<p>".$_GET['berhasil']." Data berhasil di unggah.</p>";
+  }
+  ?>
+
 <div class="container-fluid">
 
         <!-- Breadcrumbs-->
@@ -8,6 +14,22 @@
           <li class="breadcrumb-item active">Data Troubleshooting</li>
         </ol>
         <a href="index.php?halaman=tambah-trouble" class="btn btn-danger"><span class="fa fa-plus"></span> Tambah</a>
+
+        <a href="index.php?halaman=tambah-komputer" class="btn btn-primary float-right"><span class="fa fa-download"></span> Unduh</a><hr>
+
+        <div class="col-lg-5">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <!-- Upload data csv -->
+            <form method="post" enctype="multipart/form-data" action="csv_import.php">
+              <input name="filekeluhan" type="file" required="required">
+              <input name="upload" type="submit" value="Unggah" class="btn btn-info float-right"><!-- <span class="fa fa-upload"></span>Unggah</a> -->
+            </form>
+          </li>
+        </ol>
+        </div>
+        <hr>
+
         <hr>
         <!-- DataTables Example -->
         <div class="card mb-3">
@@ -20,7 +42,7 @@
                   <thead>
                       <tr>
                           <th><center>No.</center></th>
-                          <th><center>Keluhan</center></th>
+                          <th><center>Masalah</center></th>
                           <th><center>Penanganan</center></th>
                           <th><center>Perangkat</center></th>
                           <th><center>Aksi</center></th>
@@ -29,7 +51,7 @@
                   <tfoot>
                       <tr>
                           <th><center>No.</center></th>
-                          <th><center>Keluhan</center></th>
+                          <th><center>Masalah</center></th>
                           <th><center>Penanganan</center></th>
                           <th><center>Perangkat</center></th>
                           <th><center>Aksi</center></th>

@@ -6,9 +6,9 @@
             <a href="index.php">Home</a>
           </li>
           <li class="breadcrumb-item active">Management Komputer</li>
-        </ol>
-        <a href="index.php?halaman=tambah-komputer" class="btn btn-danger"><span class="fa fa-plus"></span> Tambah</a>
-        <hr>
+        </ol> 
+        <a href="index.php?halaman=tambah-komputer" class="btn btn-danger"><span class="fa fa-plus"></span> Tambah</a><hr>
+        
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">

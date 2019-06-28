@@ -29,8 +29,6 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- <script src="jquery.autocomplete.min.js"></script> -->
-
     <!-- Site Icons -->
     <link rel="shortcut icon" href="images/logos/logo.jpg" type="image/x-icon" />
     
@@ -44,12 +42,10 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/custom.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Modernizer for Portfolio -->
     <script src="assets/js/modernizer.js"></script>
 
-    <link rel="stylesheet"  href="assets/js/jquery-ui.css">
 
 <style>
 body {
@@ -61,18 +57,7 @@ body {
 </head>
 <body>
 
-    <!-- LOADER -->
-    <div id="preloader">
-        <div class="loader">
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__bar"></div>
-            <div class="loader__ball"></div>
-        </div>
-    </div><!-- end loader -->
-    <!-- END LOADER -->
+<?php include 'loader.php'; ?>
     
     <div class="top-bar">
         <div class="container">
@@ -125,7 +110,7 @@ body {
         <nav class="megamenu navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html"><img src="images/logos/logo.png" alt="image"></a>
+                    <a class="navbar-brand" href="index.php"><img src="images/logos/logo.png" alt="image"></a>
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -142,8 +127,7 @@ body {
                         <li><a href="index.php?halaman=About" style="font-size: 18px;">| Tentang |</a></li>
                         <?php }
                           else { ?>
-                        <li><a href="index.php?halaman=Trouble" style="font-size: 18px;">| Troubleshooting |</a></li>
-                        <li><a href="index.php?halaman=Laporan" style="font-size: 18px;">| Laporan |</a></li>
+                        <li><a href="index.php?halaman=Trouble" style="font-size: 18px;">| Masalah Troubleshooting |</a></li>
                         <li><a href="index.php?halaman=History" style="font-size: 18px;">| Histori Penanganan |</a></li>
                         <?php } ?>
 
@@ -178,10 +162,6 @@ body {
             include 'trouble.php';
           }
 
-          elseif ($halaman=='Laporan') {
-            include 'laporan.php';
-          }
-
           elseif ($halaman=='History') {
             include 'history.php';
           }
@@ -190,8 +170,8 @@ body {
             include 'kontak.php';
           }
 
-          elseif ($halaman=='contoh') {
-            include 'contoh.php';
+          elseif ($halaman=='coba') {
+            include 'coba.php';
           }
 
         ?>
@@ -208,7 +188,7 @@ body {
     </div><!-- end copyrights -->
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js"></script>
+    
     <!-- ALL JS FILES -->
     <script src="assets/js/all.js"></script>
     <!-- ALL PLUGINS -->
@@ -216,7 +196,6 @@ body {
     <script src="assets/js/portfolio.js"></script>
     <script src="assets/js/hoverdir.js"></script>    
     
-    <script src="assets/js/jquery-ui.min.js"></script>
 
 </body>
 </html>

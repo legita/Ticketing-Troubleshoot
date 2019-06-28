@@ -27,9 +27,6 @@
   width: 100%;
   padding: 20px;
 }
-.font{
-  font-family: Haunted Eyes;
-}
 
 </style>
 </head>

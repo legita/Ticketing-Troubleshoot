@@ -9,8 +9,8 @@
         <a href="index.php?halaman=management-komputer" class="nav-link"><i class="fas fa-fw fa-desktop"></i> Management Komputer</a>
       </li>
       <li class="nav-item active">
-        <a href="index.php?halaman=management-idkomputer" class="nav-link"><i class="fas fa-fw fa-laptop"></i> Ubah ID Komputer</a>
+        <a href="index.php?halaman=management-idperangkat" class="nav-link"><i class="fas fa-fw fa-laptop"></i> Ubah ID Perangkat</a>
       </li>
       <li class="nav-item active">
-        <a href="index.php" class="nav-link"><i class="fas fa-fw fa-table"></i> Rekap Troubleshooting</a>
+        <a href="index.php?halaman=rekap" class="nav-link"><i class="fas fa-fw fa-table"></i> Rekap Troubleshooting</a>
       </li>

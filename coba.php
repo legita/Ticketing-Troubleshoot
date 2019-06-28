@@ -1,32 +1,37 @@
 <?php
-// Set header type konten.
-header("Content-Type: application/json; charset=UTF-8");
+	$nama[0] = "Budi";
+	$nama[1] = "Nai";
+	$nama[2] = "Monic"; 
 
-// Deklarasi variable untuk koneksi ke database.
-$host     = "localhost";    // Server database
-$username = "root";         // Username database
-$password = "";             // Password database
-$database = "sjm"; // Nama database
+	echo $nama[0] . " dan " . $nama[2] . " adalah sahabat.";
+?>
 
-// Koneksi ke database.
-$conn = new mysqli($host, $username, $password, $database);
+<br>
+ <?php
+ $karyawan=array("Agus"=>"Jepara","Budi"=>"Jakarta","Candra"=>"Semarang");   
+ foreach($karyawan as $x=>$x_value) {  
+  echo "Nama = " . $x . ", Alamat = " . $x_value;  
+  echo "<br>";  
+ }  
+ ?>
 
-// Deklarasi variable keyword buah.
-$keluhan = $_GET["query"];
+<br>
+<?php
+	$personil=array("One Ok Rock" => array("Taka","Toru","Ryota","Tomoya"), "Linkin Park" => array("Chester Bennington","Mike Shinoda","Joe Hahn","Brad Delson","Rob Bourdon","Dave Farrell"), "Paramore" => array("Hayley Williams","Taylor York","Jeremy Davis"));
 
-// Query ke database.
-$query  = $conn->query("SELECT * FROM tbl_keluhan WHERE keluhan LIKE '%$keluhan%' ORDER BY keluhan DESC");
-$result = $query->fetch_all(MYSQLI_ASSOC);
+	echo "Vocalis One Ok Rock yaitu: ".$personil["One Ok Rock"][0]."<br/>";
+	echo "Vocalis Linkin Park yaitu: ".$personil["Linkin Park"][0]."<br/>";
+	echo "Vocalis Paramore yaitu: ".$personil["Paramore"][0]."<br/>";
+?>
 
-// Format bentuk data untuk autocomplete.
-foreach($result as $data) {
-    $output['suggestions'][] = [
-        'value' => $data['keluhan'],
-        'keluhan'  => $data['keluhan']
-    ];
-}
+<br>
+<?php
+	$personil["One Ok Rock"]=array("Taka","Toru","Ryota","Tomoya");
+	$personil["Linkin Park"]=array("Chester Bennington","Mike Shinoda","Joe Hahn","Brad Delson","Rob Bourdon","Dave Farrell");
+	$personil["Paramore"]=array("Hayley Williams","Taylor York","Jeremy Davis");
 
-if (! empty($output)) {
-    // Encode ke format JSON.
-    echo json_encode($output);
-}
+	echo "Vocalis One Ok Rock yaitu : ".$personil["One Ok Rock"][0]."<br/>";
+	echo "Vocalis Linkin Park yaitu : ".$personil["Linkin Park"][0]."<br/>";
+	echo "Vocalis Paramore yaitu : ".$personil["Paramore"][0];
+?>
+
