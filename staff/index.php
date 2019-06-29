@@ -110,7 +110,7 @@ include '../config/koneksi.php';
 
       <?php
 
-      if($halaman=="home")                       include "home.php"; 
+      if($halaman=="home")                             include "home.php"; 
             else if($halaman=="management-user")       include "management-user.php"; 
             else if($halaman=="edit-user")             include "edit-user.php";
 
@@ -128,6 +128,7 @@ include '../config/koneksi.php';
             else if($halaman=="keluhan")               include "keluhan.php";
             else if($halaman=="laporan")               include "laporan.php";
             else if($halaman=="laporan-masuk")         include "laporan-masuk.php";
+            else if($halaman=="edit-laporan")          include "edit-laporan.php";
 
             else if($halaman=="komentarmenu")          include "komentarmenu.php";
             else if($halaman=="komentarweb")           include "komentarweb.php";

@@ -1,42 +1,31 @@
-<?php 
-// menghubungkan dengan koneksi
-include '../config/koneksi.php';
-// menghubungkan dengan library excel reader
-include "excel_reader2.php";
-?>
-
 <?php
-// upload file xls
-$target = basename($_FILES['filekeluhan']['name']) ;
-move_uploaded_file($_FILES['filekeluhan']['tmp_name'], $target);
 
-// beri permisi agar file xls dapat di baca
-chmod($_FILES['filekeluhan']['name'],0777);
+include '../config/koneksi.php';
 
-// mengambil isi file xls
-$data = new Spreadsheet_Excel_Reader($_FILES['filekeluhan']['name'],false);
-// menghitung jumlah baris data yang ada
-$jumlah_baris = $data->rowcount($sheet_index=0);
-
-// jumlah default data yang berhasil di import
-$berhasil = 0;
-for ($i=2; $i<=$jumlah_baris; $i++){
-
-	// menangkap data dan memasukkan ke variabel sesuai dengan kolumnya masing-masing
-	$masalah     = $data->val($i, 1);
-	$penanganan  = $data->val($i, 2);
-	$perangkat   = $data->val($i, 3);
-
-	if($masalah != "" && $penanganan != "" && $perangkat != ""){
-		// input data ke database (table tbl_keluhan)
-		mysqli_query($koneksi,"INSERT into tbl_keluhan values('','$masalah','$penanganan','$perangkat')");
-		$berhasil++;
-	}
+if (isset($_POST["import"])) {
+    
+    $fileName = $_FILES["file"]["tmp_name"];
+    
+    if ($_FILES["file"]["size"] > 0) {
+        
+        $file = fopen($fileName, "r");
+        
+        while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
+            $sqlInsert = "INSERT INTO tbl_keluhan(keluhan,penanganan,perangkat)
+                   values ('" . $column[0] . "','" . $column[1] . "','" . $column[2] . "')";
+            $result = mysqli_query($konek, $sqlInsert);
+            
+            if (! empty($result)) {
+                $type = "success";
+                $message = "CSV Data Imported into the Database";
+            } else {
+                $type = "error";
+                $message = "Problem in Importing CSV Data";
+            }
+        }
+    }
 }
 
-// hapus kembali file .xls yang di upload tadi
-unlink($_FILES['filekeluhan']['name']);
+header("location:index.php?halaman=data-trouble");
 
-// alihkan halaman ke index.php
-header("location:index.php?halaman=$berhasil");
 ?>

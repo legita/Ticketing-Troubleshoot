@@ -5,8 +5,8 @@ include 'koneksi.php';
 $id 	 = $_GET['id'];
 $tgl 	 = date('d-m-Y');
 
-$updateConfirm = "UPDATE tbl_laporan SET tgl_kerjakan	= '$tgl',
-										 status 		= '1' 
+$updateConfirm = "UPDATE tbl_laporan SET tgl_selesai	= '$tgl',
+										 status 		= '2' 
 										 WHERE id_laporan = '$id'";
 
 $query = mysqli_query($konek,$updateConfirm);

@@ -28,7 +28,7 @@
                           <th><center>User</center></th>
                           <th><center>Lokasi Perangkat</center></th>
                           <th><center>Laporan</center></th>
-                          <th><center>Darurat</center></th>
+                          <th><center>Kesulitan Laporan</center></th>
                           <th><center>Alasan</center></th>
                           <th><center>Aksi</center></th>
                       </tr>
@@ -55,7 +55,7 @@
                       <?php
                       $no = 1;
                       include '../config/koneksi.php';
-                      $query = mysqli_query($konek, "SELECT * FROM tbl_laporan") or die(mysqli_error());
+                      $query = mysqli_query($konek, "SELECT * FROM tbl_laporan ORDER BY ting_laporan = 'Darurat' DESC") or die(mysqli_error());
                         if(mysqli_num_rows($query) == 0){
                           echo '<tr><td collspan="4" align="center">Tidak ada data!</td></tr>';
                         }
@@ -73,17 +73,22 @@
                             <td><?php echo $data['user']; ?></td>
                             <td><?php echo $data['lokasi_perangkat']; ?></td>
                             <td><?php echo $data['laporan']; ?></td>
-                            <td><?php echo $data['darurat']; ?></td>
+                            <td style="color:red;"><?php echo $data['ting_laporan']; ?>
+                            &nbsp;&nbsp;<a href="index.php?halaman=edit-laporan&id=<?php echo $data['id_laporan'];?>" title="Edit Data"><span class="fa fa-edit"></span></a></td>
                             <td><?php echo $data['alasan']; ?></td>
                             
                             <td><center>
                               <?php 
                               if ($data['status']==0){ ?>
-                                <a href="../config/proses_konfirmasi.php?id=<?php echo $data['id_laporan']; ?> AND <?php $tgl=date('d-m-Y'); echo $tgl;?>" class="btn btn-success" title="Tangani">Tangani</a>
+                                <a href="../config/proses_konfirmasi.php?id=<?php echo $data['id_laporan']; ?>" class="btn btn-danger" title="Tangani">Tangani</a>
                                   <?php }
-                              else { ?>
-
-                              <?php } ?>
+                              elseif ($data['status']==1) { ?>
+                                 <a href="../config/proses_konfirmasi1.php?id=<?php echo $data['id_laporan']; ?>" class="btn btn-success" title="Proses">Proses</a>
+                                  <?php } 
+                              elseif ($data['status']==2) { ?>
+                                 <a class="btn btn-primary" title="Selesai">Selesai</a>
+                                  <?php }
+                                  ?>
                             </center>
                             </td>
                         </tr>

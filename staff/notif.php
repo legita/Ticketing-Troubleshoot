@@ -21,7 +21,7 @@
           <a class="dropdown-item" href="?halaman=laporan-masuk"><< Laporan Masuk >></a>
           <div class="dropdown-divider"></div>
           <label class="dropdown-item">Pelapor : <?php echo $data['username']; ?></label>
-          <label class="dropdown-item">Darurat : <?php echo $data['darurat']; ?></label>
+          <label class="dropdown-item">Darurat : <?php echo $data['ting_laporan']; ?></label>
 
         </div>
       </li>

@@ -206,17 +206,17 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         </label>
       </div>
       <div class="form-group" align="center">
-        <label class="col-sm-2" for="keluhan" style="text-align: left;">Keluhan</label>
+        <label class="col-sm-2" for="keluhan" style="text-align: left;" required>Keluhan</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="keluhan" name="keluhan" placeholder="Nama Keluhan" value="">
+        <input class="form-control" type="text" id="keluhan" name="keluhan" placeholder="Nama Keluhan" value="" required>
         </label>
       </div>    
       <div class="form-group" align="center">
         <label class="col-sm-2" for="id_barang" style="text-align: left;">ID Perangkat</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="id_barang" name="id_barang" placeholder="ID Perangkat" value="">
+        <input class="form-control" type="text" id="id_barang" name="id_barang" placeholder="ID Perangkat" value="" required>
         </label>
       </div>
       <div class="form-group" align="center">
@@ -240,24 +240,7 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <input class="form-control" type="text" id="lokasi" name="lokasi" disabled>
         </label>
       </div>
-      <div class="form-group" align="center">
-        <label class="col-sm-2" for="darurat" style="text-align: left;">Darurat</label>
-        <label class="col-sm-1">:</label>
-        <label class="col-sm-5">
-        <select name="darurat" id="darurat" class="form-control">
-          <option value="">- Pilih -</option>
-          <option value="Iya">Iya</option>
-          <option value="Tidak">Tidak</option>
-        </select>
-        </label>
-      </div>
-      <div class="form-group" align="center">
-        <label class="col-sm-2" for="alasan" style="text-align: left;">Alasan</label>
-        <label class="col-sm-1">:</label>
-        <label class="col-sm-5">
-        <input class="form-control" type="text" id="alasan" name="alasan" placeholder="Isi Alasannya" value="">
-        </label>
-      </div>
+      
       <!--<div class="form-group" align="center">
         <label class="col-sm-2" for="penanganan" style="text-align: left;">Keluhan</label>
         <label class="col-sm-1">:</label>
@@ -286,7 +269,10 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
     <button class="collapsible">Open Section 3</button>
     <div class="content">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
+    </div><hr>
+    <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Lapor">Berhasil Ditangani</button>
+    <label class="col-sm-10">Pilih Button <font style="color: red;"><b>Lapor ke IT</b></font> , jika masalah tidak terselesaikan</label>
+    <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Lapor">Lapor ke IT</button>
   </div><hr style="background-color: #cdd51f;"><br>
 
 <?php include 'footer.php'; ?>

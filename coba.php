@@ -1,37 +1,28 @@
-<?php
-	$nama[0] = "Budi";
-	$nama[1] = "Nai";
-	$nama[2] = "Monic"; 
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+	<script type="text/javascript" src="jquery.countdown/jquery.countdown.min.js"></script>
+</head>
+<body>
+<button type="button" onclick="myFunction()">Coba Klik</button>
+<div id="getting-started"></div>
+	
+<script type="text/javascript">
+	function myFunction() {
+  <?php
+	$tgl1    = date('Y-m-d'); // menentukan tanggal awal
+	$tgl2    = date('Y-m-d', strtotime('+2 days', strtotime($tgl1))); // penjumlahan tanggal sebanyak 7 hari
+	echo $tgl1; // cetak tanggal
+	echo $tgl2; // cetak tanggal
+	?>
 
-	echo $nama[0] . " dan " . $nama[2] . " adalah sahabat.";
-?>
-
-<br>
- <?php
- $karyawan=array("Agus"=>"Jepara","Budi"=>"Jakarta","Candra"=>"Semarang");   
- foreach($karyawan as $x=>$x_value) {  
-  echo "Nama = " . $x . ", Alamat = " . $x_value;  
-  echo "<br>";  
- }  
- ?>
-
-<br>
-<?php
-	$personil=array("One Ok Rock" => array("Taka","Toru","Ryota","Tomoya"), "Linkin Park" => array("Chester Bennington","Mike Shinoda","Joe Hahn","Brad Delson","Rob Bourdon","Dave Farrell"), "Paramore" => array("Hayley Williams","Taylor York","Jeremy Davis"));
-
-	echo "Vocalis One Ok Rock yaitu: ".$personil["One Ok Rock"][0]."<br/>";
-	echo "Vocalis Linkin Park yaitu: ".$personil["Linkin Park"][0]."<br/>";
-	echo "Vocalis Paramore yaitu: ".$personil["Paramore"][0]."<br/>";
-?>
-
-<br>
-<?php
-	$personil["One Ok Rock"]=array("Taka","Toru","Ryota","Tomoya");
-	$personil["Linkin Park"]=array("Chester Bennington","Mike Shinoda","Joe Hahn","Brad Delson","Rob Bourdon","Dave Farrell");
-	$personil["Paramore"]=array("Hayley Williams","Taylor York","Jeremy Davis");
-
-	echo "Vocalis One Ok Rock yaitu : ".$personil["One Ok Rock"][0]."<br/>";
-	echo "Vocalis Linkin Park yaitu : ".$personil["Linkin Park"][0]."<br/>";
-	echo "Vocalis Paramore yaitu : ".$personil["Paramore"][0];
-?>
-
+	$('#getting-started').countdown('2019/06/30', function(event) {
+    $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+  });
+}
+  
+</script>
+</body>
+</html>

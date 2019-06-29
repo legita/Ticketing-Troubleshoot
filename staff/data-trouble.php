@@ -15,15 +15,18 @@
         </ol>
         <a href="index.php?halaman=tambah-trouble" class="btn btn-danger"><span class="fa fa-plus"></span> Tambah</a>
 
-        <a href="index.php?halaman=tambah-komputer" class="btn btn-primary float-right"><span class="fa fa-download"></span> Unduh</a><hr>
+        <!-- <a href="coba_export.php"><button type="submit" id="submit" name="import" class="btn btn-info float-right">Unduh</button></a> -->
+        <a href="csv_export.php" type="submit" name="import" class="btn btn-primary float-right"><span class="fa fa-download"></span> Unduh</a><hr>
 
         <div class="col-lg-5">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <!-- Upload data csv -->
             <form method="post" enctype="multipart/form-data" action="csv_import.php">
-              <input name="filekeluhan" type="file" required="required">
-              <input name="upload" type="submit" value="Unggah" class="btn btn-info float-right"><!-- <span class="fa fa-upload"></span>Unggah</a> -->
+              <input type="file" name="file" id="file" accept=".csv" required="required">
+              <button type="submit" id="submit" name="import" class="btn btn-info float-right">Unggah</button>
+              <!-- <input name="filekeluhan" type="file" required="required"> -->
+              <!-- <input name="upload" type="submit" value="Unggah" class="btn btn-info float-right"><span class="fa fa-upload"></span>Unggah</a> -->
             </form>
           </li>
         </ol>

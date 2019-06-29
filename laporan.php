@@ -198,7 +198,7 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <label class="col-sm-2" for="id_lama" style="text-align: left;">ID Perangkat</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="id_lama" name="id_lama" placeholder="ID Perangkat" value="">
+        <input class="form-control" type="text" id="id_lama" name="id_lama" placeholder="ID Perangkat" value="" required>
         </label>
       </div>
       <div class="form-group" align="center">
@@ -226,27 +226,28 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <label class="col-sm-2" for="laporan" style="text-align: left;">Laporan Perangkat</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="laporan" name="laporan" placeholder="Laporan" value="">
+        <input class="form-control" type="text" id="laporan" name="laporan" placeholder="Laporan" value="" required>
         </label>
       </div>
       <div class="form-group" align="center">
-        <label class="col-sm-2" for="darurat" style="text-align: left;">Darurat</label>
+        <label class="col-sm-2" for="ting_laporan" style="text-align: left;">Tingkat Laporan</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <select name="darurat" id="darurat" class="form-control">
+        <select name="ting_laporan" id="ting_laporan" class="form-control" required>
           <option value="">- Pilih -</option>
-          <option value="Iya">Iya</option>
-          <option value="Tidak">Tidak</option>
+          <option value="Darurat">Darurat</option>
+          <option value="Tidak Darurat">Tidak Darurat</option>
         </select>
         </label>
       </div>
-      <div class="form-group" align="center">
-        <label class="col-sm-2" for="alasan" style="text-align: left;">Alasan</label>
-        <label class="col-sm-1">:</label>
-        <label class="col-sm-5">
-        <input class="form-control" type="text" id="alasan" name="alasan" placeholder="Isi Alasannya" value="">
-        </label>
-      </div>  
+        <div class="form-group" align="center">
+          <label class="col-sm-2" for="alasan" style="text-align: left;">Alasan</label>
+          <label class="col-sm-1">:</label>
+          <label class="col-sm-5">
+          <input class="form-control" type="text" id="alasan" name="alasan" placeholder="Isi Alasannya" value="">
+          </label>
+        </div>
+          
       <label class="col-sm-10"></label>
       <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Kirim">Kirim</button>
     </form>
