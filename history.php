@@ -152,8 +152,8 @@ $id_user = $_GET['id_user'];
                                   include 'config/koneksi.php'; 
 
                                   $no = 1;
-                                  $query1 = "SELECT * FROM tbl_trouble join tbl_keluhan where 
-                                            tbl_trouble.id_keluhan=tbl_keluhan.id_keluhan and tbl_trouble.status='1' and month(tbl_trouble.tanggal) = '$bln' and year(tbl_trouble.tanggal) = '$thn'";
+                                  $query1 = "SELECT * FROM tbl_trouble join tbl_laporan where 
+                                            tbl_trouble.id_trouble=tbl_laporan.id_laporan and month(tbl_laporan.tgl) = '$bln' and year(tbl_laporan.tgl) = '$thn'";
 
                                   $tampil1 = mysqli_query($konek, $query1);
 
@@ -169,9 +169,9 @@ $id_user = $_GET['id_user'];
                                   while($row = mysqli_fetch_array($tampil1)) { ?>
                                       <tr>
                                           <td><center><?php echo $no++; ?></center></td>
-                                          <td><center><?php echo $row['tanggal']; ?></center></td>
-                                          <td><center><?php echo $row['no_ticket']; ?></center></td>
-                                          <td><center><?php echo $row['trouble']; ?></center></td>  
+                                          <td><center><?php echo $row['tgl']; ?></center></td>
+                                          <td><center><?php echo $row['no_lap']; ?></center></td>
+                                          <td><center><?php echo $row['laporan']; ?></center></td>  
                                       </tr>
 
 
