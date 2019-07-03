@@ -8,16 +8,9 @@
           <li class="breadcrumb-item active">Rekap Ticketing Troubleshooting</li>
         </ol> 
         
-              <!-- Advanced Tables -->
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                       Rekap Penanganan Ticketing Troubleshooting pada PT. Sebastian Jaya Metal
-                  </div>
-                  <div class="panel-body">
-        
-                    <div class="table-responsive">
+
                       <form action="" method="POST">
-                      <table class="table table-striped table-bordered table-hover" id="myTable">
+                      <table class="table table-striped table-bordered table-hover">
                         <thead>
                           <tbody>
 
@@ -54,9 +47,7 @@
                             <td align="center"><button type="submit" class="btn btn-info btn-block" name="cari">Pilih</button></td>
                             </tr>
                             </table>
-                            <br>
-                            <br>
-                            </div>
+
 
                             <?php
 
@@ -84,91 +75,117 @@
                               if(isset($_GET['bln'])&& isset($_GET['thn'])){
                              
                               ?>
+                               </form>
 
-                            <table class="table" style="width:800px;">
-                                <thead>
-                                  <tbody>
-                                <tr>
-                                    <th class="bg-info"><center>No</center></th>
-                                    <th class="bg-info"><center>Tanggal Laporan</center></th>
-                                    <th class="bg-info"><center>Tanggal Dikerjakan</center></th>
-                                    <th class="bg-info"><center>Tanggal Selesai</center></th>
-                                    <th class="bg-info"><center>No Ticketing</center></th>
-                                    <th class="bg-info"><center>Username</center></th>
-                                    <th class="bg-info"><center>id_perangkat</center></th>
-                                    <th class="bg-info"><center>jenis_perangkat</center></th>
-                                    <th class="bg-info"><center>Penganggung Jawab</center></th>
-                                    <th class="bg-info"><center>Lokasi Perangkat</center></th>
-                                    <th class="bg-info"><center>Laporan Masalah</center></th>
-                                    <th class="bg-info"><center>Status</center></th>
-                                    <th class="bg-info"><center>Status Laporan</center></th>
-                                    <th class="bg-info"><center>Catatan</center></th>
-                                </tr>
+                      <a href="cetak-report.php?print=1&bln=<?php echo $_GET['bln'];?>&thn=<?php echo $_GET['thn']; ?>" target ="_blank" role="button" class="btn btn-primary pull-right" style="margin-right:16px;margin-bottom:10px;width:150px"><span class="fa fa-print"></span> Cetak Report</a>
 
-                            <?php
+                    <!-- DataTables Example -->
+                    <div class="card mb-3">
+                      <div class="card-header">
+                        <i class="fas fa-fw fa-table"></i> Data Rekap</div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTable">
+                        <thead>
+                          <tbody>
+                        <tr>
+                            <th class="bg-info"><center>No</center></th>
+                            <th class="bg-info"><center>Tanggal Laporan</center></th>
+                            <th class="bg-info"><center>Tanggal Dikerjakan</center></th>
+                            <th class="bg-info"><center>Tanggal Selesai</center></th>
+                            <th class="bg-info"><center>No Ticketing</center></th>
+                            <th class="bg-info"><center>Username</center></th>
+                            <th class="bg-info"><center>id_perangkat</center></th>
+                            <th class="bg-info"><center>jenis_perangkat</center></th>
+                            <th class="bg-info"><center>Penganggung Jawab</center></th>
+                            <th class="bg-info"><center>Lokasi Perangkat</center></th>
+                            <th class="bg-info"><center>Laporan Masalah</center></th>
+                            <th class="bg-info"><center>Catatan</center></th>
+                            <th class="bg-info"><center>Status Laporan</center></th>
+                            <th class="bg-info"><center>Status</center></th>
+                        </tr>
 
-                            $bln = $_GET['bln'];
-                            $thn = $_GET['thn'];
-                            
-                            include '../config/koneksi.php'; 
+                    <?php
 
-                            $no = 1;
-                            $query1 = "SELECT * FROM tbl_laporan where month(tgl_laporan) = '$bln' and year(tgl_laporan) = '$thn'";
+                    $bln = $_GET['bln'];
+                    $thn = $_GET['thn'];
+                    
+                    include '../config/koneksi.php'; 
 
-                            $tampil1 = mysqli_query($konek, $query1);
+                    $no = 1;
+                    $query1 = "SELECT * FROM tbl_laporan where month(tgl_laporan) = '$bln' and year(tgl_laporan) = '$thn'";
 
-
-                            ?>
-
-
-                            <?php
-                            if(!mysqli_num_rows($tampil1)) {
-                              echo "No posts yet";
-
-                            } else {
-                            while($row = mysqli_fetch_array($tampil1)) { ?>
-                                <tr>
-                                    <td><center><?php echo $no++; ?></center></td>
-                                    <td><center><?php echo $row['tgl_laporan']; ?></center></td>
-                                    <td><center><?php echo $row['tgl_kerjakan']; ?></center></td>
-                                    <td><center><?php echo $row['tgl_selesai']; ?></center></td>
-                                    <td><center><?php echo $row['no_lap']; ?></center></td>   
-                                    <td><center><?php echo $row['username']; ?></center></td>   
-                                    <td><center><?php echo $row['id_perangkat']; ?></center></td>   
-                                    <td><center><?php echo $row['jenis_perangkat']; ?></center></td>   
-                                    <td><center><?php echo $row['user']; ?></center></td>   
-                                    <td><center><?php echo $row['lokasi_perangkat']; ?></center></td>   
-                                    <td><center><?php echo $row['laporan']; ?></center></td>   
-                                    <td><center><?php echo $row['status']; ?></center></td>   
-                                    <td><center><?php echo $row['ting_alasan']; ?></center></td>   
-                                    <td><center><?php echo $row['alasan']; ?></center></td>   
-                                </tr>
+                    $tampil1 = mysqli_query($konek, $query1);
 
 
-                            <?php }
-
-                            ?>
-                          
-                              <a href="cetak-report.php?print=1&bln=<?php echo $_GET['bln'];?>&thn=<?php echo $_GET['thn']; ?>" target ="_blank" role="button" class="btn btn-primary pull-right" style="margin-right:16px;margin-bottom:10px;width:150px"><span class="fa fa-print"></span> Cetak Report</a>
-
-                            <?php }
-                            ?>
+                    ?>
 
 
-                            <?php }
-                            ?>
+                    <?php
+                    if(!mysqli_num_rows($tampil1)) {
+                      echo "No posts yet";
 
-                          </tbody>
-                          
-                        </thead>
-                      </table>
-                    </tbody>
-                  </thead>
-                </table>
-              </form>
-            </div>
-          </div>
+                    } else {
+                    while($row = mysqli_fetch_array($tampil1)) { ?>
+                        <tr>
+                            <td><center><?php echo $no++; ?></center></td>
+                            <td><center><?php echo $row['tgl_laporan']; ?></center></td>
+                            <td><center><?php echo $row['tgl_kerjakan']; ?></center></td>
+                            <td><center><?php echo $row['tgl_selesai']; ?></center></td>
+                            <td><center><?php echo $row['no_lap']; ?></center></td>   
+                            <td><center><?php echo $row['username']; ?></center></td>   
+                            <td><center><?php echo $row['id_perangkat']; ?></center></td>   
+                            <td><center><?php echo $row['jenis_perangkat']; ?></center></td>   
+                            <td><center><?php echo $row['user']; ?></center></td>   
+                            <td><center><?php echo $row['lokasi_perangkat']; ?></center></td>   
+                            <td><center><?php echo $row['laporan']; ?></center></td>      
+                            <td><center><?php echo $row['alasan']; ?></center></td>
+                             <td style="color:red;">
+                               <?php
+                                 if ($data['ting_laporan']=='1'){
+                                   echo '<font color="red"><b>Darurat</b></font>';
+                                 }
+                                 else {
+                                  echo '<font color="green"><b>Tidak Darurat</b></font>';
+                                 }
+                               ?>
+                            </td>
+                             
+                             <td><center>
+                               <?php 
+                               if ($data['status']=='0'){ ?>
+                                 <button class="btn btn-danger">Akan ditangani</button>
+                                   <?php }
+                               elseif ($data['status']=='1') { ?>
+                                  <button class="btn btn-success">Sedang diproses</button>
+                                   <?php } 
+                               elseif ($data['status']=='2') { ?>
+                                   <button class="btn btn-primary">Selesai</button>
+                                   <?php }
+                                   ?>
+                             </center>
+                             </td>  
+                        </tr>
+
+
+                    <?php }
+
+                    ?>
+                  
+
+                    <?php }
+                    ?>
+
+
+                    <?php }
+                    ?>
+
+                  </tbody>
+                  
+                </thead>
+              </table>
+                </div>
+              </div>
         </div>
 
-      </div>
       <!-- /.container-fluid -->

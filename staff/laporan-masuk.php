@@ -1,3 +1,5 @@
+
+
 <div class="container-fluid">
 
         <!-- Breadcrumbs-->
@@ -21,6 +23,7 @@
                           <th><center>No.</center></th>
                           <th><center>ID User</center></th>
                           <th><center>Tanggal Laporan</center></th>
+                          <th><center>Waktu Pengerjaan</center></th>
                           <th><center>Pelapor</center></th>
                           <th><center>Nomer Laporan</center></th>
                           <th><center>ID Perangkat</center></th>
@@ -55,9 +58,9 @@
                       <?php
                       $no = 1;
                       include '../config/koneksi.php';
-                      $query = mysqli_query($konek, "SELECT * FROM tbl_laporan ORDER BY ting_laporan = 'Darurat' DESC") or die(mysqli_error());
+                      $query = mysqli_query($konek, "SELECT * FROM tbl_laporan ORDER BY ting_laporan = '1' DESC") or die(mysqli_error());
                         if(mysqli_num_rows($query) == 0){
-                          echo '<tr><td collspan="4" align="center">Tidak ada data!</td></tr>';
+                          echo '<tr><td colspan="14" align="center">Tidak ada data!</td></tr>';
                         }
                         else{
                           while ($data = mysqli_fetch_array($query)) {
@@ -66,6 +69,28 @@
                             <td><center><?php echo $no++; ?></center></td>
                             <td><?php echo $data['id_user']; ?></td>
                             <td><?php echo $data['tgl_laporan']; ?></td>
+                            <td>
+                             <div id="getting-started"></div>
+                               <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+                               <script type="text/javascript" src="../jquery.countdown/jquery.countdown.min.js"></script>
+
+                               
+                                 <?php
+                                 include '../config/koneksi.php';
+
+                                 $tgl1    = $data['tgl_laporan']; // menentukan tanggal awal
+                                 $tgl2    = date('Y-m-d', strtotime('+2 days', strtotime($tgl1))); // penjumlahan tanggal sebanyak 2 hari
+                                 echo '<b>'.$tgl2.'</b>';
+                                 ?>
+
+                                 <script type="text/javascript">
+                                 $('#getting-started').countdown(<?php echo json_encode($tgl2); ?>, function(event) {
+                                   $(this).html(event.strftime('%d hari %H:%M:%S'));
+                                 });
+                                 
+                               </script>
+
+                            </td>
                             <td><?php echo $data['username']; ?></td>
                             <td><?php echo $data['no_lap']; ?></td>
                             <td><?php echo $data['id_perangkat']; ?></td>
@@ -73,19 +98,27 @@
                             <td><?php echo $data['user']; ?></td>
                             <td><?php echo $data['lokasi_perangkat']; ?></td>
                             <td><?php echo $data['laporan']; ?></td>
-                            <td style="color:red;"><?php echo $data['ting_laporan']; ?>
+                            <td style="color:red;">
+                              <?php
+                                if ($data['ting_laporan']=='1'){
+                                  echo '<font color="red"><b>Darurat</b></font>';
+                                }
+                                else {
+                                 echo '<font color="green"><b>Tidak Darurat</b></font>';
+                                }
+                              ?>
                             &nbsp;&nbsp;<a href="index.php?halaman=edit-laporan&id=<?php echo $data['id_laporan'];?>" title="Edit Data"><span class="fa fa-edit"></span></a></td>
                             <td><?php echo $data['alasan']; ?></td>
                             
                             <td><center>
                               <?php 
-                              if ($data['status']==0){ ?>
+                              if ($data['status']=='0'){ ?>
                                 <a href="../config/proses_konfirmasi.php?id=<?php echo $data['id_laporan']; ?>" class="btn btn-danger" title="Tangani">Tangani</a>
                                   <?php }
-                              elseif ($data['status']==1) { ?>
+                              elseif ($data['status']=='1') { ?>
                                  <a href="../config/proses_konfirmasi1.php?id=<?php echo $data['id_laporan']; ?>" class="btn btn-success" title="Proses">Proses</a>
                                   <?php } 
-                              elseif ($data['status']==2) { ?>
+                              elseif ($data['status']=='2') { ?>
                                  <a class="btn btn-primary" title="Selesai">Selesai</a>
                                   <?php }
                                   ?>
@@ -106,3 +139,6 @@
 
       </div>
       <!-- /.container-fluid -->
+
+
+

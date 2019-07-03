@@ -176,7 +176,7 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
   <div class="col-sm-12">
     <form action="config/tambah_laporan.php" class="form-horizontal" role="form" method="POST">
       <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
-      <input type="hidden" name="tgl" value="<?php $tgl=date('d-m-Y'); echo $tgl;?>">
+      <input type="hidden" name="tgl" value="<?php $tgl=date('Y-m-d'); echo $tgl;?>">
       <hr style="background-color: #cdd51f;">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color: red;"><sub><span class="label label-danger">Penting</span> Input Laporan Troubleshooting yang Terjadi Pada Perangkat Anda !</sub></i><hr><br>
       

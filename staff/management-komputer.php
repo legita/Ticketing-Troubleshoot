@@ -8,7 +8,22 @@
           <li class="breadcrumb-item active">Management Komputer</li>
         </ol> 
         <a href="index.php?halaman=tambah-komputer" class="btn btn-danger"><span class="fa fa-plus"></span> Tambah</a><hr>
-        
+        <!-- <a href="csv_export1.php" type="submit" name="import" class="btn btn-primary float-right"><span class="fa fa-download" title="Unduh"></span> Unduh</a><hr> -->
+
+        <div class="col-lg-5">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <!-- Upload data csv -->
+            <form method="post" enctype="multipart/form-data" action="csv_import1.php">
+              <input type="file" name="file" id="file" accept=".csv" required="required">
+              <button type="submit" id="submit" name="import" class="btn btn-info float-right">Unggah</button>
+              <!-- <input name="filekeluhan" type="file" required="required"> -->
+              <!-- <input name="upload" type="submit" value="Unggah" class="btn btn-info float-right"><span class="fa fa-upload"></span>Unggah</a> -->
+            </form>
+          </li>
+        </ol>
+        </div>
+        <hr>
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">

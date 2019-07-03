@@ -15,7 +15,7 @@ $conn = new mysqli($host, $username, $password, $database);
 $keluhan = $_GET["query"];
 
 // Query ke database.
-$query  = $conn->query("SELECT * FROM tbl_keluhan WHERE keluhan LIKE '%$keluhan%' ORDER BY keluhan DESC");
+$query  = $conn->query("SELECT * FROM tbl_keluhan WHERE keluhan LIKE '%$keluhan%' ORDER BY keluhan");
 
 // Fetch hasil query.
 $result = $query->fetch_All(MYSQLI_ASSOC);

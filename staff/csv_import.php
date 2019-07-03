@@ -17,10 +17,10 @@ if (isset($_POST["import"])) {
             
             if (! empty($result)) {
                 $type = "success";
-                $message = "CSV Data Imported into the Database";
+                $message = "Data CSV Diimpor ke dalam Database";
             } else {
                 $type = "error";
-                $message = "Problem in Importing CSV Data";
+                $message = "Masalah dalam Mengimpor Data CSV";
             }
         }
     }

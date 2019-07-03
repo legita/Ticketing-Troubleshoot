@@ -16,7 +16,8 @@
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-user-plus"></i> Data User</div>
+            <i class="fas fa-user-plus"></i> Data User
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-striped table-bordered table-hover" id="dataTable">
