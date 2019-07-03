@@ -1,6 +1,4 @@
-   
-<script type="text/javascript" src="ypathcss/jquery-1.3.2.js"></script>
-<script type="text/javascript" src="ypathcss/ui/ui.core.js"></script>
+
 
 <style>
 .animasi-teks {
@@ -38,22 +36,22 @@
 	<div class="container">
 
     <?php
+
+      include '../config/koneksi.php';
         $id_datauji=$_GET["id"];
         $sql="select * from tbl_datauji where `id_datauji`='$id_datauji'";
         $d=getField($konek,$sql);
                     $id_datauji=$d["id_datauji"];
                     $id_datauji0=$d["id_datauji"];
                     
-                    $tanggal=WKT($d["tanggal"]);
+                    $tanggal=$d["tanggal"];
                     $keluhan=$d["keluhan"];//keluhan
                     $normalisasi=$d["normalisasi"];
                     $kategori=$d["perangkat"];
                     $sentimen=$d["penanganan"];
 
     ?>
-        <link rel="stylesheet" href="js/jquery-ui.css">
-        <script src="js/jquery-1.12.4.js"></script>
-        <script src="js/jquery-ui.js"></script>
+
         <script>
         $( function() {
         $( "#accordion" ).accordion({
@@ -322,7 +320,7 @@
     $k2=0;
     $k3=0;
                     
-    $gab3="<table border='1'>
+    $gab3="<table border=>
           <tr>
             <td>No</td>
             <td>keluhan</td>
@@ -351,7 +349,7 @@
     // else if ($k2>=$k1 && $k2>=$k3){$max=0;$smax="Netral";}
     // else if ($k3>=$k2 && $k3>=$k1){$max=1;$smax="Positif";}
 
-    $gab4="<h1>Dengan K: $K, Kesimpulan :".$max." /$smax</h1>";
+    // $gab4="<h1>Dengan K: $K, Kesimpulan :".$max." /$smax</h1>";
     //"CETAK";
 
     echo $gab1;  

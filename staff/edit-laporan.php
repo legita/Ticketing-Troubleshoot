@@ -37,8 +37,8 @@
                   <div class="col-md-6">
                   <select class="form-control" id="ting_laporanbar" name="ting_laporanbar" value="<?php echo $data['ting_laporan']; ?>">
                     <option><?php echo $data['ting_laporan']; ?></option>
-                    <option>Darurat</option>
-                    <option>Tidak Darurat</option>
+                    <option value="1">Darurat</option>
+                    <option value="0">Tidak Darurat</option>
                   </select>
                   </div>
               </div>

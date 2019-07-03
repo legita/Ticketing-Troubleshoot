@@ -1,6 +1,3 @@
-<link type="text/css" href="ypathcss/ui.all.css" rel="stylesheet" />   
-<script type="text/javascript" src="ypathcss/jquery-1.3.2.js"></script>
-<script type="text/javascript" src="ypathcss/ui/ui.core.js"></script>
 
 <style>
 .animasi-teks {
