@@ -19,6 +19,9 @@
           <li class="breadcrumb-item">
             <a href="index.php">Home</a>
           </li>
+          <li class="breadcrumb-item">
+            <a href="index.php?halaman=data-trouble">Data Troubleshooting</a>
+          </li>
           <li class="breadcrumb-item active">Edit Data Trouble</li>
         </ol>
 
@@ -48,9 +51,9 @@
             </div>
             <div class="form-group input-group">
               <label class="col-md-1"></label>
-                <label class="col-md-2" for="perangkat">Perangkat</label>
+                <label class="col-md-3" for="perangkat">Perangkat</label>
                 <label class="col-md-1">:</label>
-                <div class="col-md-7">
+                <div class="col-md-6">
                 <select class="form-control" id="perangkat" name="perangkat">
                   <option><?php echo $data['perangkat'];?>"</option>
                   <option>Jaringan</option>

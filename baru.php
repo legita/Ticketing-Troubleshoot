@@ -18,7 +18,6 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 <head>
   <title>PT. Sebastian Jaya Metal</title>
   <meta charset="utf-8">
-  <!-- Site Icons -->
   <link rel="shortcut icon" href="images/logos/logo.jpg" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -48,6 +47,18 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 
       @-webkit-keyframes animasi-ketik{
         from { width: 0; }
+      }
+
+      .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
       }
 
       .active, .collapsible:hover {
@@ -174,43 +185,69 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
   </div>
 
   <div class="col-sm-12">
-    <form action="config/tambah_keluhan.php" class="form-horizontal" role="form" method="POST">
-      <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
-      <input type="hidden" name="tgl" value="<?php $tgl=date('Y-m-d'); echo $tgl;?>">
+    <form class="form-horizontal" role="form" method="POST">
+      <input type="hidden" name="tgl" value="<?php $tgl=date('d-m-Y'); echo $tgl;?>">
       <hr style="background-color: #cdd51f;">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color: red;"><sub><span class="label label-danger">Penting</span> Input Laporan Troubleshooting yang Terjadi Pada Perangkat Anda !</sub></i><hr><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color: red;"><sub><span class="label label-danger">Penting</span> Input Keluhan Troubleshooting yang Terjadi Pada Perangkat Anda !</sub></i><hr><br>
       
       <div class="form-group" align="center">
         <label class="col-sm-2" for="username" style="text-align: left;">Username</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="username" name="username" value="<?php echo $_SESSION['username']; ?>" readonly>
+        <input class="form-control" type="text" value="<?php echo $_SESSION['username']; ?>" disabled>
         </label>
       </div>
       <div class="form-group" align="center">
-        <label class="col-sm-2" for="no_laporan" style="text-align: left;">Nomor Laporan</label>
+        <label class="col-sm-2" for="no_ticket" style="text-align: left;">Nomor Ticket</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="random" id="no_laporan" name="no_laporan" value="<?php echo rand(100,1000000);?>" / name="no_laporan" readonly>
+        <input class="form-control" type="random" value="<?php echo rand(100,1000000);?>" / name="no_ticket" disabled>
+        </label>
+      </div>
+      <div class="form-group" align="center">
+        <label class="col-sm-2" for="keluhan" style="text-align: left;" required>Keluhan</label>
+        <label class="col-sm-1">:</label>
+        <label class="col-sm-5">
+        <input class="form-control" type="text" id="keluhan" name="keluhan" placeholder="Nama Keluhan" value="" required>
         </label>
       </div>    
-      <div class="form-group" align="center">
-        <label class="col-sm-2" for="keluhan" style="text-align: left;">Keluhan</label>
+
+      
+      <!--<div class="form-group" align="center">
+        <label class="col-sm-2" for="penanganan" style="text-align: left;">Keluhan</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="keluhan" name="keluhan" placeholder="Masukkan Keluhan" value="" required>
+        <input class="form-control" type="text" id="penanganan" name="penanganan"  value="" disabled>
         </label>
-      </div>
-          
+      </div>-->
       <label class="col-sm-10"></label>
       <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Kirim">Kirim</button>
     </form>
   </div>
 
-  <hr>
   <hr style="background-color: #cdd51f;"><br>
 
+
 <?php include 'footer.php'; ?>
+
+
+<!-- Coding Collapsible -->
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
 
 <!-- Memanggil jQuery.js -->
 <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -218,24 +255,21 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 <!-- Memanggil Autocomplete.js -->
 <script src="assets/js/jquery.autocomplete.min.js"></script>
 
-
-<!-- Autocomplete perangkat -->
 <script type="text/javascript">
     $(document).ready(function() {
 
-        // Selector input yang akan menampilkan autocomplete.
+        // Selector input yang akan menampilkan autocomplete keluhan.
         $( "#keluhan" ).autocomplete({
             serviceUrl: "source.php",   // Kode php untuk prosesing data.
             dataType: "JSON",           // Tipe data JSON.
             onSelect: function (suggestion) {
                 $( "#keluhan" ).val("" + suggestion.keluhan);
-                $( "#penanganan" ).val("" + suggestion.penanganan);
-                // $( "#user" ).val("" + suggestion.user);
-                // $( "#lokasi" ).val("" + suggestion.lokasi);
+                //$( "#penanganan" ).val("" + suggestion.penanganan);
             }
         });
     })
 </script>
+
 
 <!-- Go To Top -->
 <script>
@@ -256,6 +290,8 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 </script>
+
+
 
 </body>
 </html>

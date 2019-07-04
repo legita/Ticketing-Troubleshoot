@@ -1,25 +1,36 @@
 <?php
 error_reporting();
-	include 'koneksi.php';
-	
-	$id_laporan		 = $_POST['id_laporan'];
-	$ting_laporanbar = $_POST['ting_laporanbar'];
+    include 'koneksi.php';
+    
+    $id              = $_GET['id'];
+    $ting_laporan   = $_GET['ting_laporan'];
 
-		$update = "UPDATE tbl_laporan SET	ting_laporan = '$ting_laporanbar'
-									  WHERE id_laporan 	 = '$id_laporan'";
+    if($ting_laporan==0) 
+    {
 
-		$updateidjenis	= mysqli_query($konek, $update)or die(mysqli_error());
+        $update = "UPDATE tbl_laporan SET   ting_laporan = '1'
+                                      WHERE id_laporan   = '$id'";
 
-	if ($updateidjenis)
-    	{
-    		echo "<br><br><br><strong><center><i>Kesulitan Laporan Berhasil Diubah!";
-    		echo '<META HTTP-EQUIV="REFRESH" CONTENT = "1; URL=../staff/index.php?halaman=laporan-masuk">';
-    	}
-	else {
-    		print"
-    			<script>
-    				alert(\"ID Perangkat Gagal Diubah!\");
-    				history.back(-1);
-    			</script>";
-    	}
+        $updateidjenis  = mysqli_query($konek, $update)or die(mysqli_error()); }
+        else
+
+ {
+
+        $update = "UPDATE tbl_laporan SET   ting_laporan = '0'
+                                      WHERE id_laporan   = '$id'";
+
+        $updateidjenis  = mysqli_query($konek, $update)or die(mysqli_error()); }
+
+    if ($updateidjenis)
+        {
+            echo "<script>alert('Berhasil Diubah!');</script>";
+            echo '<META HTTP-EQUIV="REFRESH" CONTENT = "0; URL=../staff/index.php?halaman=laporan-masuk">';
+        }
+    else {
+            print"
+                <script>
+                    alert(\"ID Perangkat Gagal Diubah!\");
+                    history.back(-1);
+                </script>";
+        }
 ?>

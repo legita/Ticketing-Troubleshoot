@@ -11,7 +11,7 @@ $input = "INSERT INTO tbl_datauji (id_datauji,username,keluhan,tanggal) values (
 $data = mysqli_query($konek,$input) or die (mysqli_error($konek));
 
 if($data){
- 	echo "<script>alert('Success! Data Added');</script>";
+ 	echo "<script>alert('Success!');</script>";
  	echo '<META HTTP-EQUIV = "REFRESH" CONTENT = "1;URL=../index.php?halaman=DataKeluhan">';
 }
 

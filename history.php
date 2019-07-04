@@ -30,9 +30,9 @@ $id_user = $_GET['id_user'];
 			<div class="row">
 				<div class="col-12">
 					<center>
-                    <div class="animasi-teks">
+            <div class="animasi-teks">
 						<h1 style="color: black; font-size: 48px; font-family: Haunted Eyes;">Histori Penanganan Ticketing Troubleshooting</h1>
-                    </div>
+            </div>
 					</center>
 				</div>
 			</div>
@@ -53,15 +53,14 @@ $id_user = $_GET['id_user'];
                      <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header" style="color:black;">
-            <i class="fas fa-desktop"></i>
-            Laporan Masalah</div>
+            <i class="fa fa-desktop"></i>
+            &nbsp;Laporan Masalah</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-striped table-bordered table-hover" id="dataTable" style="color: black;">
                   <thead>
                       <tr>
                           <th><center>No.</center></th>
-                          <th><center>ID User</center></th>
                           <th><center>Tanggal Laporan</center></th>
                           <th><center>Waktu Pengerjaan</center></th>
                           <th><center>Pelapor</center></th>
@@ -71,7 +70,7 @@ $id_user = $_GET['id_user'];
                           <th><center>User</center></th>
                           <th><center>Lokasi Perangkat</center></th>
                           <th><center>Laporan</center></th>
-                          <th><center>Kesulitan Laporan</center></th>
+                          <th><center>Tingkat Laporan</center></th>
                           <th><center>Alasan</center></th>
                           <th><center>Status</center></th>
                       </tr>
@@ -90,11 +89,10 @@ $id_user = $_GET['id_user'];
                             ?>
                         <tr>
                             <td><center><?php echo $no++; ?></center></td>
-                            <td><?php echo $data['id_user']; ?></td>
                             <td><?php echo $data['tgl_laporan']; ?></td>
                             <td>
                              <div id="getting-started"></div>
-                               <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+                               <script type="text/javascript" src="assets/jquery-3.2.1.min.js"></script>
                                <script type="text/javascript" src="../jquery.countdown/jquery.countdown.min.js"></script>
 
                                

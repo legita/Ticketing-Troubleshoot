@@ -101,7 +101,6 @@
                             <th class="bg-info"><center>Lokasi Perangkat</center></th>
                             <th class="bg-info"><center>Laporan Masalah</center></th>
                             <th class="bg-info"><center>Catatan</center></th>
-                            <th class="bg-info"><center>Status Laporan</center></th>
                             <th class="bg-info"><center>Status</center></th>
                         </tr>
 
@@ -140,17 +139,7 @@
                             <td><center><?php echo $row['lokasi_perangkat']; ?></center></td>   
                             <td><center><?php echo $row['laporan']; ?></center></td>      
                             <td><center><?php echo $row['alasan']; ?></center></td>
-                             <td style="color:red;">
-                               <?php
-                                 if ($data['ting_laporan']=='1'){
-                                   echo '<font color="red"><b>Darurat</b></font>';
-                                 }
-                                 else {
-                                  echo '<font color="green"><b>Tidak Darurat</b></font>';
-                                 }
-                               ?>
-                            </td>
-                             
+         
                              <td><center>
                                <?php 
                                if ($data['status']=='0'){ ?>

@@ -45,12 +45,12 @@
                      <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header" style="color:black;">
-            <i class="fas fa-desktop"></i>
-            Laporan Masalah</div>
+            <i class="fa fa-desktop"></i>
+            &nbsp;&nbsp;Laporan Masalah</div>
           <div class="card-body">
-            <a href="?halaman=DataKeluhan&gen=ok" class="btn btn-danger btn-sm" name="gen">
+<!--             <a href="?halaman=DataKeluhan&gen=ok" class="btn btn-danger btn-sm" name="gen">
               <i class="fa fa-gear"></i>&nbsp;Proses Mendapat Penanganan</button>
-            </a>
+            </a> -->
             <div class="table-responsive" style="color:black;">
 
                 <table class="table table-striped table-bordered table-hover" id="dataTable" style="color: black;">
@@ -76,7 +76,11 @@
                               <td><?php echo $data['tanggal']; ?></td>
                               <td><?php echo $data['username']; ?></td>
                               <td><?php echo $data['keluhan']; ?></td>
-                              <td><center><a href='index.php?halaman=hitungin&id=<?php echo $data['id_datauji']; ?>'><button type='button' class='btn btn-warning btn-sm' title="Lihat Penanganan"><i class='fa fa-eye'></i></button></a></center></td>
+                              <td><center>
+                                <a href='index.php?halaman=hitungin&id=<?php echo $data['id_datauji']; ?>'><button type='button' class='btn btn-warning btn-sm' title="Lihat Penanganan"><i class='fa fa-hourglass-half'></i></button></a>&nbsp;&nbsp;
+                                <a href="config/delete_keluhan.php?id=<?php echo $data['id_datauji'];?>" title="Hapus Data" onclick="return confirm('Hapus Data ini?');"><span class="fa fa-trash" style="color:red;"></span></a></center>
+                              </td>
+
                           </tr>
                             <?php
                           }
@@ -116,7 +120,7 @@
     //===================================================== 
     $stemming=$keluhanuji;
      ?>
-     
+    <div class="table-responsive"> 
     <table id="table">
     <tr>
     <td><label for="status">keluhan <?php echo $nomor;?></label>
@@ -128,6 +132,7 @@
     <td>:<td colspan="2"><?php echo $stemming;?>
     </td></tr>
     </table>
+    </div>
 
 
     <?php

@@ -1,5 +1,3 @@
-
-
 <style>
 .animasi-teks {
   font-size: 48px;
@@ -8,6 +6,8 @@
   overflow:hidden;
   -webkit-animation: typing 5s steps(70, end);
   animation: animasi-ketik 5s steps(70, end);
+
+
 }
 
 @keyframes animasi-ketik{
@@ -80,22 +80,23 @@
     $stemming=$keluhanuji;
      ?>
      
+    <div class="table-responsive">
     <table id="table">
     <tr>
     <td><label for="status">keluhan</label>
     <td>:<td colspan="2"><?php echo $keluhan;?>
     </td></tr>
      
-     <tr>
+    <tr>
     <td><label for="status">Stemming</label>
     <td>:<td colspan="2"><?php echo $stemming;?>
     </td></tr>
     </table>
-
+    </div>
 
     <?php
      //======================================       
-     $sql="select * from tbl_proses  order by `id_proses` asc limit 0,5";      //      limit 0,10          
+     $sql="select * from tbl_proses  order by `id_proses` desc limit 5";      //      limit 0,10          
         $arr=getData($konek,$sql);
         $i=0;
         $arStem[0]=$stemming;
@@ -119,7 +120,7 @@
             $jumdoc=$i+1;
      //======================================
      
-     error_reporting(0);
+     //error_reporting(0);
       $arAsli=explode(" ",$gabungan);
       $arUnix0=array_unique($arAsli);
       
@@ -133,8 +134,11 @@
           }
           
      $jumb=count($arUnix);
+?>
+<div class="table-responsive">
+  <table class="table table-striped" width="100%">
 
-    $gab1="<table width='100%' border='1'>";
+<?php
     $gab1.="<tr><td>Kata";
      for($i=0;$i<$jumdoc;$i++){
       $gab1.="<td>D".$i; 
@@ -179,7 +183,7 @@
      $log=abs($log);
      $log1=$log+1;
      $gab1.="<td>".$jumada."</td>";
-      $gab1.="<td>".$dfi."</td>";
+     $gab1.="<td>".$dfi."</td>";
      $gab1.="<td>$log";
      $gab1.="<td>$log1";
      
@@ -219,10 +223,9 @@
                 for($k=0;$k<$bar;$k++){//baris
                         $TOT2[$j]+=$N2[$k][$j];
                 }
-           }
-       
-    //------------------------------------
+           } 
 
+    //------------------------------------
     $gab1.="<tr><td>Q";
      for($i=0;$i<$jumdoc;$i++){
       $gab1.="<td>D".$i; 
@@ -248,14 +251,16 @@
 
     //==========================================
     $gab1.="</table>"; 
+?>
+</div>
+<?php
 
     //"CETAK";
-
-
+        // coba lu cari kata- kata yang mirip ama 5 dokumen yang lagi lu tes di tf/idfnya
 
     $statustx="1";
     $catatan="";
-    $reakpitulasi="";
+    $rekapitulasi="";
     $Q=pow($TOT2[0],0.5);
 
     $gab2="Qvalue=$TOT2[0]<sup>0.5</sup> =".$Q."<br><br>";
@@ -303,24 +308,26 @@
                 for($a = 0 ;  $a < $array_count - 1 ; $a++){
                     if($a < $array_count ){
                         if($HPRO[$a] > $HPRO[$a + 1] ){
-                                swap($HPROK, $a, $a+1);
-                                  swap($HPRO, $a, $a+1);
-                                    swap($HarKode, $a, $a+1);
-                                      swap($HarKeluhan, $a, $a+1);
-                                        swap($HarStem, $a, $a+1);
-                                          swap($HarSentimen, $a, $a+1);
-                                            swap($HarKat, $a, $a+1);
+                          swap($HPROK, $a, $a+1);
+                            swap($HPRO, $a, $a+1);
+                              swap($HarKode, $a, $a+1);
+                                swap($HarKeluhan, $a, $a+1);
+                                  swap($HarStem, $a, $a+1);
+                                    swap($HarSentimen, $a, $a+1);
+                                      swap($HarKat, $a, $a+1);
                         }
                     }
                 }
             }
-
+// sort($HPRO) for ($i = 0; $i < count($HPRO); $i++) { echo $HPRO[$i]; }
              
-    $k1=0;
-    $k2=0;
-    $k3=0;
+    // $k1=0;
+    // $k2=0;
+    // $k3=0;
+
+           
                     
-    $gab3="<table border=>
+    $gab3="<table width='100%' border='1'>
           <tr>
             <td>No</td>
             <td>keluhan</td>
@@ -328,8 +335,9 @@
             <td>Penanganan</td>
             <td>Perangkat</td>
           </tr>";
-             for($i = 0; $i < $array_count; $i++){
-                 $no=$i+1;
+             for($i = 0; $i < 3; $i++){
+             // sort($HPRO) for($i = 0; $i < count($HPRO); $i++){
+                $no=$i+1;
                  $gab3.="<tr>
                       <td>$no</td>
                       <td>$HarKeluhan[$i]</td>
@@ -339,6 +347,10 @@
                      // if($HPROK[$i]==-1){$k1++;}
                      // // else if($HPROK[$i]==0){$k2++;}
                      // // else if($HPROK[$i]==1){$k3++;}
+                      
+                      // HPRO = PERSENAN
+                      // HPROK = PENANGANAN
+                      // HARKAT = PERANGKAT 
              }
     $gab3.="</table><hr>";
     //"CETAK";
@@ -371,4 +383,6 @@
     </div>
 
 	</div>
+
 </div>
+

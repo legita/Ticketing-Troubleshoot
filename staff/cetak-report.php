@@ -21,17 +21,14 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row-table-bordered">
-          <div>
-            <div class="col-md-4">
+          <div class="col-md-12">
                 <img src="../images/logos/logo.png" class="img-responsive pull-left" style="max-height:100%;display:inline">
-            </div>
-            <div class="col-md-6">
+
                 <font size="6"><b><p class="text-center">PT. Sebastian Jaya Metal</p></b></font>
                 <font size="3"><b><p class="text-center">Kawasan Industri Jababeka I Jl. Jababeka X, Blok F No.5 Desa Harjamekar - Cikarang Utara, Bekasi</p></b></font>
                 <b><p class="text-center">Phone : 021 89843515 / 0856 7115 593</p></b>
-            </div>
+           
           </div>
-      <br>
      <style type="text/css">
         hr.style2 {
         border-top: 3px double #8c8b8b;
@@ -54,9 +51,8 @@
 
   ?>
 
-  <hr>
   <form action="switch_angka.php" method="GET">
-  <h2 style="font-family: Kristen ITC;"><center>Rekap Laporan troubleshooting Bulan <?php  
+  <h2><center>Rekap Laporan troubleshooting <br> Bulan <?php  
   switch ($bln) {
                   case 0:
                       echo "";
@@ -102,21 +98,20 @@
   <body>
 
       <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover" id="myTable">
+      <table class="table table-striped table-bordered" width="100%" border="1">
           <tr>
             <th class="bg-info"><center>No</center></th>
             <th class="bg-info"><center>Tanggal Laporan</center></th>
             <th class="bg-info"><center>Tanggal Dikerjakan</center></th>
             <th class="bg-info"><center>Tanggal Selesai</center></th>
             <th class="bg-info"><center>No Ticketing</center></th>
-            <th class="bg-info"><center>Username</center></th>
-            <th class="bg-info"><center>id_perangkat</center></th>
-            <th class="bg-info"><center>jenis_perangkat</center></th>
+            <th class="bg-info"><center>Pelapor</center></th>
+            <th class="bg-info"><center>ID Perangkat</center></th>
+            <th class="bg-info"><center>Jenis Perangkat</center></th>
             <th class="bg-info"><center>Penganggung Jawab</center></th>
             <th class="bg-info"><center>Lokasi Perangkat</center></th>
             <th class="bg-info"><center>Laporan Masalah</center></th>
             <th class="bg-info"><center>Catatan</center></th>
-            <th class="bg-info"><center>Status Laporan</center></th>
             <th class="bg-info"><center>Status</center></th>
           </tr>
            
@@ -137,16 +132,7 @@
                 <td><center><?php echo $row['lokasi_perangkat']; ?></center></td>   
                 <td><center><?php echo $row['laporan']; ?></center></td>      
                 <td><center><?php echo $row['alasan']; ?></center></td>
-                 <td>
-                   <?php
-                     if ($row['ting_laporan']=='1'){
-                       echo '<font color="red"><b>Darurat</b></font>';
-                     }
-                     else {
-                      echo '<font color="green"><b>Tidak Darurat</b></font>';
-                     }
-                   ?>
-                </td>
+ 
                  
                  <td><center>
                    <?php 
@@ -163,10 +149,10 @@
         ?>
 
         </table>
-
+<hr>
         
         <?php
-        echo "<h4>Total Laporan Ticketing Troubleshooting Bulan  ";
+        echo "<h5>Total Laporan Ticketing Troubleshooting Bulan  ";
 
           switch ($bln) {
                           case 0:
@@ -209,14 +195,16 @@
                               echo "Desember";
                               break;
                       }
+              
+              echo "&nbsp;";
               echo $thn ;
-              echo "</h4>";
+              echo "</h5>";
               echo "<hr>";
 
         ?>
 
         </form>
-        <div style="text-align-last: right">
+        <div style="text-align-last: right;">
           <label>
             <?php
             $tgl=date("l, d-M-Y");

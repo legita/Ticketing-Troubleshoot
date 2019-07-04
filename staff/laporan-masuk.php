@@ -16,16 +16,16 @@
             <i class="fas fa-desktop"></i>
             Laporan Masalah</div>
           <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive">              
               <table class="table table-striped table-bordered table-hover" id="dataTable">
                   <thead>
                       <tr>
                           <th><center>No.</center></th>
-                          <th><center>ID User</center></th>
                           <th><center>Tanggal Laporan</center></th>
                           <th><center>Waktu Pengerjaan</center></th>
+                          <th><center>Tanggal selesai</center></th>
                           <th><center>Pelapor</center></th>
-                          <th><center>Nomer Laporan</center></th>
+                          <th><center>No. Ticket</center></th>
                           <th><center>ID Perangkat</center></th>
                           <th><center>Jenis Perangkat</center></th>
                           <th><center>User</center></th>
@@ -67,7 +67,6 @@
                             ?>
                         <tr>
                             <td><center><?php echo $no++; ?></center></td>
-                            <td><?php echo $data['id_user']; ?></td>
                             <td><?php echo $data['tgl_laporan']; ?></td>
                             <td>
                              <div id="getting-started"></div>
@@ -83,14 +82,14 @@
                                  echo '<b>'.$tgl2.'</b>';
                                  ?>
 
-                                 <script type="text/javascript">
+                                <script type="text/javascript">
                                  $('#getting-started').countdown(<?php echo json_encode($tgl2); ?>, function(event) {
                                    $(this).html(event.strftime('%d hari %H:%M:%S'));
                                  });
-                                 
-                               </script>
+                                </script>
 
                             </td>
+                            <td><?php echo $data['tgl_selesai']; ?></td>
                             <td><?php echo $data['username']; ?></td>
                             <td><?php echo $data['no_lap']; ?></td>
                             <td><?php echo $data['id_perangkat']; ?></td>
@@ -107,7 +106,7 @@
                                  echo '<font color="green"><b>Tidak Darurat</b></font>';
                                 }
                               ?>
-                            &nbsp;&nbsp;<a href="index.php?halaman=edit-laporan&id=<?php echo $data['id_laporan'];?>" title="Edit Data"><span class="fa fa-edit"></span></a></td>
+                            &nbsp;&nbsp;<a href="../config/update_laporan.php?id=<?php echo $data['id_laporan'];?>&&ting_laporan=<?php echo $data['ting_laporan'];?>" title="Edit Data"><span class="fa fa-edit"></span></a></td>
                             <td><?php echo $data['alasan']; ?></td>
                             
                             <td><center>

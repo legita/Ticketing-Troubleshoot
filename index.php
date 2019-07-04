@@ -46,11 +46,6 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
     <!-- Modernizer for Portfolio -->
     <script src="assets/js/modernizer.js"></script>
 
-    <!-- Page level plugin JavaScript-->
-    <script src="staff/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="staff/vendor/datatables/dataTables.bootstrap4.js"></script>
-    <!-- Demo scripts for this page-->
-    <script src="js/demo/datatables-demo.js"></script>
 
 
 <style>

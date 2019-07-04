@@ -5,7 +5,7 @@
           <li class="breadcrumb-item">
             <a href="index.php">Home</a>
           </li>
-          <li class="breadcrumb-item active">Management Komputer</li>
+          <li class="breadcrumb-item active">Manajemen Komputer</li>
         </ol> 
         <a href="index.php?halaman=tambah-komputer" class="btn btn-danger"><span class="fa fa-plus"></span> Tambah</a><hr>
         <!-- <a href="csv_export1.php" type="submit" name="import" class="btn btn-primary float-right"><span class="fa fa-download" title="Unduh"></span> Unduh</a><hr> -->

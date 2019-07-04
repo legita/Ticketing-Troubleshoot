@@ -19,6 +19,9 @@
           <li class="breadcrumb-item">
             <a href="index.php">Home</a>
           </li>
+          <li class="breadcrumb-item">
+            <a href="index.php?halaman=edit-idperangkat">Manajemen Komputer</a>
+          </li>
           <li class="breadcrumb-item active">Edit ID Perangkat</li>
         </ol>
         <hr>

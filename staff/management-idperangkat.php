@@ -5,7 +5,7 @@
           <li class="breadcrumb-item">
             <a href="index.php">Home</a>
           </li>
-          <li class="breadcrumb-item active">Management Komputer</li>
+          <li class="breadcrumb-item active">Manajemen Komputer</li>
         </ol>
 
         <!-- DataTables Example -->
