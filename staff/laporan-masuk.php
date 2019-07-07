@@ -70,24 +70,28 @@
                             <td><?php echo $data['tgl_laporan']; ?></td>
                             <td>
                              <div id="getting-started"></div>
-                               <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-                               <script type="text/javascript" src="../jquery.countdown/jquery.countdown.min.js"></script>
-
-                               
+                               <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+                               <script type="text/javascript" src="../jquery.countdown/jquery.countdown.min.js"></script>-->
                                  <?php
-                                 include '../config/koneksi.php';
+                                    include '../config/koneksi.php';
 
-                                 $tgl1    = $data['tgl_laporan']; // menentukan tanggal awal
-                                 $tgl2    = date('Y-m-d', strtotime('+2 days', strtotime($tgl1))); // penjumlahan tanggal sebanyak 2 hari
-                                 echo '<b>'.$tgl2.'</b>';
+                                   $tgl1    = $data['tgl_laporan']; // menentukan tanggal awal
+                                   $tgl3    = date('Y-m-d', strtotime('+2 days', strtotime($tgl1))); // penjumlahan tanggal sebanyak 2 hari
+                                   $tgl2    = date('Y-m-d', strtotime('+1 days', strtotime($tgl1))); // penjumlahan tanggal sebanyak 1 hari
+                                   // echo '<b> if() </b>';
+                                   if($data['ting_laporan']=='1')
+                                   {
+                                      echo "<p id='demo-1'></p><br><b><span id='countdown-1'>".$tgl2."</span></b>";
+                                   }
+                                   else {
+                                      echo "<p id='demo-2'></p><br><b><span id='countdown-2'>".$tgl3."</span></b>";
+                                   }
                                  ?>
-
-                                <script type="text/javascript">
+                                <!-- <script type="text/javascript">
                                  $('#getting-started').countdown(<?php echo json_encode($tgl2); ?>, function(event) {
                                    $(this).html(event.strftime('%d hari %H:%M:%S'));
                                  });
-                                </script>
-
+                                </script> -->
                             </td>
                             <td><?php echo $data['tgl_selesai']; ?></td>
                             <td><?php echo $data['username']; ?></td>
@@ -139,5 +143,67 @@
       </div>
       <!-- /.container-fluid -->
 
+      <!-- <p id="demo"></p> -->
+
+      <script>
+        var tgl2 = <?php echo json_encode($tgl2); ?>;
+        // Set the date we're counting down to
+        var countDownDate = new Date(tgl2).getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+          // Get today's date and time
+          var now = new Date().getTime();
+            
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+            
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+          // Output the result in an element with id="demo"
+          document.getElementById("demo-1").innerHTML = days + "d " + hours + "h "
+          + minutes + "m " + seconds + "s ";
+            
+          // If the count down is over, write some text 
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo-1").innerHTML = "EXPIRED";
+          }
+        }, 1000);
 
 
+        var tgl3 = <?php echo json_encode($tgl3); ?>
+        // Set the date we're counting down to
+        var countDownDate = new Date(tgl3).getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+          // Get today's date and time
+          var now = new Date().getTime();
+            
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+            
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+          // Output the result in an element with id="demo"
+          document.getElementById("demo-2").innerHTML = days + "d " + hours + "h "
+          + minutes + "m " + seconds + "s ";
+            
+          // If the count down is over, write some text 
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo-2").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+      </script>
