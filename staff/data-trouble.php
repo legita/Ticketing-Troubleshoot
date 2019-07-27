@@ -27,6 +27,15 @@
               <button type="submit" id="submit" name="import" class="btn btn-info float-right">Unggah</button>
               <!-- <input name="filekeluhan" type="file" required="required"> -->
               <!-- <input name="upload" type="submit" value="Unggah" class="btn btn-info float-right"><span class="fa fa-upload"></span>Unggah</a> -->
+            </form><br>
+            
+            <!-- Upload data excel -->
+            <form method="post" enctype="multipart/form-data" action="import_excel.php">
+              <div class="form-group">
+                <label for="keluhan">Import Tweet:</label>
+                <input type="file" class="form-control" name="excelfile">
+            </div>
+            <input type="submit" class="btn btn-success" id="form_simpan" name="form_simpan" value="Upload Data">
             </form>
           </li>
         </ol>
@@ -66,7 +75,7 @@
                       include '../config/koneksi.php';
                       $query = mysqli_query($konek, "SELECT * FROM tbl_keluhan") or die(mysqli_error());
                         if(mysqli_num_rows($query) == 0){
-                          echo '<tr><td collspan="4" align="center">Tidak ada data!</td></tr>';
+                          echo '<tr><td align="center">Tidak ada data!</td></tr>';
                         }
                         else{
                           while ($data = mysqli_fetch_array($query)) {
@@ -95,3 +104,88 @@
 
       </div>
       <!-- /.container-fluid -->
+
+<!-- ============================================================================================================ -->
+
+<!-- PROSES TAMBAH CSV -->
+
+<?php
+
+include '../config/koneksi.php';
+
+if (isset($_POST["import"])) {
+
+    require_once __DIR__ . '/../vendor/autoload.php';
+
+    //error_reporting(0);
+                
+    $initos = new \Sastrawi\Stemmer\StemmerFactory();
+    $bikinos = $initos->createStemmer();
+        $ak=getStopNumber();
+        $ar=getStopWords();
+
+    
+    $fileName = $_FILES["file"]["tmp_name"];
+    
+    if ($_FILES["file"]["size"] > 0) {
+        
+        $file = fopen($fileName, "r");
+
+       
+        while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
+
+            $kalimat = $column[0];
+
+            $kalimat=strtolower($kalimat); 
+            $stemming=$bikinos->stem($kalimat);
+            $stemmingnew=strtolower($stemming);
+
+
+            $ak=getStopNumber();
+            $ar=getStopWords();
+            $wordStop=$stemmingnew;
+            for($i=0;$i<count($ar);$i++){
+             $wordStop =str_replace($ar[$i]." ","", $wordStop); 
+            }
+
+            for($i=0;$i<count($ak);$i++){
+             $wordStop =str_replace($ak[$i],"", $wordStop); 
+            }
+            $stopword=str_replace("  "," ", $wordStop); 
+            $stemming=trim($stopword);
+
+
+            $cek = mysqli_num_rows(mysqli_query($konek,"SELECT * FROM tbl_keluhan WHERE keluhan='$kalimat'"));
+            if ($cek > 0){
+
+              echo "<script>alert('Terdapat Data yang Sama');</script>";
+
+            } else{
+           
+                                                    
+
+            $sqlInsert = "INSERT INTO tbl_keluhan(keluhan,penanganan,perangkat,normalisasi)
+                   values ('" . $column[0] . "','" . $column[1] . "','" . $column[2] . "','".$stemming."')";
+            $result = mysqli_query($konek, $sqlInsert);
+            
+            if ($result) {
+                echo "<script>alert('Success! Data CSV Berhasil di Upload');</script>";
+                echo "<script>location='index.php?halaman=data-trouble';</script>";
+                
+               
+            } else {
+                echo "<script>alert('Warning! Data Gagal di Upload');</script>";
+                echo "<script>location='index.php?halaman=data-trouble';</script>";
+
+                
+                
+            }
+        }
+          
+        }
+    }
+}
+
+
+
+?>

@@ -31,7 +31,7 @@
             <i class="fas fa-edit"></i>
             Ubah Data Trouble</div>
           <div class="card-body">
-          <form action="../config/update_trouble.php" method="POST" class="form-horizontal" enctype="multipart/form-data">
+          <form action=" " method="POST" class="form-horizontal" enctype="multipart/form-data">
             <input type="hidden" name="id_keluhan" value="<?php echo $data['id_keluhan']; ?>">
             <div class="form-group input-group">
             <div class="col-md-1"></div>
@@ -58,16 +58,92 @@
                   <option><?php echo $data['perangkat'];?>"</option>
                   <option>Jaringan</option>
                   <option>Software</option>
-                  <option>Hardisk</option>
+                  <option>Hardware</option>
                 </select>
                 </div>
             </div>
 
             <hr>
               <div style="float: right;">
-                <button type="submit" class="btn btn-primary">Ubah</button>
+                <button type="submit" name="simpan" id="simpan" class="btn btn-primary">Ubah</button>
                 <a href="?halaman=data-trouble" class="btn btn-danger">Batal</a>&nbsp;&nbsp; 
               </div><br>
           </form>
         </div>
 </div>
+
+<!-- =========================================================================================================== -->
+
+<!-- PROSES UPDATE -->
+<?php
+if (isset($_POST['simpan'])) 
+{
+
+    include'../config/koneksi.php';
+   
+    $id_keluhan    = $_POST['id_keluhan'];
+    $keluhan       = $_POST['keluhan'];
+    $penanganan    = $_POST['penanganan'];
+    $perangkat     = $_POST['perangkat'];
+  
+    require_once __DIR__ . '/../vendor/autoload.php';
+
+    //error_reporting(0);
+          
+    $initos = new \Sastrawi\Stemmer\StemmerFactory();
+    $bikinos = $initos->createStemmer();
+      $ak=getStopNumber();
+      $ar=getStopWords();
+
+
+      $keluhan=strtolower($keluhan); 
+      $stemming=$bikinos->stem($keluhan);
+      $stemmingnew=strtolower($stemming);
+      
+      $ak=getStopNumber();
+      $ar=getStopWords();
+      $wordStop=$stemmingnew;
+      for($i=0;$i<count($ar);$i++){
+      $wordStop =str_replace($ar[$i]." ","", $wordStop); 
+      }
+
+      for($i=0;$i<count($ak);$i++){
+      $wordStop =str_replace($ak[$i],"", $wordStop); 
+      }
+      $stopword=str_replace("  "," ", $wordStop); 
+      $stemming=trim($stopword);
+
+  $cek = mysqli_num_rows(mysqli_query($konek,"SELECT * FROM tbl_keluhan WHERE keluhan='$keluhan'"));
+  
+  if ($cek > 0){
+    
+    echo "<script>alert('Terdapat Data yang Sama');</script>";
+
+  } else{
+
+    $update = "UPDATE tbl_keluhan SET keluhan      = '$keluhan',
+                                  normalisasi      = '$stemming',
+                                  penanganan       = '$penanganan',
+                                  perangkat        = '$perangkat'
+                                  WHERE id_keluhan = '$id_keluhan'";
+
+    $updateidkom  = mysqli_query($konek, $update)or die(mysqli_error());
+
+  if ($updateidkom)
+      {
+        echo "<script>alert('Success! Data Berhasil di Ubah');</script>";
+        echo '<META HTTP-EQUIV="REFRESH" CONTENT = "1; URL=index.php?halaman=data-trouble">';
+      }
+  else {
+        print"
+          <script>
+            alert(\"Warning! Data Gagal di ubah!\");
+            history.back(-1);
+          </script>";
+      }
+
+  }
+}
+    
+
+?>

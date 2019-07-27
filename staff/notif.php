@@ -17,13 +17,7 @@
           <span class="badge badge-danger" id="notif"><?php echo $countNotif; ?>
           </span>
         </a>
-        <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-          <a class="dropdown-item" href="?halaman=laporan-masuk"><< Laporan Masuk >></a>
-          <div class="dropdown-divider"></div>
-          <label class="dropdown-item">Pelapor : <?php echo $data['username']; ?></label>
-          <label class="dropdown-item">Darurat : <?php echo $data['ting_laporan']; ?></label>
 
-        </div> -->
       </li>
 
       <!-- <li class="nav-item dropdown no-arrow mx-1">

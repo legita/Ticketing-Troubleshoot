@@ -3,7 +3,7 @@ error_reporting();
     include 'koneksi.php';
     
     $id              = $_GET['id'];
-    $ting_laporan   = $_GET['ting_laporan'];
+    $ting_laporan    = $_GET['ting_laporan'];
 
     if($ting_laporan==0) 
     {

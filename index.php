@@ -35,6 +35,7 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap.css"> -->
     <!-- Site CSS -->
     <link rel="stylesheet" href="assets/style.css">
     <!-- Responsive CSS -->
@@ -204,6 +205,7 @@ body {
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/portfolio.js"></script>
     <script src="assets/js/hoverdir.js"></script>    
+
  
 
 <!-- HITUNGAN -->
@@ -244,7 +246,7 @@ function getField($konek,$sql){
 }
 
 function getData($konek,$sql){
-    //echo "##".$sql."##";
+  //echo "##".$sql."##";
   $rs=$konek->query($sql);
   $rs->data_seek(0);
   $arr = $rs->fetch_all(MYSQLI_ASSOC);
@@ -260,14 +262,14 @@ function getData($konek,$sql){
 function getHit($kal,$kalimat){
 $ada=0;
 if(preg_match("/$kal/i", $kalimat)) {
-    $ada=1;
-    }
-    return $ada;
+  $ada=1;
+  }
+  return $ada;
 }
 
 
  function getHit2($kal,$kalimat){
-    //echo $kal."=".$kalimat."#<br>";
+  //echo $kal."=".$kalimat."#<br>";
   $ar=explode(" ",$kalimat);
   $ada=0;
   for($i=0;$i<count($ar);$i++){
@@ -289,18 +291,19 @@ function swap(&$arr, $a, $b) {
 function getStopWords()
     {
         return array(
-            'yang', 'untuk', 'pada', 'ke', 'para', 'namun', 'menurut', 'antara', 'dia', 'dua', 'ia', 'seperti', 
-            'jika', 'sehingga', 'kembali', 'dan', 'tidak', 'ini', 'karena', 'kepada', 'oleh', 'saat','saat', 'harus', 
-            'sementara', 'setelah', 'belum', 'kami', 'sekitar', 'bagi', 'serta', 'di', 'dari', 'telah', 'sebagai', 
-            'masih', 'hal', 'ketika', 'adalah', 'itu', 'dalam', 'bisa', 'bahwa', 'atau', 'hanya', 'kita', 'dengan', 
-            'akan', 'juga', 'ada', 'mereka', 'sudah', 'saya', 'terhadap', 'secara', 'agar', 'lain', 'anda', 'begitu', 
-            'mengapa', 'kenapa', 'yaitu', 'yakni', 'daripada', 'itulah', 'lagi', 'maka', 'tentang', 'demi', 'dimana', 
-            'kemana', 'pula', 'sambil', 'sebelum', 'sesudah', 'supaya', 'guna', 'kah', 'pun', 'sampai', 'sedangkan', 
-            'selagi', 'sementara', 'tetapi', 'tapi', 'apakah', 'kecuali', 'sebab', 'selain', 'seolah', 'seraya', 'seterusnya', 
-            'tanpa', 'agak', 'boleh', 'dapat', 'dsb', 'dst', 'dll', 'dahulu', 'dulunya', 'anu', 'demikian', 'tapi', 
-            'ingin', 'juga', 'nggak', 'mari', 'nanti', 'melainkan', 'oh', 'ok', 'seharusnya', 'sebetulnya', 'setiap', 
-            'setidaknya', 'sesuatu', 'pasti', 'saja', 'toh', 'ya', 'walau', 'tolong', 'tentu', 'amat', 'apalagi', 
-            'bagaimanapun', 'aku'
+            'yang', 'untuk', 'laptop', 'pada', 'ke', 'para', 'namun', 'menurut', 'antara', 'dia', 'dua', 'ia', 
+            'seperti', 'jika', 'sehingga', 'kembali', 'dan', 'tidak', 'ini', 'karena', 'kepada', 'oleh', 'saat',
+            'saat', 'harus', 'sementara', 'setelah', 'belum', 'kami', 'sekitar', 'bagi', 'serta', 'di', 'dari', 
+            'telah', 'sebagai', 'masih', 'hal', 'ketika', 'adalah', 'itu', 'dalam', 'bisa', 'bahwa', 'atau', 
+            'hanya', 'kita', 'dengan', 'akan', 'juga', 'ada', 'mereka', 'sudah', 'saya', 'terhadap', 'secara', 
+            'agar', 'lain', 'anda', 'begitu', 'mengapa', 'kenapa', 'yaitu', 'yakni', 'daripada', 'itulah', 'lagi', 
+            'maka', 'tentang', 'demi', 'dimana', 'kemana', 'pula', 'sambil', 'sebelum', 'sesudah', 'supaya', 'guna', 
+            'kah', 'pun', 'sampai', 'sedangkan', 'selagi', 'sementara', 'tetapi', 'tapi', 'apakah', 'kecuali', 
+            'sebab', 'selain', 'seolah', 'seraya', 'seterusnya', 'tanpa', 'agak', 'boleh', 'dapat', 'dsb', 'dst', 'dll', 
+            'dahulu', 'dulunya', 'anu', 'demikian', 'tapi', 'ingin', 'juga', 'nggak', 'mari', 'nanti', 'melainkan', 
+            'oh', 'ok', 'seharusnya', 'sebetulnya', 'setiap', 'setidaknya', 'sesuatu', 'pasti', 'saja', 'toh', 'ya', 
+            'walau', 'tolong', 'tentu', 'amat', 'apalagi', 'bagaimanapun', 'aku', 'sering', 'suka' , 'tiba', 'selalu', 
+            'slalu', 'padahal', 'mau', 'kalian', 'komputer', 'computer', 'sendiri', 'terlalu', 'laptop'
           );
     }
 
@@ -308,15 +311,15 @@ function getStopWords()
 function getStopNumber()
     {
         return array(
-            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%'
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%','-'
         );
     }
  
  
 function Netral($bikinos,$keluhan,$ak,$ar){
-    $keluhankal=strtolower($keluhan);
-    $stemming=$bikinos->stem($keluhankal);
-    $stemmingnew=strtolower($stemming);
+  $keluhankal=strtolower($keluhan);
+  $stemming=$bikinos->stem($keluhankal);
+  $stemmingnew=strtolower($stemming);
 
 $wordStop=$stemmingnew;
 for($i=0;$i<count($ar);$i++){

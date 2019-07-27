@@ -14,7 +14,7 @@
                 <div class="panel-heading">        
                   <div class="panel-body">
                     <div class="card mb-3"><br>
-                    <form action="../config/tambah_trouble.php" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                   <form action="" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="id_keluhan" class="form-control" id="id_keluhan" required></label>
 
                       <div class="form-group input-group">
@@ -51,7 +51,7 @@
 
                       <br>
                         <div style="float: right;">
-                          <button type="submit" class="btn btn-primary">Tambah</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                          <button type="submit" nama="input" class="btn btn-primary" id="simpan" name="simpan">Tambah</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                        
                           <a href="?halaman=data-trouble" class="btn btn-danger">Kembali</a>&nbsp;&nbsp;&nbsp;&nbsp; 
                         </div>
@@ -62,3 +62,69 @@
               </div>
             </div>
           </div>
+
+<!-- =========================================================================================================== -->
+
+<!-- PROSES -->
+<?php
+if (isset($_POST['simpan'])) 
+{
+
+    include'../config/koneksi.php';
+   
+    $keluhan      = $_POST['keluhan'];
+    $penanganan   = $_POST['penanganan'];
+    $perangkat    = $_POST['perangkat'];
+  
+    require_once __DIR__ . '/../vendor/autoload.php';
+
+    //error_reporting(0);
+          
+    $initos = new \Sastrawi\Stemmer\StemmerFactory();
+    $bikinos = $initos->createStemmer();
+      $ak=getStopNumber();
+      $ar=getStopWords();
+
+
+
+      $keluhan=strtolower($keluhan); 
+      $stemming=$bikinos->stem($keluhan);
+      $stemmingnew=strtolower($stemming);
+      
+      $ak=getStopNumber();
+      $ar=getStopWords();
+      $wordStop=$stemmingnew;
+      for($i=0;$i<count($ar);$i++){
+      $wordStop =str_replace($ar[$i]." ","", $wordStop); 
+      }
+
+      for($i=0;$i<count($ak);$i++){
+      $wordStop =str_replace($ak[$i],"", $wordStop); 
+      }
+      $stopword=str_replace("  "," ", $wordStop); 
+      $stemming=trim($stopword);
+
+  $cek = mysqli_num_rows(mysqli_query($konek,"SELECT * FROM tbl_keluhan WHERE keluhan='$keluhan'"));
+  if ($cek > 0){
+    echo "<script>alert('Terdapat Data yang Sama');</script>";
+
+  } else{
+
+  $add = "INSERT INTO tbl_keluhan (id_keluhan, keluhan,normalisasi,penanganan,perangkat)
+  VALUES ('','$keluhan','$stemming','$penanganan','$perangkat')";
+  $query = mysqli_query($konek, $add) or die(mysqli_error($konek));
+
+
+  if($query){
+    echo "<script>alert('Success! Data Berhasil di Tambah');</script>";
+    echo "<script>location='index.php?halaman=data-trouble';</script>";
+    }
+    else{
+        echo "<script>alert('Warning! Data Gagal di Tambah');</script>";
+        echo "<script>location='index.php?halaman=data-trouble';</script>"; 
+    }
+}
+}
+
+    
+?>

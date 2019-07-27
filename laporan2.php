@@ -13,6 +13,7 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,7 +173,20 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         </div>
       </div>
   </div>
+  
+  <?php
 
+    error_reporting();
+
+    include 'config/koneksi.php';
+
+    $id_datauji = $_GET['id'];
+
+    $edit    = "SELECT * FROM tbl_datauji WHERE id_datauji = '$id_datauji'";
+    $hasil   = mysqli_query($konek, $edit)or die(mysql_error());
+    $data    = mysqli_fetch_array($hasil);
+
+  ?>
   <div class="col-sm-12">
     <form action="config/tambah_laporan.php" class="form-horizontal" role="form" method="POST">
       <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
@@ -226,7 +240,7 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <label class="col-sm-2" for="laporan" style="text-align: left;">Laporan Perangkat</label>
         <label class="col-sm-1">:</label>
         <label class="col-sm-5">
-        <input class="form-control" type="text" id="laporan" name="laporan" placeholder="Laporan" value="" required>
+        <input class="form-control" type="text" id="laporan" name="laporan" placeholder="Laporan" value="<?php echo $data['keluhan']; ?>" required>
         </label>
       </div>
       <div class="form-group" align="center">
