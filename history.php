@@ -71,8 +71,8 @@ $id_user = $_GET['id_user'];
                       <tr>
                           <th><center>No.</center></th>
                           <th><center>Tanggal Laporan</center></th>
-                          <th><center>Waktu Pengerjaan</center></th>
-                          <th><center>Nomer Laporan</center></th>
+                          <th><center>Pengerjaan</center></th>
+                          <th><center>Nomer Ticketing</center></th>
                           <th><center>ID Perangkat</center></th>
                           <th><center>Jenis Perangkat</center></th>
                           <th><center>User</center></th>

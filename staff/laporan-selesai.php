@@ -68,7 +68,7 @@
                             <td><?php echo $data['lokasi_perangkat']; ?></td>  
                             <td><center>
 
-                                 <a style="color: blue;" title="Selesai">Selesai</a>
+                                 <a style="color: blue;" title="Selesai" style="color: white;">Selesai</a>
 
                             </center>
                             </td>

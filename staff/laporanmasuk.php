@@ -101,7 +101,7 @@
                             <td><?php echo $data['no_lap']; ?></td>
                             <td><?php echo $data['laporan']; ?></td>
                             <td><?php echo $data['alasan']; ?></td>
-                            <td style="color:red;">
+                            <td style="color:red;"><a href="../config/update_laporan.php?id=<?php echo $data['id_laporan'];?>&&ting_laporan=<?php echo $data['ting_laporan'];?>" title="Edit Data">
                               <?php
                                 if ($data['ting_laporan']=='1'){
                                   echo '<font color="red"><b>Darurat</b></font>';
@@ -110,7 +110,8 @@
                                  echo '<font color="blue"><b>Tidak Darurat</b></font>';
                                 }
                               ?>
-                            </td>
+                            <sub><span class="fa fa-edit"></span></sub>
+                            </a></td>
             
                             <td><?php echo $data['tgl_laporan']; ?></td>
                             <td><?php
@@ -157,16 +158,16 @@
                             <td><?php echo $data['lokasi_perangkat']; ?></td>
                             
                             
-                            <td><center>
+                            <td style="color: white;"><center>
                               <?php 
                               if ($data['status']=='0'){ ?>
-                                <a href="../config/proses_konfirmasi.php?id=<?php echo $data['id_laporan']; ?>" class="btn btn-danger" title="Tangani">Tangani</a>
+                                <a class="btn btn-danger" title="Tangani">Tangani</a>
                                   <?php }
                               elseif ($data['status']=='1') { ?>
-                                 <a href="../config/proses_konfirmasi1.php?id=<?php echo $data['id_laporan']; ?>" class="btn btn-success" title="Proses">Proses</a>
+                                 <a class="btn btn-success" title="Proses">Proses</a>
                                   <?php } 
                               elseif ($data['status']=='2') { ?>
-                                 <a class="btn btn-primary" title="Selesai" style="color: white;">Selesai</a>
+                                 <a class="btn btn-primary" title="Selesai">Selesai</a>
                                   <?php }
                                   ?>
                             </center>

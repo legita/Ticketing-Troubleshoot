@@ -113,13 +113,13 @@ if (isset($_POST['simpan']))
       $stopword=str_replace("  "," ", $wordStop); 
       $stemming=trim($stopword);
 
-  $cek = mysqli_num_rows(mysqli_query($konek,"SELECT * FROM tbl_keluhan WHERE keluhan='$keluhan'"));
+  // $cek = mysqli_num_rows(mysqli_query($konek,"SELECT * FROM tbl_keluhan WHERE keluhan='$keluhan'"));
   
-  if ($cek > 0){
+  // if ($cek > 0){
     
-    echo "<script>alert('Terdapat Data yang Sama');</script>";
+  //   echo "<script>alert('Terdapat Data yang Sama');</script>";
 
-  } else{
+  // } else{
 
     $update = "UPDATE tbl_keluhan SET keluhan      = '$keluhan',
                                   normalisasi      = '$stemming',
@@ -143,7 +143,7 @@ if (isset($_POST['simpan']))
       }
 
   }
-}
+// }
     
 
 ?>

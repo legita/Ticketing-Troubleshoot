@@ -178,7 +178,9 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
       <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
       <input type="hidden" name="tgl" value="<?php $tgl=date('Y-m-d H:i:s'); echo $tgl;?>">
       <hr style="background-color: #cdd51f;">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color: red;"><sub><span class="label label-danger">Penting</span> Input Laporan Troubleshooting yang Terjadi Pada Perangkat Anda !</sub></i><hr><br>
+      <div class="alert alert-danger" style="font-size: 17px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><span>Penting !!</span></b> Hanya menerima laporan kerusakan perangkat yang memang milik PT. SJM</div>
+      <hr><br>
       
       <div class="form-group" align="center">
         <label class="col-sm-2" for="username" style="text-align: left;">Username</label>

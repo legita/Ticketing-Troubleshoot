@@ -82,6 +82,85 @@ header("location:index.php?halaman=data-trouble");
 
 
 // TEKS PROCESS
+
+function process($konek,$sql){
+$s=false;
+$konek->autocommit(FALSE);
+try {
+  $rs = $konek->query($sql);
+  if($rs){
+      $konek->commit();
+      $last_inserted_id = $konek->insert_id;
+    $affected_rows = $konek->affected_rows;
+      $s=true;
+  }
+} 
+catch (Exception $e) {
+  echo 'fail: ' . $e->getMessage();
+    $konek->rollback();
+}
+$konek->autocommit(TRUE);
+return $s;
+}
+
+function getJum($konek,$sql){
+  $rs=$konek->query($sql);
+  $jum= $rs->num_rows;
+  $rs->free();
+  return $jum;
+}
+
+function getField($konek,$sql){
+  $rs=$konek->query($sql);
+  $rs->data_seek(0);
+  $d= $rs->fetch_assoc();
+  $rs->free();
+  return $d;
+}
+
+function getData($konek,$sql){
+  //echo "##".$sql."##";
+  $rs=$konek->query($sql);
+  $rs->data_seek(0);
+  $arr = $rs->fetch_all(MYSQLI_ASSOC);
+  //foreach($arr as $row) {
+  //  echo $row['nama_kelas'] . '*<br>';
+  //}
+  
+  $rs->free();
+  return $arr;
+}
+
+
+function getHit($kal,$kalimat){
+$ada=0;
+if(preg_match("/$kal/i", $kalimat)) {
+  $ada=1;
+  }
+  return $ada;
+}
+
+
+ function getHit2($kal,$kalimat){
+  //echo $kal."=".$kalimat."#<br>";
+  $ar=explode(" ",$kalimat);
+  $ada=0;
+  for($i=0;$i<count($ar);$i++){
+     if($kal==$ar[$i]){$ada++;}
+   }//for
+  return $ada;
+  } 
+ ?>
+  
+    <?php
+function swap(&$arr, $a, $b) {
+    $tmp = $arr[$a];
+    $arr[$a] = $arr[$b];
+    $arr[$b] = $tmp;
+}
+
+
+
         function getStopWords()
     {
         return array(
@@ -105,7 +184,7 @@ header("location:index.php?halaman=data-trouble");
 function getStopNumber()
     {
         return array(
-            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%'
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '-'
         );
     }
 

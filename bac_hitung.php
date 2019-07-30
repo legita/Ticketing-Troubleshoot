@@ -111,7 +111,7 @@
 
       <?php
      //======================================       
-     $sql="select * from tbl_keluhan  order by `id_keluhan` desc";      //      limit 0,10          
+     $sql="select * from tbl_keluhan  order by `id_keluhan` asc";      //      limit 0,10          
         $arr=getData($konek,$sql);
         $i=0;
         $arStem[0]=$stemming;
@@ -160,7 +160,7 @@
             $gab1.="<td>D".$i; 
            }
            $gab1.="<td>df";
-           // $gab1.="<td>d/df";
+           $gab1.="<td>d/df";
            $gab1.="<td>IDF";
            $gab1.="<td>IDF+1";
            for($i=0;$i<$jumdoc;$i++){
@@ -191,7 +191,7 @@
               }
             $gab1.="<td>".$ada;
              }
-           // $dfi=round($jumada/$jumdoc,2); 
+           //$dfi=round($jumada/$jumdoc,2); 
            $dfi=round(($jumdoc)/$jumada,2); 
 
            $logs="log($jumada/$jumdoc)"; 
@@ -199,7 +199,7 @@
            $log=abs($log);
            $log1=$log+1;
            $gab1.="<td>".$jumada."</td>";
-           // $gab1.="<td>".$dfi."</td>";
+            $gab1.="<td>".$dfi."</td>";
            $gab1.="<td>$log";
            $gab1.="<td>$log1";
            
@@ -248,7 +248,7 @@
                      $gab1.="<td>D".$i; 
                     }
                     $gab1.="<td>df";
-                    // $gab1.="<td>d/df";
+                    $gab1.="<td>d/df";
                     $gab1.="<td>IDF";
                     $gab1.="<td>IDF+1";
                     for($i=0;$i<$jumdoc;$i++){
@@ -293,25 +293,22 @@
         $statustx="1";
         $catatan="";
         $reakpitulasi="";
-        $Q=round(sqrt($TOT2[0]),2);
+        $Q=pow($TOT2[0],0.5);
 
         $gab2="Qvalue=$TOT2[0]<sup>0.5</sup> =".$Q."<br><br>";
         $gab2.="Cosine Similarity Terhadap tiap-tiap dokumen:<br>";
 
-        // $max=0;
-        // $index=0;
 
          for($i=1;$i<$jumdoc;$i++){
-          $E=round(sqrt($TOT2[$i]),2);
-          $ES=round(sqrt($TOT2[$i]),2);
-          $QS=round(sqrt($TOT2[0]),2);
+          $E=pow($TOT2[$i],0.5);
+          $ES=$TOT2[$i]."<sup>0.5</sup>";
+          $QS=$TOT2[0]."<sup>0.5</sup>";
           
-          $D=$TOT1[$i];
-          $DS="(".$TOT1[$i].")";
+          $D=pow(($TOT1[$i]*$TOT2[0]),0.5);
+          $DS="(".$TOT2[0]." x ".$TOT1[$i].")<sup>0.5</sup>";
           $H[$i]=$D/($Q * $E)+0;
-          // $H[$i]=$DS/($QS * $ES);
           $PRO[$i]=round($H[$i]*100,2);
-          $CS="CSvalue<sub>$i</sub> =$DS/($QS x $ES)";
+          $CS="CSvalue<sub>$i</sub> =$DS/($QS x ".$ES.")";
 
           
             $catatan.=$arKeluhan[$i]." (".$PRO[$i]." %),";
@@ -323,8 +320,7 @@
           <br>$CS";
           
           $gab2.=$HS[$i]."<br>";
-          $gab2.="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Doc".$i."=>".$H[$i]." =>".$PRO[$i]." %  = <b>".$PROK[$i]."</b><hr>";
-
+          $gab2.="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Doc".$i."=>".$H[$i]." =>".$PRO[$i]." %  =<b>".$PROK[$i]."</b><hr>";
 
           $HPROK[$i-1]=$PROK[$i];
           $HPRO[$i-1]=$PRO[$i];
@@ -334,12 +330,7 @@
           $HarPenanganan[$i-1]=$arPenanganan[$i];
           $HarKat[$i-1]=$arKat[$i];
          }
-
-          // CODING TAMPIL 1 TERTINGGI         
-         // if($max<$HPRO[$i]){
-         //     $max=$HPRO[$i];
-         //     $index=$i;
-         //   }
+         
              
             //"CETAK";
 
@@ -360,13 +351,13 @@
                             }
                         }
                     }
-
            echo $gab2;
 
            $tanggal=date("Y-m-d");
            $kategori=$HarKat[0];//01 atau 02
            // $penanganan=$penanganan;
-           $sql="Update tbl_datauji set normalisasi='$stemming', perangkat='$kategori', tanggal='$tanggal', penanganan='$penanganan', flag='1' where id_datauji='$id_datauji'";
+           $sql="Update tbl_datauji set normalisasi='$stemming', perangkat='$kategori', tanggal='$tanggal', 
+                 penanganan='$HPROK[$i]', flag='1'  where id_datauji='$id_datauji'";
            $up=process($konek,$sql);    
            
         ?>
@@ -377,7 +368,7 @@
       <tr>
         <td>No</td>
         <td>keluhan</td>
-        <td>Similarity</td>
+        <td>Persentase</td>
         <td>Penanganan</td>
         <td>Perangkat</td>
       </tr>
@@ -424,7 +415,7 @@
 
 
             
-          if(count(array_unique($HPRO)) === 1 && end ($HPRO) === 0){ 
+          if(count(array_unique($HPRO)) === 1 && end($HPRO) === 0){ 
           ?>
           <a> Pesan Alert Peringatan! </a><br>
             
@@ -454,6 +445,9 @@
                       <td>$HarKeluhan[$i]</td>
                       <td>$HPROK[$i]</td>
                       <td>$HarKat[$i]</tr>"; 
+                     // if($HPROK[$i]==-1){$k1++;}
+                     // else if($HPROK[$i]==0){$k2++;}
+                     // else if($HPROK[$i]==1){$k3++;}
                  
 
                       // HPRO = PERSENAN
@@ -486,7 +480,6 @@
 </div>
 <div class="message-box">
   <a href="config/update_keluhan.php?id=<?php echo $data['id_datauji']; ?>" class="btn11"><span>Berhasil Ditangani</span><div class="transition"></div></a>
-  
   <a href="laporan2.php?id=<?php echo $data['id_datauji'];?>" class="btn11" style="float: right;"><span>Laporan IT</span><div class="transition"></div></a>
 </div><!-- end messagebox -->
 <br>

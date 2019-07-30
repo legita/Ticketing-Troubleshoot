@@ -14,29 +14,32 @@
           <li class="breadcrumb-item active">Data Troubleshooting</li>
         </ol>
         <a href="index.php?halaman=tambah-trouble" class="btn btn-danger"><span class="fa fa-plus"></span> Tambah</a>
+        <hr>
+        <!-- BISA -->
+        <!-- <a href="csv_export.php" type="submit" name="import" class="btn btn-primary float-right"><span class="fa fa-download"></span> Unduh</a><hr> --> 
 
-        <!-- <a href="coba_export.php"><button type="submit" id="submit" name="import" class="btn btn-info float-right">Unduh</button></a> -->
-        <a href="csv_export.php" type="submit" name="import" class="btn btn-primary float-right"><span class="fa fa-download"></span> Unduh</a><hr>
-
-        <div class="col-lg-5">
+        <div class="col-lg-4">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <!-- Upload data csv -->
-            <form method="post" enctype="multipart/form-data" action="csv_import.php">
-              <input type="file" name="file" id="file" accept=".csv" required="required">
-              <button type="submit" id="submit" name="import" class="btn btn-info float-right">Unggah</button>
+            <form method="post" enctype="multipart/form-data" action="">
+              <div class="form-group">
+                <label for="keluhan">Import .csv :</label>
+                <input type="file" class="form-control" name="file" id="file" accept=".csv" required="required">
+              </div>
+              <button type="submit" id="submit" name="import" class="btn btn-info float-right">Upload csv</button>
               <!-- <input name="filekeluhan" type="file" required="required"> -->
               <!-- <input name="upload" type="submit" value="Unggah" class="btn btn-info float-right"><span class="fa fa-upload"></span>Unggah</a> -->
             </form><br>
             
             <!-- Upload data excel -->
-            <form method="post" enctype="multipart/form-data" action="import_excel.php">
+            <!-- <form method="post" enctype="multipart/form-data" action="import_excel.php">
               <div class="form-group">
-                <label for="keluhan">Import Tweet:</label>
+                <label for="keluhan">Import Excel :</label>
                 <input type="file" class="form-control" name="excelfile">
             </div>
             <input type="submit" class="btn btn-success" id="form_simpan" name="form_simpan" value="Upload Data">
-            </form>
+            </form> -->
           </li>
         </ol>
         </div>

@@ -178,7 +178,10 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
       <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
       <input type="hidden" name="tgl" value="<?php $tgl=date('Y-m-d'); echo $tgl;?>">
       <hr style="background-color: #cdd51f;">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sub><span class="label label-danger" style="color: red;"><i><b>Penting!!</b></i></span> Input Laporan Troubleshooting yang Terjadi Pada Perangkat Anda Menggunakan <span class="label label-danger" style="color: red;">Bahasa Indonesia</span>, Tidak Menggunakan <span class="label label-danger" style="color: red;">Bahasa Daerah</span> dan Tidak di <span class="label label-danger" style="color: red;">Singkat</span> atau <span class="label label-danger" style="color: red;">Mengandung Singkatan!</span></sub><hr><br>
+      <div class="alert alert-danger" style="font-size: 15px;">     
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label label-danger" style="color: blue;"><i><b>Penting!!</b></i></span> Input Laporan Troubleshooting yang Terjadi Pada Perangkat Anda Menggunakan <span class="label label-danger" style="color: blue;">Bahasa Indonesia</span>, Tidak Menggunakan <span class="label label-danger" style="color: blue;">Bahasa Daerah</span> dan Tidak di <span class="label label-danger" style="color: blue;">Singkat</span> atau <span class="label label-danger" style="color: blue;">Mengandung Singkatan!</span><br>
+      <center>=> Menerima Inputan Keluhan tentang Hardware, Jaringan dan Software. Seperti <strong>Monitor, Proyektor, Mouse, Keyboard, Komputer, Scanner, Printer, Fingerprint, UPS</strong></center></div>
+      <hr><br>
       
       <div class="form-group" align="center">
         <label class="col-sm-2" for="username" style="text-align: left;">Username</label>

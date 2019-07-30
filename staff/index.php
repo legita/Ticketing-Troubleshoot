@@ -77,7 +77,16 @@ include '../config/koneksi.php';
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
-       <?php include 'notif.php'; ?>
+       <?php
+           if($level=="Admin")
+              {
+                   include ('notif1.php');  
+              }
+           elseif($level=="Staff")
+               {
+                   include ('notif.php');
+               }
+           ?>
     </ul>
 
   </nav>
@@ -128,6 +137,7 @@ include '../config/koneksi.php';
             else if($halaman=="keluhan")               include "keluhan.php";
             else if($halaman=="laporan")               include "laporan.php";
             else if($halaman=="laporan-masuk")         include "laporan-masuk.php";
+            else if($halaman=="laporanmasuk")          include "laporanmasuk.php";
             else if($halaman=="laporan-selesai")       include "laporan-selesai.php";
             else if($halaman=="histori-keluhan")       include "histori-keluhan.php";
 
@@ -309,12 +319,11 @@ include '../config/koneksi.php';
               'agar', 'lain', 'anda', 'begitu', 'mengapa', 'kenapa', 'yaitu', 'yakni', 'daripada', 'itulah', 'lagi', 
               'maka', 'tentang', 'demi', 'dimana', 'kemana', 'pula', 'sambil', 'sebelum', 'sesudah', 'supaya', 'guna', 
               'kah', 'pun', 'sampai', 'sedangkan', 'selagi', 'sementara', 'tetapi', 'tapi', 'apakah', 'kecuali', 
-              'sebab', 'selain', 'seolah', 'seraya', 'seterusnya', 'tanpa', 'agak', 'boleh', 'dapat', 'dsb', 'dst', 
+              'sebab', 'selain', 'seolah', 'seraya', 'seterusnya', 'terus', 'tanpa', 'agak', 'boleh', 'dapat', 'dsb', 'dst', 
               'dll', 'dahulu', 'dulunya', 'anu', 'demikian', 'tapi', 'ingin', 'juga', 'nggak', 'mari', 'nanti', 
               'melainkan', 'oh', 'ok', 'seharusnya', 'sebetulnya', 'setiap', 'setidaknya', 'sesuatu', 'pasti', 'saja', 
               'toh', 'ya', 'walau', 'tolong', 'tentu', 'amat', 'apalagi', 'bagaimanapun', 'aku', 'sering', 'suka', 
-              'tiba', 'selalu', 'slalu', 'padahal', 'mau', 'kalian', 'komputer', 'computer', 'sendiri', 'terlalu', 
-              'laptop'
+              'tiba', 'selalu', 'slalu', 'padahal', 'mau', 'kalian', 'komputer', 'computer', 'sendiri', 'terlalu'
             );
       }
 
@@ -326,7 +335,8 @@ include '../config/koneksi.php';
           );
       }
    
-   
+  
+  // CASE FOLDING (MENGECILKAN HURUF) 
   function Netral($bikinos,$keluhan,$ak,$ar){
     $keluhankal=strtolower($keluhan);
     $stemming=$bikinos->stem($keluhankal);

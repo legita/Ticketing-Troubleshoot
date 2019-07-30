@@ -53,7 +53,7 @@
                                   echo '<font color="blue"><b>Berhasil di Tangani</b></font>';
                                 }
                                 else {
-                                 echo '<font color="green"><b>Tidak Dapat Ditangani</b></font>';
+                                 echo '<font color="green"><b>Belum Dapat Ditangani</b></font>';
                                 }
                               ?>
                             </td>

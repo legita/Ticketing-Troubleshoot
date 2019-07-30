@@ -37,7 +37,7 @@ else if ($ting_laporan == 0){
 
 if($data){
  	echo "<br><br><br><strong><center>Laporan Berhasil di Kirimkan</strong></center>";
- 	echo '<META HTTP-EQUIV = "REFRESH" CONTENT = "1;URL=../laporan.php">';
+ 	echo '<META HTTP-EQUIV = "REFRESH" CONTENT = "1;URL=../index.php?halaman=Trouble">';
 }
 
 	else {
