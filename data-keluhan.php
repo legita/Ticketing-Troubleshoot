@@ -86,7 +86,7 @@ $id_user = $_GET['id_user'];
                       $no = 1;
                       include 'config/koneksi.php';
                       $username = $_SESSION['username'];
-                      $query = mysqli_query($konek, "SELECT * FROM tbl_datauji WHERE berhasil = '0' ORDER BY id_datauji DESC") or die(mysqli_error());
+                      $query = mysqli_query($konek, "SELECT * FROM tbl_datauji WHERE berhasil = '0' AND flag='0' ORDER BY id_datauji DESC") or die(mysqli_error());
                         if(mysqli_num_rows($query) == 0){
                           echo '<tr><td colspan="14" align="center">Tidak ada data!</td></tr>';
                         }
@@ -98,7 +98,7 @@ $id_user = $_GET['id_user'];
                             <td><?php echo $data['tanggal']; ?></td>
                             <td><?php echo $data['keluhan']; ?></td>
                             <td><center>
-                              <a href='index.php?halaman=hitungin&id=<?php echo $data['id_datauji']; ?>' title="Lihat Penanganan"><button type='button' class='btn btn-warning'><span class='fa fa-hourglass-half'></span></button></a>&nbsp;&nbsp;
+                              <a href='?halaman=hitungin&gen=ok' title="Lihat Penanganan"><button type='button' class='btn btn-warning'><span class='fa fa-hourglass-half'></span></button></a>&nbsp;&nbsp;
                               <a href="config/delete_keluhan.php?id=<?php echo $data['id_datauji'];?>" title="Hapus Data" onclick="return confirm('Hapus Data ini?');"><span class="fa fa-trash" style="color:red;"></span></a></center>
                             </td>
                         </tr>
@@ -112,6 +112,8 @@ $id_user = $_GET['id_user'];
             </div>
           </div>
           <div class="card-footer small text-muted">Diubah pada <?php echo date("d-M-Y | H:i:s"); ?></div>
+
+
 
         </div>
       </div>

@@ -1,3 +1,7 @@
+<?php
+    date_default_timezone_set('Asia/Jakarta');
+?>
+
 <?php 
  
  include 'config/koneksi.php';
@@ -176,7 +180,17 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
   <div class="col-sm-12">
     <form action="config/tambah_laporan.php" class="form-horizontal" role="form" method="POST">
       <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
-      <input type="hidden" name="tgl" value="<?php $tgl=date('Y-m-d H:i:s'); echo $tgl;?>">
+      <?php
+
+        $date = date('Y-m-d H:i:s');
+        $str  = strtotime($date);
+        $time = date('H:i:s', $str);
+        // echo $time;
+
+      ?>
+      <input type="hidden" name="tgl" value="<?php $tgl=date('Y-m-d'); echo $tgl;?>">
+      <input type="hidden" name="jam_laporan" value="<?php echo $time ?>">
+
       <hr style="background-color: #cdd51f;">
       <div class="alert alert-danger" style="font-size: 17px;">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><span>Penting !!</span></b> Hanya menerima laporan kerusakan perangkat yang memang milik PT. SJM</div>
@@ -195,7 +209,14 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <label class="col-sm-5">
         <input class="form-control" type="random" id="no_laporan" name="no_laporan" value="<?php echo rand(100,1000000);?>" / name="no_laporan" readonly>
         </label>
-      </div>    
+      </div>  
+      <div class="form-group" align="center">
+        <label class="col-sm-2" for="jam_dibutuhkan" style="text-align: left;">Jam Dibutuhkan</label>
+        <label class="col-sm-1">:</label>
+        <label class="col-sm-5">
+        <input class="form-control" type="time" id="jam_dibutuhkan" name="jam_dibutuhkan" required>
+        </label>
+      </div>  
       <div class="form-group" align="center">
         <label class="col-sm-2" for="id_lama" style="text-align: left;">ID Perangkat</label>
         <label class="col-sm-1">:</label>
@@ -237,8 +258,8 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <label class="col-sm-5">
         <select name="ting_laporan" id="ting_laporan" class="form-control" required>
           <option value="">- Pilih -</option>
-          <option value="Darurat">Darurat</option>
-          <option value="Tidak Darurat">Tidak Darurat</option>
+          <option value="1">Darurat</option>
+          <option value="0">Tidak Darurat</option>
         </select>
         </label>
       </div>

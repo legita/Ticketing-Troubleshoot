@@ -69,7 +69,7 @@ session_start();
               <div class="col-md-5">
                 <div class="message-box">
                   <h2>Keluhan Troubleshooting</h2>
-                  <p class="lead">Lakukan input keluhan jika terjadi kerusakan atau error pada perangkat yang ada setelahnya akan menghasilkan output rekomendasi penanganan dan dapat mengikuti caranya untuk memperbaikinya.</p>
+                  <p style="color:navy; font-size: 20px;">Lakukan input keluhan jika terjadi kerusakan atau error pada perangkat yang ada. Setelahnya akan menghasilkan output rekomendasi penanganan dan dapat mengikuti caranya untuk memperbaikinya.</p>
                   <a href="keluhan.php" class="btn11"><span>Keluhan</span><div class="transition"></div></a>
                 </div><!-- end messagebox -->
               </div><!-- end col -->
@@ -77,7 +77,7 @@ session_start();
             <div class="col-md-6">
                  <div class="message-box">
                    <h2>Laporan Troubleshooting</h2>
-                   <p class="lead">Lakukan laporan jika terjadi kerusakan atau error pada perangkat yang ada, dan nantinya akan ditangani oleh staff IT. <b style="color: black;">Hanya berlaku untuk perangkat milik PT. SJM</b></p>
+                   <p style="color:navy; font-size: 20px;">Lakukan laporan jika terjadi kerusakan atau error pada perangkat yang ada, dan nantinya akan ditangani oleh staff IT. <b style="color: black;">Hanya berlaku untuk perangkat milik PT. SJM</b></p>
                    <div class="col-md-12">
                     <div class="col-md-6 shadow-lg p-3 mb-4 bg-white">
                       <a href="laporan.php" class="btn11"><span>Laporan</span><div class="transition"></div></a>

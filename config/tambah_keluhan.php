@@ -1,20 +1,28 @@
 <?php
-error_reporting();
+// error_reporting();
 
 include'koneksi.php';
 
-$tanggal	= date("d/m/Y");
+$tanggal	= $_POST['tgl'];;
 $username	= $_POST['username'];
-$keluhan 	= $_POST['keluhan'];
+// $keluhan 	= $_POST['keluhan'];
 
-$input = "INSERT INTO tbl_datauji (id_datauji,username,keluhan,tanggal) values ('','$username','$keluhan','$tanggal')";
-$data = mysqli_query($konek,$input) or die (mysqli_error($konek));
+$keluhan = count($_POST["keluhan"]);
+  
+if($keluhan > 0)  
+{  
+     for($i=0; $i<$keluhan; $i++)  
+     {  
+          if(trim($_POST["keluhan"][$i] != ''))  
+          {  
+               $sql = "INSERT INTO tbl_datauji (id_datauji,username,keluhan,tanggal) VALUES('','$username','".mysqli_real_escape_string($konek, $_POST["keluhan"][$i])."','$tanggal')";  
+               mysqli_query($konek, $sql);  
+          }  
+     }
 
-if($data){
  	echo "<script>alert('Success!');</script>";
  	echo '<META HTTP-EQUIV = "REFRESH" CONTENT = "1;URL=../index.php?halaman=DataKeluhan">';
-}
-
+	}
 	else {
     		print"
     			<script>
@@ -22,5 +30,5 @@ if($data){
     				history.back(-1);
     			</script>";
     	}
-
+   
 ?>

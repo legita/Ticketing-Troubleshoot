@@ -63,38 +63,34 @@
     <div class="col-sm-12">
       <button class="collapsible" style="align-content: center;">Hitung</button>
       <div class="content">
-        <?php
-
-      include 'config/koneksi.php';
-        $id_datauji=$_GET["id"];
-        $sql="select * from tbl_datauji where `id_datauji`='$id_datauji'";
-        $d=getField($konek,$sql);
-                    $id_datauji=$d["id_datauji"];
-                    $id_datauji0=$d["id_datauji"];
-                    
-                    $tanggal=$d["tanggal"];
-                    $keluhan=$d["keluhan"];//keluhan
-                    $normalisasi=$d["normalisasi"];
-                    $kategori=$d["perangkat"];
-                    $penanganan=$d["penanganan"];
-
-    ?>
     
     <!-- BATAS -->
     <?php
+    include 'config/koneksi.php';
+    if(isset($_GET["gen"])){
+
     require_once __DIR__ . '/vendor/autoload.php';
 
     //error_reporting(0);
-                
+          
     $initos = new \Sastrawi\Stemmer\StemmerFactory();
     $bikinos = $initos->createStemmer();
-        $ak=getStopNumber();
-        $ar=getStopWords();
+      $ak=getStopNumber();
+      $ar=getStopWords();
 
-    $keluhanuji=Netral($bikinos,$keluhan,$ak,$ar);
+    $nomor=0;
+     $sql0="select * from tbl_datauji where flag='0' order by `id_datauji` desc";   //    limit 0,10      
+      $arr0=getData($konek,$sql0);
+        foreach($arr0 as $d0) { 
+            $nomor++;   
+            $id_datauji=$d0["id_datauji"];
+            $keluhan=$d0["keluhan"];
+      
+    $keluhuji=Netral($bikinos,$keluhan,$ak,$ar);
     //===================================================== 
     $stemming=$keluhanuji;
      ?>
+
      <br>
      
       <div class="form-group">
@@ -462,7 +458,9 @@
              }
     $gab3.="</tbody></table><hr>"; 
     echo $gab3;
-            }?>
+            }
+          }
+        }?>
   </div>
 
 

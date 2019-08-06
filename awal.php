@@ -44,7 +44,7 @@
                     <div class="col-lg-12">
                         <div class="slider-content-area">
                             <div class="slide-text">
-                                <h1 class="homepage-three-title font">Welcome  <span style="color: red;"><?php echo $_SESSION['username']; ?></span> to <span style="color: red;">PT. Sebastian Jaya Metal</span></h1>
+                                <h1 class="homepage-three-title font">Welcome  <span style="color: #cdd51f;"><?php echo $_SESSION['username']; ?></span> to <span style="color: #cdd51f;">PT. Sebastian Jaya Metal</span></h1>
                                 <h2>PT. Sebastian Jaya Metal adalah perusahaan yang memproduksi <br> komponen kendaraan bermotor roda dua & empat. </h2>
                                 <div class="slider-content-btn">
                                     <a class="btn11" href="index.php?halaman=About">Baca Lebih Lanjut<div class="transition"></div></a>
@@ -62,7 +62,7 @@
                     <div class="col-lg-12">
                         <div class="slider-content-area">
                             <div class="slide-text">
-                                <h1 class="homepage-three-title font">Welcome  <span style="color: blue;"><?php echo $_SESSION['username']; ?></span> to <span style="color: blue;">PT. Sebastian Jaya Metal</span></h1>
+                                <h1 class="homepage-three-title font">Welcome  <span style="color: #cdd51f;"><?php echo $_SESSION['username']; ?></span> to <span style="color: #cdd51f;">PT. Sebastian Jaya Metal</span></h1>
                                 <h2>PT. Sebastian Jaya Metal adalah perusahaan yang memproduksi <br> komponen kendaraan bermotor roda dua & empat. </h2>
                                 <div class="slider-content-btn">
                                     <a class="btn11" href="index.php?halaman=About">Baca Lebih Lanjut<div class="transition"></div></a>

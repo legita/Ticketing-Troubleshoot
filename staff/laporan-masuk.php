@@ -31,9 +31,7 @@
 
                if (($days_remaining < 1) && $data['status']=='0' OR $data['status']=='1'){ ?>
                    
-<!--                     <div class="alert alert-danger">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> Pesan Alert Peringatan!<br>
-                        <b>Ada 
+                     
                           <?php
                           include '../config/koneksi.php';
 
@@ -44,7 +42,7 @@
                           echo $data['con'];
                           ?>
                         laporan yang telah melewati batas waktu !</b>
-                    </div> -->
+                   
                     <?php
 
                }

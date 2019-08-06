@@ -101,7 +101,8 @@
                             <td><?php echo $data['no_lap']; ?></td>
                             <td><?php echo $data['laporan']; ?></td>
                             <td><?php echo $data['alasan']; ?></td>
-                            <td style="color:red;"><a href="../config/update_laporan.php?id=<?php echo $data['id_laporan'];?>&&ting_laporan=<?php echo $data['ting_laporan'];?>" title="Edit Data">
+                            <td style="color:red;">
+                              <a href="../config/update_laporan.php?id=<?php echo $data['id_laporan'];?>&&ting_laporan=<?php echo $data['ting_laporan'];?>" title="Edit Data">
                               <?php
                                 if ($data['ting_laporan']=='1'){
                                   echo '<font color="red"><b>Darurat</b></font>';
@@ -114,43 +115,105 @@
                             </a></td>
             
                             <td><?php echo $data['tgl_laporan']; ?></td>
-                            <td><?php
-                             // echo '<b>'.$data['waktu'].'</b>';
-                            $date = strtotime($data['waktu']);
-                            $remaining = $date - time();
-                            $days_remaining = floor($remaining / 86400);
-                            $hours_remaining = floor(($remaining % 86400) / 3600);
-                            $minutes_remaining = floor(($remaining % 3600) / 60);
-                            $seconds_remaining = ($remaining % 60);
-
-                             if ($data['status']=='0' && $days_remaining >= 1){ 
-                               echo '<b>'.$data['waktu'].'</b>';
-                            echo "<p>$days_remaining <span'>hari</span> $hours_remaining <span style='font-size:;'>jam</span> $minutes_remaining <span style='font-size:;'>menit</span> $seconds_remaining <span style='font-size:;'>detik</span></p>";}
-
-                             elseif ($data['status']=='1' && $days_remaining >= 1){ 
-                               echo '<b>'.$data['waktu'].'</b>';
-                            echo "<p>$days_remaining <span'>hari</span> $hours_remaining <span style='font-size:;'>jam</span> $minutes_remaining <span style='font-size:;'>menit</span> $seconds_remaining <span style='font-size:;'>detik</span></p>";}
-
-                             
-
-                             elseif ($data['status']=='2'){
-
-                              echo "<font color='green'><b>Selesai</b></font>";
-
-                             } 
-
-                             elseif(($days_remaining < 1) && $data['status']=='0' OR $data['status']=='1'){  
-                                 /* $update = "UPDATE tbl_laporan SET waktu  = ''";
-                                  $updateidjenis  = mysqli_query($konek, $update)or die(mysqli_error());*/
-                                  echo "<font color='red'><b>Telah melebihi batas waktu</b></font>";
-                                  
-                             }
-                              
-
-
                             
-                            ?></td>
-                            <!-- username -->
+                            <!-- timer -->
+                            <td>
+                              <?php
+                             // echo '<b>'.$data['waktu'].'</b>';
+                                $date = strtotime($data['waktu']);
+                                $remaining = $date - time();
+                                $days_remaining = floor($remaining / 86400);
+                                $hours_remaining = floor(($remaining % 86400) / 3600);
+                                $minutes_remaining = floor(($remaining % 3600) / 60);
+                                $seconds_remaining = ($remaining % 60);
+
+                                if ($data['status']=='0' && $days_remaining >= 1){ 
+                                  // timer erma
+                                  // echo '<b>'.$data['waktu'].'</b>';
+                                  // echo "<p>$days_remaining <span'>hari</span> $hours_remaining <span style='font-size:;'>jam</span> $minutes_remaining <span style='font-size:;'>menit</span> $seconds_remaining <span style='font-size:;'>detik</span></p>";
+                                  
+                                  $awal        = $data['jam_laporan'];
+                                  $jam_start    = substr($awal,0,2);
+                                  $menit_start  = substr($awal,3,2);
+                                  $butuh       = $data['jam_dibutuhkan'];
+                                  $jam_end   = substr($butuh,0,2);
+                                  $menit_end = substr($butuh,3,2);
+
+                                  // echo $jam_start;
+                                  // echo '<br>';
+                                  // echo $jam_end;
+                                  // echo '<br>';
+                                  // echo $menit_start;
+                                  // echo '<br>';
+                                  // echo $menit_end;
+
+                                  $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
+                                  $hasil = $hasil / 60;
+                                  $hasil = number_format($hasil,2);
+
+                                  echo "0".$hasil;
+
+                                }
+                                elseif ($data['status']=='1' && $days_remaining >= 1){ 
+                                  // echo '<b>'.$data['waktu'].'</b>';
+                                  // echo "<p>$days_remaining <span'>hari</span> $hours_remaining <span style='font-size:;'>jam</span> $minutes_remaining <span style='font-size:;'>menit</span> $seconds_remaining <span style='font-size:;'>detik</span></p>";
+                                  $awal        = $data['jam_laporan'];
+                                  $jam_start    = substr($awal,0,2);
+                                  $menit_start  = substr($awal,3,2);
+                                  $butuh       = $data['jam_dibutuhkan'];
+                                  $jam_end   = substr($butuh,0,2);
+                                  $menit_end = substr($butuh,3,2);
+
+                                  // echo $jam_start;
+                                  // echo '<br>';
+                                  // echo $jam_end;
+                                  // echo '<br>';
+                                  // echo $menit_start;
+                                  // echo '<br>';
+                                  // echo $menit_end;
+                                  
+                                  $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
+                                  $hasil = $hasil / 60;
+                                  $hasil = number_format($hasil,2);
+
+                                  echo "0".$hasil;
+
+                               }
+                               elseif ($data['status']=='2'){
+
+                                 echo "<font color='green'><b>Selesai</b></font>";
+
+                               } 
+
+                               elseif($data['status']=='0' OR $data['status']=='1'){  
+                                   $awal        = $data['jam_laporan'];
+                                   $jam_start    = substr($awal,0,2);
+                                   $menit_start  = substr($awal,3,2);
+                                   $butuh       = $data['jam_dibutuhkan'];
+                                   $jam_end   = substr($butuh,0,2);
+                                   $menit_end = substr($butuh,3,2);
+
+                                   // echo $jam_start;
+                                   // echo '<br>';
+                                   // echo $jam_end;
+                                   // echo '<br>';
+                                   // echo $menit_start;
+                                   // echo '<br>';
+                                   // echo $menit_end;
+                                   
+                                   $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
+                                   $hasil = $hasil / 60;
+                                   $hasil = number_format($hasil,2);
+
+                                  echo "0".$hasil;
+
+                                   /* $update = "UPDATE tbl_laporan SET waktu  = ''";
+                                    $updateidjenis  = mysqli_query($konek, $update)or die(mysqli_error());*/
+                                    // echo "<font color='red'><b>Telah melebihi batas waktu</b></font>";   
+                               }
+                              ?>
+                            </td>
+                                            <!-- username -->
                             
                             <td><?php echo $data['id_perangkat']; ?></td>
                             <!-- jenis perangkat -->

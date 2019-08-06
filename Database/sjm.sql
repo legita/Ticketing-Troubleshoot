@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 30, 2019 at 08:32 PM
+-- Generation Time: Aug 06, 2019 at 05:27 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -167,81 +167,87 @@ CREATE TABLE IF NOT EXISTS `tbl_datauji` (
   `flag` int(1) NOT NULL,
   `berhasil` int(1) NOT NULL,
   PRIMARY KEY (`id_datauji`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=95 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=117 ;
 
 --
 -- Dumping data for table `tbl_datauji`
 --
 
 INSERT INTO `tbl_datauji` (`id_datauji`, `username`, `keluhan`, `normalisasi`, `perangkat`, `penanganan`, `tanggal`, `flag`, `berhasil`) VALUES
-(2, 'gio', 'Keyboard tidak bisa di gunakan', '', '', '', '2019-06-28', 0, 0),
-(10, 'gio', 'Mouse begerak terus menerus', '', '', '', '2019-06-28', 0, 0),
-(16, 'gio', 'Keyboard Tidak Dikenali Oleh Komputer', '', '', '', '2019-06-28', 0, 0),
-(19, 'gio', 'saat digunakan, speaker terdengar pecah dan sember', '', '', '', '2019-06-28', 0, 0),
-(21, 'gio', 'hasil cetakan printer yang pudar dan kurang jelas', '', '', '', '2019-06-28', 0, 0),
-(22, 'gio', 'Kertas berhenti ditengah proses print, kertas nyangkut di printer', '', '', '', '2019-07-01', 0, 0),
-(23, 'gio', 'printer macet dan tinta membeku', '', '', '', '2019-07-01', 0, 0),
-(24, 'gio', 'Folder / File Tidak Dapat Di Lihat Oleh Komputer Lain', '', '', '', '2019-07-01', 0, 0),
-(25, 'gio', '"The panel key is locked" atau tombol proyektor terkunci', '', '', '', '2019-07-08', 0, 0),
-(26, 'gio', 'monitor suka redup sendiri', 'monitor redup sendiri', 'Software', '', '2019-07-30', 1, 0),
-(27, 'gio', 'warna yang dihasilkan printer tidak jelas', '', '', '', '2019-07-16', 0, 0),
-(29, 'gio', 'aplikasi berjalan lambat', 'aplikasi jalan lambat', 'Hardware', '', '2019-07-30', 1, 1),
-(31, 'gio', 'memori harddisk full', 'memori harddisk full', 'Hardware', '', '2019-07-29', 1, 0),
-(32, 'gio', 'kabel sata putus', 'kabel sata putus', 'Hardware', '', '2019-07-30', 1, 0),
-(33, 'gio', 'LED tidak menyala', '', '', '', '2019-07-12', 0, 0),
-(34, 'gio', 'waktu dan tanggal di komputer tidak sesuai', '', '', '', '2019-07-12', 0, 0),
-(35, 'gio', 'komputer cepat panas', '', '', '', '2019-07-12', 0, 0),
-(36, 'gio', 'pasta kering', 'pasta kering', 'Hardware', '', '2019-07-30', 1, 0),
-(37, 'gio', 'proyektor tidak dapat menghubungkan dengan komputer', '', '', '', '2019-07-12', 0, 0),
-(38, 'gio', 'wifi terhubung namun tidak ada koneksi internet', 'wifi hubung koneksi internet', 'Jaringan', '', '2019-07-30', 1, 0),
-(39, 'gio', 'tidak dapat melakukan absen pada fingerprint', 'tidak laku absen fingerprint', 'Hardware', '', '2019-07-30', 1, 0),
-(40, 'gio', 'sinyal wifi tidak sampai keruangan ', '', '', '', '2019-07-22', 0, 0),
-(41, 'gio', 'kabel server kendor', '', '', '', '2019-07-22', 0, 0),
-(42, 'gio', 'koneksi internet lambat', '', '', '', '2019-07-22', 0, 0),
-(43, 'gio', 'power supply berasap', '', '', '', '2019-07-22', 0, 0),
-(44, 'gio', 'printer tidak terdeteksi pada komputer', 'printer deteksi komputer', 'Software', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-07-30', 1, 0),
-(45, 'gio', 'pada saat absen masuk di fingerprint langsung terdeteksi absen pulang, padahal belum absen masuk', 'pada absen masuk fingerprint langsung deteksi absen pulang absen masuk', 'Hardware', '', '2019-07-30', 1, 0),
-(46, 'gio', 'komputer selalu restart sendiri', 'komputer restart sendiri', 'Hardware', '', '2019-07-30', 1, 0),
-(51, 'gio', 'warna printer memudar', '', '', '', '2019-07-23', 0, 0),
-(52, 'gio', 'Laptop saya ketika dinyalakan, tidak sampai 1 menit mati lagi dan berbunyi beep panjang disusul pendek, setelah itu mati', 'laptop nyala menit mati bunyi beep panjang susul pendek mati', 'Software', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-07-30', 1, 0),
-(53, 'gio', 'laptop tiba tiba blue screen', '', '', '', '2019-07-23', 0, 0),
-(54, 'gio', 'Laptop lambat sekali', 'laptop lambat sekali', 'Jaringan', '', '2019-07-29', 1, 0),
-(55, 'gio', 'Laptop saya suka mati tiba tiba', 'laptop mati tiba', 'Hardware', '', '2019-07-30', 1, 0),
-(56, 'gio', 'komputer tidak mau melakukan proses booting meski perangkat komputer hidup', '', '', '', '2019-07-21', 0, 0),
-(57, 'gio', 'Windows saya wallpapernya hitam', '', '', '', '2019-07-21', 0, 0),
-(58, 'gio', 'Komputer bisa melakukan proses booting tetapi selalu proses "Safe Mode"', 'komputer laku proses booting proses safe mode', 'Software', '', '2019-07-30', 1, 0),
-(59, 'gio', 'komputer saya tidak bisa masuk windows', 'komputer masuk windows', 'Software', '', '2019-07-30', 1, 0),
-(60, 'gio', 'Saya lupa password laptop', 'saya lupa password laptop', 'Software', '', '2019-07-30', 1, 0),
-(61, 'gio', 'Harddisk laptop terdengar bunyi aneh', 'harddisk dengar bunyi aneh', 'Hardware', '', '2019-07-30', 1, 0),
-(62, 'gio', 'Laptop sering restart sendiri dan wifi suka tidak terhubung dengan laptop', 'laptop restart wifi hubung laptop', 'Hardware', '', '2019-07-29', 1, 0),
-(63, 'gio', 'Fan laptop saya panas', 'fan panas', 'Hardware', '', '2019-07-30', 1, 0),
-(64, 'gio', 'Setting jam dan tanggal pada BIOS berubah ubah', 'setting jam tanggal bios ubah ubah', 'Software', '', '2019-07-30', 1, 0),
-(65, 'gio', 'keyboard tidak berfungsi', '', '', '', '2019-07-11', 0, 0),
-(66, 'gio', 'Laptop saya nyala tetapi layar monitor berwarna hitam', 'laptop nyala layar monitor warna hitam', 'Software', '', '2019-07-30', 1, 0),
-(67, 'gio', 'Mengalami crash setelah RAM baru terpasang dan tidak terdeteksi', 'alami crash ram baru pasang deteksi', 'Hardware', '', '2019-07-30', 1, 0),
-(68, 'gio', 'Touchpad saya suka bergerak sendiri', 'touchpad gerak sendiri', 'Hardware', '', '2019-07-30', 1, 0),
-(69, 'gio', 'Keyboard laptop suka mengetik sendiri', '', '', '', '2019-07-25', 0, 0),
-(70, 'gio', 'Proses laptop lambat meskipun memiliki spesifikasi tinggi', 'proses lambat meski milik spesifikasi tinggi', 'Hardware', '', '2019-07-30', 1, 0),
-(72, 'gio', 'Laptop sering not responding', 'laptop not responding', 'Software', '', '2019-07-30', 1, 0),
-(73, 'gio', 'Keyboard suka mengetik sendiri', '', '', '', '2019-07-26', 0, 0),
-(74, 'gio', 'mouse saya bertindak tidak menentu', 'mouse tindak tentu', 'Hardware', '', '2019-07-30', 1, 0),
-(76, 'gio', 'Komputer berbunyi pip pip terus dan  tidak berhenti sebelum dimatikan', 'komputer bunyi pip pip terus henti mati', 'Hardware', '', '2019-07-30', 1, 0),
-(77, 'gio', 'Printer saya sering trouble karena setiap kali ingin mencetak faktur kadang tidak mau mencetak.', 'printer trouble tiap kali cetak faktur kadang cetak', 'Hardware', '', '2019-07-30', 1, 0),
-(78, 'gio', 'kertas sering macet di dalam printer', 'kertas macet printer', 'Hardware', '', '2019-07-30', 1, 0),
-(79, 'gio', 'Tinta pinter yang bermasalah seperti garis-garis, salah satu warna tidak keluar', '', '', '', '2019-07-26', 0, 0),
-(81, 'gio', 'Bermasalah ketika ngeprint terlalu banyak', 'masalah ngeprint banyak', 'Hardware', '', '2019-07-29', 1, 0),
-(82, 'gio', 'Proyektor menyala, namun Lampu LED berkedip secara terus menerus', '', '', '', '2019-07-24', 0, 0),
-(83, 'gio', 'Layar biru (blue screen)', 'layar biru blue screen', 'Software', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-07-30', 1, 0),
-(84, 'gio', 'warna dari proyektor kadang kuning.', 'warna proyektor kadang kuning', 'Hardware', '', '2019-07-30', 1, 0),
-(85, 'gio', 'Keyboard error saat menekan tombol yang keluar bukan huruf atau angka yang kita tekan', '', '', '', '2019-07-24', 0, 0),
-(86, 'gio', 'Printer tidak ada warna', 'printer warna', 'Hardware', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-07-30', 1, 0),
-(87, 'gio', 'Laptop saya panas jika memakai aplikasi yang berat', 'laptop panas pakai aplikasi berat', 'Software', '', '2019-07-30', 1, 0),
-(88, 'gio', 'Laptop saya sering restart secara tiba-tiba', '', '', '', '2019-07-26', 0, 0),
-(89, 'gio', 'Proyektor warna nya tidak putih', 'proyektor warna nya putih', 'Hardware', '', '2019-07-30', 1, 0),
-(90, 'gio', 'Computer nge blank', 'computer nge blank', 'Hardware', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-07-30', 1, 0),
-(91, 'gio', 'laptop sering panas', 'laptop panas', 'Hardware', '', '2019-07-30', 0, 0),
-(92, 'gio', 'komputer terbakar', 'komputer bakar', 'Hardware', '', '2019-07-30', 1, 0),
-(94, 'gio', 'Ada bintik pada proyektor', 'ada bintik proyektor', 'Hardware', '', '2019-07-30', 1, 0);
+(0, '', '', '', 'Hardware', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-08-02', 1, 0),
+(2, 'gio', 'Keyboard tidak bisa di gunakan', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(10, 'gio', 'Mouse begerak terus menerus', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(16, 'gio', 'Keyboard Tidak Dikenali Oleh Komputer', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(19, 'gio', 'saat digunakan, speaker terdengar pecah dan sember', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(21, 'gio', 'hasil cetakan printer yang pudar dan kurang jelas', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(22, 'gio', 'Kertas berhenti ditengah proses print, kertas nyangkut di printer', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(23, 'gio', 'printer macet dan tinta membeku', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(24, 'gio', 'Folder / File Tidak Dapat Di Lihat Oleh Komputer Lain', '0', 'Software', '0', '2019-08-02', 1, 0),
+(25, 'gio', '"The panel key is locked" atau tombol proyektor terkunci', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(26, 'gio', 'monitor suka redup sendiri', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(27, 'gio', 'warna yang dihasilkan printer tidak jelas', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(29, 'gio', 'aplikasi berjalan lambat', '0', 'Hardware', '0', '2019-08-02', 1, 1),
+(31, 'gio', 'memori harddisk full', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(32, 'gio', 'kabel sata putus', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(33, 'gio', 'LED tidak menyala', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(34, 'gio', 'waktu dan tanggal di komputer tidak sesuai', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(35, 'gio', 'komputer cepat panas', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(36, 'gio', 'pasta kering', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(37, 'gio', 'proyektor tidak dapat menghubungkan dengan komputer', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(38, 'gio', 'wifi terhubung namun tidak ada koneksi internet', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(39, 'gio', 'tidak dapat melakukan absen pada fingerprint', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(40, 'gio', 'sinyal wifi tidak sampai keruangan ', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(41, 'gio', 'kabel server kendor', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(42, 'gio', 'koneksi internet lambat', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(43, 'gio', 'power supply berasap', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(44, 'gio', 'printer tidak terdeteksi pada komputer', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(45, 'gio', 'pada saat absen masuk di fingerprint langsung terdeteksi absen pulang, padahal belum absen masuk', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(46, 'gio', 'komputer selalu restart sendiri', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(51, 'gio', 'warna printer memudar', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(53, 'gio', 'laptop tiba tiba blue screen', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(54, 'gio', 'Laptop lambat sekali', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(55, 'gio', 'Laptop saya suka mati tiba tiba', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(56, 'gio', 'komputer tidak mau melakukan proses booting meski perangkat komputer hidup', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(57, 'gio', 'Windows saya wallpapernya hitam', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(58, 'gio', 'Komputer bisa melakukan proses booting tetapi selalu proses "Safe Mode"', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(59, 'gio', 'komputer saya tidak bisa masuk windows', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(60, 'gio', 'Saya lupa password laptop', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(61, 'gio', 'Harddisk laptop terdengar bunyi aneh', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(62, 'gio', 'Laptop sering restart sendiri dan wifi suka tidak terhubung dengan laptop', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(63, 'gio', 'Fan laptop saya panas', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(64, 'gio', 'Setting jam dan tanggal pada BIOS berubah ubah', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(65, 'gio', 'keyboard tidak berfungsi', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(66, 'gio', 'Laptop saya nyala tetapi layar monitor berwarna hitam', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(67, 'gio', 'Mengalami crash setelah RAM baru terpasang dan tidak terdeteksi', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(68, 'gio', 'Touchpad saya suka bergerak sendiri', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(69, 'gio', 'Keyboard laptop suka mengetik sendiri', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(70, 'gio', 'Proses laptop lambat meskipun memiliki spesifikasi tinggi', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(72, 'gio', 'Laptop sering tampil not responding', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(73, 'gio', 'Keyboard suka mengetik sendiri', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(74, 'gio', 'mouse saya bertindak tidak menentu', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(76, 'gio', 'Komputer berbunyi pip pip terus dan  tidak berhenti sebelum dimatikan', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(77, 'gio', 'Printer saya sering trouble karena setiap kali ingin mencetak faktur kadang tidak mau mencetak.', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(78, 'gio', 'kertas sering macet di dalam printer', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(79, 'gio', 'Tinta pinter yang bermasalah seperti garis-garis, salah satu warna tidak keluar', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(81, 'gio', 'Bermasalah ketika ngeprint terlalu banyak', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(82, 'gio', 'Proyektor menyala, namun Lampu LED berkedip secara terus menerus', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(83, 'gio', 'Layar biru (blue screen)', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(84, 'gio', 'warna dari proyektor kadang kuning.', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(85, 'gio', 'Keyboard error saat menekan tombol yang keluar bukan huruf atau angka yang kita tekan', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(86, 'gio', 'Printer tidak ada warna', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(87, 'gio', 'Laptop saya panas jika memakai aplikasi yang berat', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(88, 'gio', 'Laptop saya sering restart secara tiba-tiba', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(89, 'gio', 'Proyektor warna nya tidak putih', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(90, 'gio', 'Computer nge blank', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(91, 'gio', 'laptop sering panas', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(92, 'gio', 'komputer terbakar', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(94, 'gio', 'Ada bintik pada proyektor', '0', 'Hardware', '0', '2019-08-02', 1, 0),
+(95, 'gio', 'aplikasi berjalan lambat', '', 'Hardware', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-08-02', 1, 0),
+(96, 'gio', 'komputer tidak nyala', '', 'Hardware', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-08-02', 1, 0),
+(113, 'gio', 'Ada komponen bagian yang panas ketika di charge atau cash', '', 'Hardware', 'Tombol-tombol pada keyboard hanya terpotong, dengan pisau atau benda tipis lainnya, dengan hati-hati melepas kunci, ini akan memungkinkan Anda untuk membersihkan di bawah kunci serta membersihkan kunci sendiri.', '2019-08-02', 1, 0),
+(114, 'gio', 'Ada batas hitam di layar monitor komputer', '', '', '', '2019-08-05', 0, 0),
+(115, 'gio', 'Ada icon Network Connection tapi berputar-putar terus', '', '', '', '2019-08-05', 0, 0),
+(116, 'gio', 'ahsjs', '', '', '', '2019-08-05', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -626,7 +632,7 @@ CREATE TABLE IF NOT EXISTS `tbl_keluhan` (
   `penanganan` text NOT NULL,
   `perangkat` varchar(30) NOT NULL,
   PRIMARY KEY (`id_keluhan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=287 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=285 ;
 
 --
 -- Dumping data for table `tbl_keluhan`
@@ -915,9 +921,7 @@ INSERT INTO `tbl_keluhan` (`id_keluhan`, `keluhan`, `normalisasi`, `penanganan`,
 (281, 'Proses scan berjalan lancar, tetapi gambar hasil scan terlihat tidak jelas dan kabur seperti terkena efek blur.', 'proses scan jalan lancar gambar hasil scan lihat jelas kabur kena efek blur', 'Jika gambar hasil scan terlihat kabur, coba anda set resolusi displaynya ke height color (16 bit), dan biarkan scanner melakukan pemanasan (warming up) selama beberapa menit. Yang perlu anda perhatikan juga adalah kebersihan dari permukaan kacanya, karena jika kotor akan bisa berpengaruh juga terhadap bersih tidaknya hasil scan nantinya. Pastikan kaca tersebut selalu bersih. Bersihkan dengan kain yang lembut.', 'Hardware'),
 (282, 'Kualitas foto hasil scan berbeda pada beberapa komputer', 'kualitas foto hasil scan beda beberapa komputer', 'Perbedaan kualitas pada foto tersebut dapat muncul karena adanya perbedaan kualitas VGA pada masing-masing komputer. Foto tersebut akan tampak baik ketika anda menggunakan komputer dengan VGA tinggi (minimal 32 Mb). Namun sebaliknya, foto tersebut akan terlihat pecah ketika anda melihatnya menggunakan komputer dengan VGA pas-pasan (di bawah 32 Mb). Sebenarnya kualitas foto yang dihasilkan dari scanner adalah sama saja atau tidak berubah. Hanya tampilan pada monitor (komputer dengan VGA rendah) yang membuat foto tersebut seolah-olah mengalami kerusakan', 'Hardware'),
 (283, 'koneksi ke scanner gagal', 'koneksi scanner gagal', '1. Scanner yang belum terkoneksi secara hardware ini bisa saja disebabkan karena card SCSI interface tidak terpasang dengan benar, jadi coba matikan computer dan cek koneksi kabelnya. 2. Perlu diingat juga bahwa pada waktu menghidupkan computer perangkat scanner harus dihidupkan terlebih dahulu sebelum computer dinyalakan. Proses booting akan mendeteksi dan mencari koneksi computer ke scanner jika perangkat tersebut ada.', 'Hardware"'),
-(284, 'Memori tidak cukup untuk scan', 'memori cukup scan', 'Pesan tersebut biasanya terjadi karena sisa ruang hardisk anda sangat kecil, coba scan ulang dengan resolusi yang lebih kecil', 'Hardware'),
-(285, 'Hasil scan terlihat kotor', 'hasil scan lihat kotor', 'Rusaknya gambar, bisa saja disebabkan oleh jamur dalam kaca scanner. Untuk mengatasi hal tersebut bersihkan kaca scanner secara rutin, atau membeli cairan khusus pembersih kaca scanner', 'Hardware'),
-(286, 'Hasil scan ter belang sebelah', 'hasil scan ter belang belah', 'Masalah ini mungkin dikarenakan karena scanner sudah terlalu lama dinyalahkan hal itu membuat scanner panas, coba anda matikan memberapa saat lalu anda coba lagi, scanner yang ceoat panas akan mempercepat umur scanner.', 'Hardware');
+(284, 'Memori tidak cukup untuk scan', 'memori cukup scan', 'Pesan tersebut biasanya terjadi karena sisa ruang hardisk anda sangat kecil, coba scan ulang dengan resolusi yang lebih kecil', 'Hardware');
 
 -- --------------------------------------------------------
 
@@ -939,27 +943,31 @@ CREATE TABLE IF NOT EXISTS `tbl_laporan` (
   `status` int(1) NOT NULL,
   `ting_laporan` int(3) NOT NULL,
   `alasan` text NOT NULL,
-  `tgl_kerjakan` varchar(30) NOT NULL,
-  `tgl_selesai` varchar(25) NOT NULL,
+  `jam_laporan` varchar(30) NOT NULL,
+  `jam_dibutuhkan` varchar(30) NOT NULL,
+  `jam_kerjakan` varchar(30) NOT NULL,
+  `jam_selesai` varchar(25) NOT NULL,
   `waktu` varchar(20) NOT NULL,
   PRIMARY KEY (`id_laporan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `tbl_laporan`
 --
 
-INSERT INTO `tbl_laporan` (`id_laporan`, `id_user`, `tgl_laporan`, `username`, `no_lap`, `id_perangkat`, `jenis_perangkat`, `user`, `lokasi_perangkat`, `laporan`, `status`, `ting_laporan`, `alasan`, `tgl_kerjakan`, `tgl_selesai`, `waktu`) VALUES
-(4, 10, '2019-06-22', 'gio', 817035, 'SJM/PC/PL_JB-86', 'KOMPUTER', 'PE ADMIN', 'JB_PE-10', 'mouse ilang', 2, 0, 'karena sangat sedang di butuhkan', '2019-06-22', '29-06-2019', ''),
-(5, 10, '2019-07-19', 'gio', 266675, 'SJM/PC/PL_JB-54', 'KOMPUTER', 'FAHRI', 'Robocut-PC', 'apa kek', 2, 1, 'banget', '0', '19-07-2019', ''),
-(6, 10, '2019-07-19', 'gio', 310219, 'SIM/PC/PL_JB-03', 'KOMPUTER', 'Server 3', 'Mail_Server', 'apa aja', 2, 1, '', '19-07-2019', '19-07-2019', ''),
-(7, 10, '2019-06-22', 'gio', 261304, 'SJM/IT_PLJB/LPT-20', 'LAPTOP', 'EDDY', 'INCOMING AREA', 'apa aja', 2, 1, 'banget', '29-06-2019', '30-07-2019', ''),
-(9, 10, '2019-07-19', 'gio', 115475, 'SJM/PC/PL_JB-32', 'KOMPUTER', 'ZIDNI', 'JB_DSGN-6', 'Virtual Memory terlalu sedikit', 2, 0, '', '30-07-2019', '30-07-2019', ''),
-(10, 10, '2019-07-19', 'gio', 307045, 'SJM/PC/PL_JB-13', 'KOMPUTER', 'NITA', 'JB_HRD-2', 'Setelah memasukkan RAM komputer tidak bisa beroperasi', 2, 0, '', '', '19-07-2019', ''),
-(12, 10, '2019-07-19', 'gio', 532884, 'SJM/IT_PLJB/UPS-09', 'UPS', 'DESIGN', 'DESIGN ROOM', 'rusak ga bisa dipakai', 2, 0, '', '30-07-2019', '30-07-2019', '2019-07-21'),
-(15, 10, '2019-07-27 07:07:41', 'gio', 897075, 'SJM/IT_PLJB/UPS-10', 'UPS', 'DESIGN', 'DESIGN ROOM', 'ga berfungsi', 2, 0, '', '30-07-2019', '30-07-2019', '29-07-2019'),
-(16, 10, '2019-07-27 07:07:53', 'gio', 930061, 'SIM/PC/PL_JB-03', 'KOMPUTER', 'Server 3', 'Mail_Server', 'ga dipakai', 2, 0, '', '30-07-2019', '30-07-2019', '29-07-2019'),
-(17, 10, '2019-07-30', 'gio', 653111, 'SJM/PC/PL_JB-81', 'KOMPUTER', 'HURCO', 'JB_Machining-2', 'laptop sering panas', 0, 0, 'butuh cepat', '', '', '01-08-2019');
+INSERT INTO `tbl_laporan` (`id_laporan`, `id_user`, `tgl_laporan`, `username`, `no_lap`, `id_perangkat`, `jenis_perangkat`, `user`, `lokasi_perangkat`, `laporan`, `status`, `ting_laporan`, `alasan`, `jam_laporan`, `jam_dibutuhkan`, `jam_kerjakan`, `jam_selesai`, `waktu`) VALUES
+(4, 10, '2019-06-22', 'gio', 817035, 'SJM/PC/PL_JB-86', 'KOMPUTER', 'PE ADMIN', 'JB_PE-10', 'mouse ilang', 2, 0, 'karena sangat sedang di butuhkan', '', '', '2019-06-22', '29-06-2019', ''),
+(6, 10, '2019-07-19', 'gio', 310219, 'SIM/PC/PL_JB-03', 'KOMPUTER', 'Server 3', 'Mail_Server', 'apa aja', 2, 1, '', '', '', '19-07-2019', '19-07-2019', ''),
+(7, 10, '2019-06-22', 'gio', 261304, 'SJM/IT_PLJB/LPT-20', 'LAPTOP', 'EDDY', 'INCOMING AREA', 'apa aja', 2, 1, 'banget', '', '', '29-06-2019', '30-07-2019', ''),
+(9, 10, '2019-07-19', 'gio', 115475, 'SJM/PC/PL_JB-32', 'KOMPUTER', 'ZIDNI', 'JB_DSGN-6', 'Virtual Memory terlalu sedikit', 2, 0, '', '', '', '30-07-2019', '30-07-2019', ''),
+(12, 10, '2019-07-19', 'gio', 532884, 'SJM/IT_PLJB/UPS-09', 'UPS', 'DESIGN', 'DESIGN ROOM', 'rusak ga bisa dipakai', 2, 0, '', '', '', '30-07-2019', '30-07-2019', '2019-07-21'),
+(17, 10, '2019-07-30', 'gio', 653111, 'SJM/PC/PL_JB-81', 'KOMPUTER', 'HURCO', 'JB_Machining-2', 'laptop sering panas', 2, 0, 'butuh cepat', '', '', '31-07-2019', '31-07-2019', '01-08-2019'),
+(18, 10, '2019-07-31', 'gio', 639227, 'SJM/PC/PL_JB-65', 'KOMPUTER', 'THOHIRIN', 'JB_QC_PROD-3', 'laptop sering panas', 0, 0, 'Ingin segera digunakan', '', '', '', '', '02-08-2019'),
+(23, 2, '2019-07-31', 'staff', 361087, 'SJM/PC/PL_JB-44', 'KOMPUTER', 'TONDI', 'JB_PE-01', 'Fingerprint ga bisa', 0, 0, '', '', '', '', '', '02-08-2019'),
+(24, 2, '2019-07-31', 'staff', 634528, 'SJM/IT_PLJB/UPS-22', 'UPS', 'QC-ENG', 'QC-ENG ROOM', 'Ups tidak berfungsi', 0, 1, 'sedang dibutuhkan', '', '', '', '', '02-08-2019'),
+(29, 1, '2019-08-05', 'admin', 617684, 'SJM/PC/PL_JB-69', 'KOMPUTER', 'RIZAL', 'JB_PLANNER', 'komputer ga jalan', 0, 1, 'Ingin segera digunakan', '', '', '', '', '07-08-2019'),
+(33, 1, '2019-08-05', 'admin', 136622, 'SJM/PC/PL_JB-51', 'KOMPUTER', 'TIARA', 'JB_Machining-10', 'ga berfungsi', 0, 1, 'sedang butuh banget', '14:06:06', '15:10', '', '', '07-08-2019'),
+(34, 1, '2019-08-05', 'admin', 381440, 'SJM/PC/PL_JB-60', 'KOMPUTER', 'HERDIAN', 'JB_PPC_ENG-1', 'ga hidup', 0, 1, 'ingin digunakan', '14:32:26', '16:30', '', '', '');
 
 -- --------------------------------------------------------
 

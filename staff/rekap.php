@@ -112,7 +112,7 @@
                     include '../config/koneksi.php'; 
 
                     $no = 1;
-                    $query1 = "SELECT * FROM tbl_laporan where month(tgl_laporan) = '$bln' and year(tgl_laporan) = '$thn'";
+                    $query1 = "SELECT * FROM tbl_laporan where status = 2 and month(tgl_laporan) = '$bln' and year(tgl_laporan) = '$thn'";
 
                     $tampil1 = mysqli_query($konek, $query1);
 

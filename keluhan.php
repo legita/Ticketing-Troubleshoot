@@ -1,3 +1,6 @@
+<?php
+    date_default_timezone_set('Asia/Jakarta');
+?>
 <?php 
  
  include 'config/koneksi.php';
@@ -22,7 +25,8 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
   <link rel="shortcut icon" href="images/logos/logo.jpg" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <script src="assests/js/jquery.min.js"></script>
+  <!-- <script src="assests/js/jquery.min.js"></script> -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <script src="staff/vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -174,13 +178,13 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
   </div>
 
   <div class="col-sm-12">
-    <form action="config/tambah_keluhan.php" class="form-horizontal" role="form" method="POST">
+    <form name="add_name" id="add_name" action="config/tambah_keluhan.php" class="form-horizontal" role="form" method="POST">
       <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
       <input type="hidden" name="tgl" value="<?php $tgl=date('Y-m-d'); echo $tgl;?>">
       <hr style="background-color: #cdd51f;">
       <div class="alert alert-danger" style="font-size: 15px;">     
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="label label-danger" style="color: blue;"><i><b>Penting!!</b></i></span> Input Laporan Troubleshooting yang Terjadi Pada Perangkat Anda Menggunakan <span class="label label-danger" style="color: blue;">Bahasa Indonesia</span>, Tidak Menggunakan <span class="label label-danger" style="color: blue;">Bahasa Daerah</span> dan Tidak di <span class="label label-danger" style="color: blue;">Singkat</span> atau <span class="label label-danger" style="color: blue;">Mengandung Singkatan!</span><br>
-      <center>=> Menerima Inputan Keluhan tentang Hardware, Jaringan dan Software. Seperti <strong>Monitor, Proyektor, Mouse, Keyboard, Komputer, Scanner, Printer, Fingerprint, UPS</strong></center></div>
+      <center>=> Menerima Inputan Keluhan tentang Hardware, Jaringan dan Software. Seperti <strong>Monitor, Proyektor, Mouse, Keyboard, Komputer, Laptop, Scanner, Printer, Fingerprint, UPS, Touchpad</strong></center></div>
       <hr><br>
       
       <div class="form-group" align="center">
@@ -197,16 +201,46 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
         <input class="form-control" type="random" id="no_laporan" name="no_laporan" value="<?php echo rand(100,1000000);?>" / name="no_laporan" readonly>
         </label>
       </div>    
-      <div class="form-group" align="center">
-        <label class="col-sm-2" for="keluhan" style="text-align: left;">Keluhan</label>
+      <div class="form-group-1" align="center" id="dynamic_field">
+        <label class="col-sm-2" for="keluhan" style="text-align: left;" >Keluhan</label>
         <label class="col-sm-1">:</label>
-        <label class="col-sm-5">
-        <input class="form-control" type="text" id="keluhan" name="keluhan" placeholder="Masukkan Keluhan" value="" required>
+        <label class="col-sm-4">
+        <input class="form-control" type="text" id="keluhan" name="keluhan[]" placeholder="Masukkan Keluhan" value="" required>
         </label>
+        <label class="col-sm-1"><button type="button" class="btn btn-info" id="add">Tambah</button></label>
       </div>
           
       <label class="col-sm-10"></label>
       <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Kirim">Kirim</button>
+
+      <!-- SCRIPT ADD MORE -->
+      <script>  
+       $(document).ready(function(){  
+            var i=1;  
+            $('#add').click(function(){  
+                 i++;  
+                 $('#dynamic_field').append('<div id="row'+i+'"><label class="col-sm-2" for="keluhan" style="text-align: left;" ></label><label class="col-sm-1"></label><label class="col-sm-4"><input type="text" id="keluhan" name="keluhan[]" placeholder="Masukkan Keluhan" class="form-control" /><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></label>');  
+            });  
+            $(document).on('click', '.btn_remove', function(){  
+                 var button_id = $(this).attr("id");   
+                 $('#row'+button_id+'').remove();  
+            });
+
+            $('#submit').click(function(){            
+                 $.ajax({  
+                      url:"config/tambah_keluhan.php",  
+                      method:"POST",  
+                      data:$('#add').serialize(),  
+                      success:function(data)  
+                      {  
+                           alert(data);  
+                           $('#add')[0].reset();  
+                      }  
+                 });  
+            });  
+       });  
+       </script>
+
     </form>
   </div>
 
@@ -259,6 +293,8 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 </script>
+
+
 
 </body>
 </html>
