@@ -116,105 +116,117 @@
             
                             <td><?php echo $data['tgl_laporan']; ?></td>
                             
-                            <!-- timer -->
-                            <td>
+                            <!-- timer per tanggal 5 Agustus 2019 -->
+                            <!-- <td> -->
                               <?php
                              // echo '<b>'.$data['waktu'].'</b>';
-                                $date = strtotime($data['waktu']);
-                                $remaining = $date - time();
-                                $days_remaining = floor($remaining / 86400);
-                                $hours_remaining = floor(($remaining % 86400) / 3600);
-                                $minutes_remaining = floor(($remaining % 3600) / 60);
-                                $seconds_remaining = ($remaining % 60);
 
-                                if ($data['status']=='0' && $days_remaining >= 1){ 
+                                // $date = strtotime($data['waktu']);
+                                // $remaining = $date - time();
+                                // $days_remaining = floor($remaining / 86400);
+                                // $hours_remaining = floor(($remaining % 86400) / 3600);
+                                // $minutes_remaining = floor(($remaining % 3600) / 60);
+                                // $seconds_remaining = ($remaining % 60);
+
+                                // if ($data['status']=='0' && $days_remaining >= 1){ 
                                   // timer erma
                                   // echo '<b>'.$data['waktu'].'</b>';
                                   // echo "<p>$days_remaining <span'>hari</span> $hours_remaining <span style='font-size:;'>jam</span> $minutes_remaining <span style='font-size:;'>menit</span> $seconds_remaining <span style='font-size:;'>detik</span></p>";
                                   
-                                  $awal        = $data['jam_laporan'];
-                                  $jam_start    = substr($awal,0,2);
-                                  $menit_start  = substr($awal,3,2);
-                                  $butuh       = $data['jam_dibutuhkan'];
-                                  $jam_end   = substr($butuh,0,2);
-                                  $menit_end = substr($butuh,3,2);
+                                  // $awal        = $data['jam_laporan'];
+                                  // $jam_start    = substr($awal,0,2);
+                                  // $menit_start  = substr($awal,3,2);
+                                  // $butuh       = $data['jam_dibutuhkan'];
+                                  // $jam_end   = substr($butuh,0,2);
+                                  // $menit_end = substr($butuh,3,2);
 
-                                  // echo $jam_start;
-                                  // echo '<br>';
-                                  // echo $jam_end;
-                                  // echo '<br>';
-                                  // echo $menit_start;
-                                  // echo '<br>';
-                                  // echo $menit_end;
+                                  // $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
+                                  // $hasil = $hasil / 60;
+                                  // $hasil = number_format($hasil,2);
 
-                                  $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
-                                  $hasil = $hasil / 60;
-                                  $hasil = number_format($hasil,2);
+                                  // echo "0".$hasil;
 
-                                  echo "0".$hasil;
-
-                                }
-                                elseif ($data['status']=='1' && $days_remaining >= 1){ 
+                                // }
+                                // elseif ($data['status']=='1' && $days_remaining >= 1){ 
                                   // echo '<b>'.$data['waktu'].'</b>';
                                   // echo "<p>$days_remaining <span'>hari</span> $hours_remaining <span style='font-size:;'>jam</span> $minutes_remaining <span style='font-size:;'>menit</span> $seconds_remaining <span style='font-size:;'>detik</span></p>";
-                                  $awal        = $data['jam_laporan'];
-                                  $jam_start    = substr($awal,0,2);
-                                  $menit_start  = substr($awal,3,2);
-                                  $butuh       = $data['jam_dibutuhkan'];
-                                  $jam_end   = substr($butuh,0,2);
-                                  $menit_end = substr($butuh,3,2);
-
-                                  // echo $jam_start;
-                                  // echo '<br>';
-                                  // echo $jam_end;
-                                  // echo '<br>';
-                                  // echo $menit_start;
-                                  // echo '<br>';
-                                  // echo $menit_end;
+                              //     $awal        = $data['jam_laporan'];
+                              //     $jam_start    = substr($awal,0,2);
+                              //     $menit_start  = substr($awal,3,2);
+                              //     $butuh       = $data['jam_dibutuhkan'];
+                              //     $jam_end   = substr($butuh,0,2);
+                              //     $menit_end = substr($butuh,3,2);
                                   
-                                  $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
-                                  $hasil = $hasil / 60;
-                                  $hasil = number_format($hasil,2);
+                              //     $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
+                              //     $hasil = $hasil / 60;
+                              //     $hasil = number_format($hasil,2);
 
-                                  echo "0".$hasil;
+                              //     echo "0".$hasil;
 
-                               }
-                               elseif ($data['status']=='2'){
+                              //  }
+                              //  elseif ($data['status']=='2'){
 
-                                 echo "<font color='green'><b>Selesai</b></font>";
+                              //    echo "<font color='green'><b>Selesai</b></font>";
 
-                               } 
+                              //  } 
 
-                               elseif($data['status']=='0' OR $data['status']=='1'){  
-                                   $awal        = $data['jam_laporan'];
-                                   $jam_start    = substr($awal,0,2);
-                                   $menit_start  = substr($awal,3,2);
-                                   $butuh       = $data['jam_dibutuhkan'];
-                                   $jam_end   = substr($butuh,0,2);
-                                   $menit_end = substr($butuh,3,2);
-
-                                   // echo $jam_start;
-                                   // echo '<br>';
-                                   // echo $jam_end;
-                                   // echo '<br>';
-                                   // echo $menit_start;
-                                   // echo '<br>';
-                                   // echo $menit_end;
+                              //  elseif($data['status']=='0' OR $data['status']=='1'){  
+                              //      $awal        = $data['jam_laporan'];
+                              //      $jam_start    = substr($awal,0,2);
+                              //      $menit_start  = substr($awal,3,2);
+                              //      $butuh       = $data['jam_dibutuhkan'];
+                              //      $jam_end   = substr($butuh,0,2);
+                              //      $menit_end = substr($butuh,3,2);
                                    
-                                   $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
-                                   $hasil = $hasil / 60;
-                                   $hasil = number_format($hasil,2);
+                                  //  $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
+                                  //  $hasil = $hasil / 60;
+                                  //  $hasil = number_format($hasil,2);
 
-                                  echo "0".$hasil;
+                              //     echo "0".$hasil;
 
                                    /* $update = "UPDATE tbl_laporan SET waktu  = ''";
                                     $updateidjenis  = mysqli_query($konek, $update)or die(mysqli_error());*/
-                                    // echo "<font color='red'><b>Telah melebihi batas waktu</b></font>";   
-                               }
+                              //       echo "<font color='red'><b>Telah melebihi batas waktu</b></font>";   
+                              //  }
+                              ?>
+                            <!-- </td> -->
+                            
+                            <!-- timer per tanggal 6 Agustus 2019 -->
+                            <td>
+                              <?php
+                                $date_now     = date('Y-m-d');
+                                date_default_timezone_set("Asia/Jakarta");
+                                $time_now     = date('H:i:s');
+                                $jam_start    = substr($time_now,0,2);
+                                $menit_start  = substr($time_now,3,2);
+                                $time         = $data['jam_dibutuhkan'];
+                                $jam_finish   = substr($time,0,2);
+                                $menit_finish = substr($time,3,2);
+
+                                // $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
+                                $jam          = (intVal($jam_finish) - intVal($jam_start));
+                                $menit        = (60 + (intVal($menit_finish)) - intVal($menit_start));
+                                // echo $menit_start;
+                                // echo '<br>';
+                                // echo $menit_finish;
+                                // echo '<br>';
+                                // echo $menit;
+                                // echo '<br>';
+                                // SELESAI
+                                if($data['status']=='2'){
+                                  echo "<font color='green'><b>Selesai</b></font>";
+                                }
+                                // MELEBIHI BATAS WAKTU
+                                elseif ($data['status']=='1' OR $data['status']=='0' && $data['tgl_laporan']!==$date_now OR $jam <= 0) {
+                                  echo "<font color='red'><b>Telah melebihi batas waktu</b></font>";
+                                }
+                                else {
+                                  echo ''.$jam.' Jam '.$menit.' Menit';
+                                }
                               ?>
                             </td>
-                                            <!-- username -->
                             
+                            <!-- username -->
                             <td><?php echo $data['id_perangkat']; ?></td>
                             <!-- jenis perangkat -->
                             <td><?php echo $data['user']; ?></td>
