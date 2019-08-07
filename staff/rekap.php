@@ -91,8 +91,9 @@
                         <tr>
                             <th class="bg-info"><center>No</center></th>
                             <th class="bg-info"><center>Tanggal Laporan</center></th>
-                            <th class="bg-info"><center>Tanggal Dikerjakan</center></th>
-                            <th class="bg-info"><center>Tanggal Selesai</center></th>
+                            <th class="bg-info"><center>Jam Laporan</center></th>
+                            <th class="bg-info"><center>Jam Dikerjakan</center></th>
+                            <th class="bg-info"><center>Jam Selesai</center></th>
                             <th class="bg-info"><center>No Ticketing</center></th>
                             <th class="bg-info"><center>Username</center></th>
                             <th class="bg-info"><center>id_perangkat</center></th>
@@ -129,8 +130,9 @@
                         <tr>
                             <td><center><?php echo $no++; ?></center></td>
                             <td><center><?php echo $row['tgl_laporan']; ?></center></td>
-                            <td><center><?php echo $row['tgl_kerjakan']; ?></center></td>
-                            <td><center><?php echo $row['tgl_selesai']; ?></center></td>
+                            <td><center><?php echo $row['jam_laporan']; ?></center></td>
+                            <td><center><?php echo $row['jam_kerjakan']; ?></center></td>
+                            <td><center><?php echo $row['jam_selesai']; ?></center></td>
                             <td><center><?php echo $row['no_lap']; ?></center></td>   
                             <td><center><?php echo $row['username']; ?></center></td>   
                             <td><center><?php echo $row['id_perangkat']; ?></center></td>   

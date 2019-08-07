@@ -27,7 +27,8 @@
                           <th><center>Kesulitan Laporan</center></th>
                           <th><center>Alasan</center></th>
                           <th><center>Tanggal Laporan</center></th>
-                          <th><center>Tanggal Selesai</center></th>
+                          <th><center>Jam Laporan</center></th>
+                          <th><center>Jam Selesai</center></th>
                           <th><center>ID Perangkat</center></th>
                           <th><center>Jenis Perangkat</center></th>
                           <th><center>Lokasi Perangkat</center></th>  
@@ -61,8 +62,9 @@
                               ?>
                             </td>
                             <td><?php echo $data['alasan']; ?></td>
-                            <td><?php echo $data['tgl_laporan']; ?></td>
-                            <td><?php echo $data['tgl_selesai']; ?></td>
+                            <td><?php echo $data['tanggal_laporan']; ?></td>
+                            <td><?php echo $data['jam_laporan']; ?></td>
+                            <td><?php echo $data['jam_selesai']; ?></td>
                             <td><?php echo $data['id_perangkat']; ?></td>
                             <td><?php echo $data['jenis_perangkat']; ?></td>
                             <td><?php echo $data['lokasi_perangkat']; ?></td>  

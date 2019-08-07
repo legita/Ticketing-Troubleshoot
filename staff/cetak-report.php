@@ -43,7 +43,7 @@
   $bln = $_GET['bln'];
   $thn = $_GET['thn'];
 
-  $query = "SELECT * FROM tbl_laporan where month(tgl_laporan) = '$bln' and year(tgl_laporan) = '$thn'";
+  $query = "SELECT * FROM tbl_laporan where month(tgl_laporan) = '$bln' and year(tgl_laporan) = '$thn' and status = '2'";
 
   $tampil = mysqli_query($konek, $query) or die (mysqli_error($konek));
 
@@ -102,8 +102,9 @@
           <tr>
             <th class="bg-info"><center>No</center></th>
             <th class="bg-info"><center>Tanggal Laporan</center></th>
-            <th class="bg-info"><center>Tanggal Dikerjakan</center></th>
-            <th class="bg-info"><center>Tanggal Selesai</center></th>
+            <th class="bg-info"><center>Jam Laporan</center></th>
+            <th class="bg-info"><center>Jam Dikerjakan</center></th>
+            <th class="bg-info"><center>Jam Selesai</center></th>
             <th class="bg-info"><center>No Ticketing</center></th>
             <th class="bg-info"><center>Pelapor</center></th>
             <th class="bg-info"><center>ID Perangkat</center></th>
@@ -122,8 +123,9 @@
             <tr>
                 <td><center><?php echo $no++; ?></center></td>
                 <td><center><?php echo $row['tgl_laporan']; ?></center></td>
-                <td><center><?php echo $row['tgl_kerjakan']; ?></center></td>
-                <td><center><?php echo $row['tgl_selesai']; ?></center></td>
+                <td><center><?php echo $row['jam_laporan']; ?></center></td>
+                <td><center><?php echo $row['jam_kerjakan']; ?></center></td>
+                <td><center><?php echo $row['jam_selesai']; ?></center></td>
                 <td><center><?php echo $row['no_lap']; ?></center></td>   
                 <td><center><?php echo $row['username']; ?></center></td>   
                 <td><center><?php echo $row['id_perangkat']; ?></center></td>   

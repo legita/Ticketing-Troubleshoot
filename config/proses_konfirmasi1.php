@@ -2,10 +2,15 @@
 
 include 'koneksi.php';
 
-$id 	 = $_GET['id'];
-$tgl 	 = date('d-m-Y');
+$date = date('Y-m-d H:i:s');
+$str  = strtotime($date);
+$time = date('H:i:s', $str);
 
-$updateConfirm = "UPDATE tbl_laporan SET tgl_selesai	= '$tgl',
+
+$id 	 = $_GET['id'];
+
+
+$updateConfirm = "UPDATE tbl_laporan SET jam_selesai	= '$time',
 										 status 		= '2' 
 										 WHERE id_laporan = '$id'";
 

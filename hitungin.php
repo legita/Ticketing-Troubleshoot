@@ -63,10 +63,10 @@
     <div class="col-sm-12">
       <button class="collapsible" style="align-content: center;">Hitung</button>
       <div class="content">
+
     
     <!-- BATAS -->
     <?php
-    include 'config/koneksi.php';
     if(isset($_GET["gen"])){
 
     require_once __DIR__ . '/vendor/autoload.php';
@@ -81,16 +81,17 @@
     $nomor=0;
      $sql0="select * from tbl_datauji where flag='0' order by `id_datauji` desc";   //    limit 0,10      
       $arr0=getData($konek,$sql0);
-        foreach($arr0 as $d0) { 
-            $nomor++;   
+        foreach($arr0 as $d0) {   
             $id_datauji=$d0["id_datauji"];
             $keluhan=$d0["keluhan"];
+            $normalisasi=$d0["normalisasi"];
+            $kategori=$d0["perangkat"];
+            $penanganan=$d0["penanganan"];
       
-    $keluhuji=Netral($bikinos,$keluhan,$ak,$ar);
+    $keluhanuji=Netral($bikinos,$keluhan,$ak,$ar);
     //===================================================== 
     $stemming=$keluhanuji;
      ?>
-
      <br>
      
       <div class="form-group">
@@ -107,7 +108,7 @@
 
       <?php
      //======================================       
-     $sql="select * from tbl_keluhan  order by `id_keluhan` desc";      //      limit 0,10          
+     $sql="select * from tbl_keluhan  order by `id_keluhan` desc limit 20";      //      limit 0,10          
         $arr=getData($konek,$sql);
         $i=0;
         $arStem[0]=$stemming;
@@ -271,9 +272,6 @@
       
     <hr style="background-color: #cdd51f;">
 
-    
-    </div>
-    <div>
 <?php
     echo $gab1;  
 ?>
@@ -364,12 +362,12 @@
            // $penanganan=$penanganan;
            $sql="Update tbl_datauji set normalisasi='$stemming', perangkat='$kategori', tanggal='$tanggal', penanganan='$penanganan', flag='1' where id_datauji='$id_datauji'";
            $up=process($konek,$sql);    
-           
+
         ?>
 
             
-        
-        <table class="table table-bordered">
+      <table class="table table-bordered">
+      <thead>
       <tr>
         <td>No</td>
         <td>keluhan</td>
@@ -377,22 +375,21 @@
         <td>Penanganan</td>
         <td>Perangkat</td>
       </tr>
+      </thead>
 
       <?php
-        for($i = 0; $i < 60; $i++){
+        // for($i = 0; $i < 50; $i++){
         // for($i = 0; $i < 3; $i++){ // 3 Terasatas //
-        // for($i = 0; $i < $array_count; $i++){     // TAMPIL SEMUA //
+        for($i = 0; $i < $array_count; $i++){     // TAMPIL SEMUA //
         // sort($HPRO) for($i = 0; $i < count($HPRO); $i++){
             $no=$i+1;
             
-
-
-             $gab3.="<tr>
+             $gab3.="<tbody><tr>
                   <td>$no</td>
                   <td>$HarKeluhan[$i]</td>
                   <td>$HPRO[$i]</td>
                   <td>$HPROK[$i]</td>
-                  <td>$HarKat[$i]</tr>"; 
+                  <td>$HarKat[$i]</td></tr>"; 
                 
                   
                   // HPRO = PERSENAN
@@ -400,70 +397,65 @@
                   // HARKAT = PERANGKAT 
 
          }
-    $gab3.="</table><hr>";
+    $gab3.="</tbody></table><hr style='background-color: red;'>";
     echo $gab3;
-    echo $HPRO[$i];
+  }
             ?>
+            <hr style="background-color: red;">
             <br>
       </div>
-      <hr>
+      <hr style="background-color: #cdd51f;">
     <!-- BATES -->
   </div>
+</div>
+  
   <hr>
   <div>
     <div class="form-group">
       <h2><label class="col-sm-5" for="status" style="text-align: left;"> 3 Rekomendasi Pola Penanganan</label></h2> 
     </div>
 
-<?php
 
-
-
-            
-          if(count(array_unique($HPRO)) === 1 && end ($HPRO) === 0){ 
-          ?>
-          <a> Pesan Alert Peringatan! </a><br>
-            
-
-          <?php
-        }else{?>
     <div class="col-sm-12">
       <table class="table table-bordered table-striped">
         <thead>
             <?php
-              $gab3="
+              $gab4.="
           <tr>
             <th>Keluhan</th>
             <th>Penanganan</th>
             <th>Perangkat</th>
           </tr>"; ?>
           </thead>
+          <tbody>
           <?php
              for($i = 0; $i < 3; $i++){
             // for($i = 0; $i < $array_count; $i++){     // TAMPIL SEMUA //
             // sort($HPRO) for($i = 0; $i < count($HPRO); $i++){
             ?>
-            <tbody>
+            
             <?php
                 $no=$i+1;
-                 $gab3.="<tr>
+                 $gab4.="<tr>
                       <td>$HarKeluhan[$i]</td>
                       <td>$HPROK[$i]</td>
-                      <td>$HarKat[$i]</tr>"; 
+                      <td>$HarKat[$i]</td></tr>"; 
                  
 
                       // HPRO = PERSENAN
                       // HPROK = PENANGANAN
                       // HARKAT = PERANGKAT 
              }
-    $gab3.="</tbody></table><hr>"; 
-    echo $gab3;
-            }
+    $gab4.="</tbody></table><hr>"; 
+    echo $gab4;
+            
           }
-        }?>
+          
+          ?>
   </div>
 
 
+</div>
 </div>
 <?php
 
