@@ -213,7 +213,11 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
       <label class="col-sm-10"></label>
       <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Kirim">Kirim</button>
 
+<<<<<<< HEAD
       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+=======
+      <script src="jquery-1.11.1.min.js"></script>
+>>>>>>> b5aea8e3aa5e375004b0e8705cdead5c08f96214
       <!-- SCRIPT ADD MORE -->
       <script>  
        $(document).ready(function(){  
