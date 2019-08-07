@@ -5,7 +5,7 @@
  
  include 'config/koneksi.php';
  
-error_reporting(0);
+// error_reporting(0);
 session_start();
 
 if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
@@ -213,6 +213,7 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
       <label class="col-sm-10"></label>
       <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Kirim">Kirim</button>
 
+      <script src="jquery-1.11.1.min.js"></script>
       <!-- SCRIPT ADD MORE -->
       <script>  
        $(document).ready(function(){  
@@ -254,7 +255,6 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
 
 <!-- Memanggil Autocomplete.js -->
 <script src="assets/js/jquery.autocomplete.min.js"></script>
-
 
 <!-- Autocomplete perangkat -->
 <script type="text/javascript">
