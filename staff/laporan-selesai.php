@@ -62,7 +62,7 @@
                               ?>
                             </td>
                             <td><?php echo $data['alasan']; ?></td>
-                            <td><?php echo $data['tanggal_laporan']; ?></td>
+                            <td><?php echo $data['tgl_laporan']; ?></td>
                             <td><?php echo $data['jam_laporan']; ?></td>
                             <td><?php echo $data['jam_selesai']; ?></td>
                             <td><?php echo $data['id_perangkat']; ?></td>

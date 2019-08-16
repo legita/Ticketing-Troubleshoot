@@ -24,7 +24,7 @@ error_reporting();
     if ($updateidjenis)
         {
             echo "<script>alert('Berhasil Diubah!');</script>";
-            echo '<META HTTP-EQUIV="REFRESH" CONTENT = "0; URL=../staff/index.php?halaman=laporan-masuk">';
+            echo '<META HTTP-EQUIV="REFRESH" CONTENT = "0; URL=../staff/index.php?halaman=laporanmasuk">';
         }
     else {
             print"

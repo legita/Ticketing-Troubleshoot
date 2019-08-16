@@ -72,6 +72,9 @@ $id_user = $_GET['id_user'];
                     <input class="form-control" id="myInput" type="text" placeholder="Search..">
                   </div>
                 </div><br>
+                <div class="col-sm-4">
+                <a href='?halaman=hitungin&gen=ok' title="Lihat Penanganan"><button type='button' class='btn btn-warning'><span class='fa fa-hourglass-half'></span>&nbsp;Proses Analisa Data keluhan</button></a>
+              </div><br>
                 <table class="table table-striped table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -98,7 +101,6 @@ $id_user = $_GET['id_user'];
                             <td><?php echo $data['tanggal']; ?></td>
                             <td><?php echo $data['keluhan']; ?></td>
                             <td><center>
-                              <a href='?halaman=hitungin&gen=ok' title="Lihat Penanganan"><button type='button' class='btn btn-warning'><span class='fa fa-hourglass-half'></span></button></a>&nbsp;&nbsp;
                               <a href="config/delete_keluhan.php?id=<?php echo $data['id_datauji'];?>" title="Hapus Data" onclick="return confirm('Hapus Data ini?');"><span class="fa fa-trash" style="color:red;"></span></a></center>
                             </td>
                         </tr>

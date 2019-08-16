@@ -12,7 +12,7 @@
         <?php
         $no = 1;
         include '../config/koneksi.php';
-        $query = mysqli_query($konek, "SELECT * FROM tbl_laporan ORDER BY ting_laporan = '1' DESC") or die(mysqli_error());
+        $query = mysqli_query($konek, "SELECT * FROM tbl_laporan WHERE status = '0' OR status = '1' ORDER BY ting_laporan = '1' DESC") or die(mysqli_error());
           if(mysqli_num_rows($query) == 0){
             echo '<font colspan="14" align="center">Tidak ada data!</font>';
           }
@@ -203,7 +203,7 @@
 
                                 // $hasil = (intVal($jam_end) - intVal($jam_start)) * 60 + (intVal($menit_end) - intVal($menit_start));
                                 $jam          = (intVal($jam_finish) - intVal($jam_start));
-                                $menit        = (60 + (intVal($menit_finish)) - intVal($menit_start));
+                                $menit        = (intVal($menit_finish)) - intVal($menit_start);
                                 // echo $menit_start;
                                 // echo '<br>';
                                 // echo $menit_finish;
@@ -215,7 +215,7 @@
                                   echo "<font color='green'><b>Selesai</b></font>";
                                 }
                                 // MELEBIHI BATAS WAKTU
-                                elseif ($data['status']=='1' OR $data['status']=='0' && $data['tgl_laporan']!==$date_now OR $jam <= 0) {
+                                elseif ($data['status']=='0' && $data['tgl_laporan']!==$date_now OR $jam <= 0) {
                                   echo "<font color='red'><b>Telah melebihi batas waktu</b></font>";
                                 }
                                 else {
