@@ -331,7 +331,7 @@
         $gab3="<table class='table table-bordered'>
                <tr><td>No</td>
                <td>Keluhan</td>
-               <td>Prosentase</td>
+               <td>Similarity</td>
                <td>penanganan</td>
                <td>Kategori</td></tr>";
              for($i = 0; $i < $array_count; $i++){
