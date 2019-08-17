@@ -59,9 +59,9 @@
 </div><!-- end messagebox -->
 
 <div id="about" class="section wb" style="color: black;">
-  <hr style='background-color: #cdd51f;'>
-  <div class="container">
 
+  <div class="container">
+  <hr style='background-color: #cdd51f;'>
         <?php
         if(isset($_GET["gen"])){
 
@@ -89,20 +89,19 @@
          ?>
         
         <div class="form-group">
-          <b style="color: red;"><label class="col-sm-2" for="status" style="text-align: left;">Keluhan <?php echo $nomor;?></label>
+          <h2><label class="col-sm-5" for="status" style="text-align: left;"> 3 Rekomendasi Pola Penanganan</label></h2> 
+        </div>
+        <div class="form-group">
+          <b><label class="col-sm-2" for="status" style="text-align: left;">Keluhan <?php echo $nomor;?></label>
           <label class="col-sm-1">:</label>
           <label class="col-sm-3"><?php echo $keluhan;?></label></b>
         </div>
-        <div class="form-group">
-          <b style="color: blue;"><label class="col-sm-2" for="status" style="text-align: left;">Stemming</label>
-          <label class="col-sm-1">:</label>
-          <label class="col-sm-3"><?php echo $stemming;?></label></b>
-        </div>
         <hr>
+
 
         <?php
          //======================================   
-         $sql="select * from tbl_keluhan  order by `id_keluhan` desc limit 180";    //    limit 0,10      
+         $sql="select * from tbl_keluhan  order by `id_keluhan` desc  limit 180";    //    limit 0,10      
           $arr=getData($konek,$sql);
           $i=0;
           $arStem[0]=$stemming;
@@ -256,37 +255,32 @@
         //==========================================
         $gab1.="</table>"; 
 
-        echo $gab1;
         ?>
 
       </div>
 
         <?php
-
         //"CETAK";
 
         $statustx="1";
         $catatan="";
         $reakpitulasi="";
-        $Q=round(sqrt($TOT2[0]),2);
+        $Q=pow($TOT2[0],0.5);
 
         $gab2="Qvalue=$TOT2[0]<sup>0.5</sup> =".$Q."<br><br>";
         $gab2.="Cosine Similarity Terhadap tiap-tiap dokumen:<br>";
 
-        // $max=0;
-        // $index=0;
 
          for($i=1;$i<$jumdoc;$i++){
-          $E=round(sqrt($TOT2[$i]),2);
-          $ES=round(sqrt($TOT2[$i]),2);
-          $QS=round(sqrt($TOT2[0]),2);
+          $E=pow($TOT2[$i],0.5);
+          $ES=$TOT2[$i]."<sup>0.5</sup>";
+          $QS=$TOT2[0]."<sup>0.5</sup>";
           
-          $D=$TOT1[$i];
-          $DS="(".$TOT1[$i].")";
+          $D=pow(($TOT1[$i]*$TOT2[0]),0.5);
+          $DS="(".$TOT2[0]." x ".$TOT1[$i].")<sup>0.5</sup>";
           $H[$i]=$D/($Q * $E)+0;
-          // $H[$i]=$DS/($QS * $ES);
           $PRO[$i]=round($H[$i]*100,2);
-          $CS="CSvalue<sub>$i</sub> =$DS/($QS x $ES)";
+          $CS="CSvalue<sub>$i</sub> =$DS/($QS x ".$ES.")";
 
           
             $catatan.=$arKeluhan[$i]." (".$PRO[$i]." %),";
@@ -298,8 +292,7 @@
           <br>$CS";
           
           $gab2.=$HS[$i]."<br>";
-          $gab2.="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Doc".$i."=>".$H[$i]." =>".$PRO[$i]." %  = <b>".$PROK[$i]."</b><hr>";
-
+          $gab2.="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Doc".$i."=>".$H[$i]." =>".$PRO[$i]." %  =<b>".$PROK[$i]."</b><hr>";
 
           $HPROK[$i-1]=$PROK[$i];
           $HPRO[$i-1]=$PRO[$i];
@@ -309,58 +302,78 @@
           $HarPenanganan[$i-1]=$arPenanganan[$i];
           $HarKat[$i-1]=$arKat[$i];
          }
+         
+        //"CETAK";
+         $array_count = count($HPROK);
+                for($x = 0; $x < $array_count; $x++){
+                    for($a = 0 ;  $a < $array_count - 1 ; $a++){
+                        if($a < $array_count ){
+                            if($HPRO[$a] < $HPRO[$a + 1] ){
+                            swap($HPROK, $a, $a+1);
+                            swap($HPRO, $a, $a+1);
+                            swap($HarKode, $a, $a+1);
+                            swap($HarKeluhan, $a, $a+1);
+                            swap($HarStem, $a, $a+1);
+                            swap($HarPenanganan, $a, $a+1);
+                            swap($HarKat, $a, $a+1);
+                          }
+                }
+            }
+        }
+        ?>
+          <hr style='background-color: red;'><hr style='background-color: #cdd51f;'><hr style='background-color: blue;'>
+          <div>
 
-          // CODING TAMPIL 1 TERTINGGI         
-         // if($max<$HPRO[$i]){
-         //     $max=$HPRO[$i];
-         //     $index=$i;
-         //   }
-             
-            //"CETAK";
+          
+            <div class="col-sm-12">
+              <table class="table table-bordered table-striped">
+                <thead>
+                    <?php
+                      $gab3="
+                  <tr>
+                    <th>Pilih</th>
+                    <th>Keluhan</th>
+                    <th>Penanganan</th>
+                    <th>Perangkat</th>
+                  </tr>"; ?>
+                  </thead>
+                  <?php
+                     for($i = 0; $i < 3; $i++){
+                    // for($i = 0; $i < $array_count; $i++){     // TAMPIL SEMUA //
+                    // sort($HPRO) for($i = 0; $i < count($HPRO); $i++){
+                    ?>
+                    <tbody>
+                    <?php
+                        $no=$i+1;
+                         $gab3.="<tr>
+                              <td>$HarKeluhan[$i]</td>
+                              <td>$HPROK[$i]</td>
+                              <td>$HarKat[$i]</tr>"; 
+                         
+
+                              // HPRO = PERSENAN
+                              // HPROK = PENANGANAN
+                              // HARKAT = PERANGKAT 
+                     }
+            $gab3.="</tbody></table><hr style='background-color: red;'><hr style='background-color: #cdd51f;'><hr style='background-color: blue;'>"; 
+            echo $gab3; 
+
+            ?>
+      </div>
 
 
-             $array_count = count($HPROK);
-                    for($x = 0; $x < $array_count; $x++){
-                        for($a = 0 ;  $a < $array_count - 1 ; $a++){
-                            if($a < $array_count ){
-                                if($HPRO[$a] < $HPRO[$a + 1] ){
-                                swap($HPROK, $a, $a+1);
-                                swap($HPRO, $a, $a+1);
-                                swap($HarKode, $a, $a+1);
-                                swap($HarKeluhan, $a, $a+1);
-                                swap($HarStem, $a, $a+1);
-                                swap($HarPenanganan, $a, $a+1);
-                                swap($HarKat, $a, $a+1);
-                                }
-                            }
-                        }
-                    }
+      <form method="POST" action="tes_cek.php">
+      <input type="checkbox" name="hobi[]" value="Makan">Makan <br />
+      <input type="checkbox" name="hobi[]" value="Minum">Minum <br />
+      <input type="checkbox" name="hobi[]" value="Tidur">Tidur <br />
+      <input type="checkbox" name="hobi[]" value="Browsing">Browsing <br />
+      <input type="submit" name="submit" value="Input">
+      </form>
 
-             
-                
-        $gab3="<table class='table table-bordered'>
-               <tr><td>No</td>
-               <td>Keluhan</td>
-               <td>Similarity</td>
-               <td>Penanganan</td>
-               <td>Perangkat</td></tr>";
-               for($i = 0; $i < 10; $i++){
-             // for($i = 0; $i < $array_count; $i++){
-               $no=$i+1;
-               $gab3.="<tr><td>$no</td>
-                           <td>$HarKeluhan[$i]</td>
-                           <td>$HPRO[$i]</td>
-                           <td>$HPROK[$i]</td>
-                           <td>$HarKat[$i]</td></tr>"; 
-
-             }
-        $gab3.="</table><hr style='background-color: red;'><hr style='background-color: #cdd51f;'><hr style='background-color: blue;'>";
-
-
+<?php
         //"CETAK";
 
-        echo $gab2;
-        echo $gab3;
+        
 
 
 
@@ -382,4 +395,27 @@
           }//isset
         ?>
 </div>
+<?php
+
+  error_reporting();
+
+  include 'config/koneksi.php';
+
+  $id_datauji = $_GET['id'];
+  $berhasil   = $_GET['berhasil'];
+
+  $edit    = "SELECT * FROM tbl_datauji WHERE id_datauji = '$id_datauji'";
+  $hasil   = mysqli_query($konek, $edit)or die(mysql_error());
+  $data    = mysqli_fetch_array($hasil);
+
+?>
+<div class="alert alert-danger">
+  <strong>Pemberitahuan !</strong> Jika keluhan atau masalah dapat ditangani klik <b>Berhasil di Tangani</b>. Jika tidak dapat ditangi klik <b>Laporan IT</b> untuk mengirim laporan kepada IT.
+</div>
+<div class="message-box">
+  <a href="config/update_keluhan.php?id=<?php echo $data['id_datauji']; ?>" class="btn11"><span>Berhasil Ditangani</span><div class="transition"></div></a>
+  
+  <a href="laporan2.php?id=<?php echo $data['id_datauji'];?>" class="btn11" style="float: right;"><span>Laporan IT</span><div class="transition"></div></a>
+</div><!-- end messagebox -->
+<br>
 </div>

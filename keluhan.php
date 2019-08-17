@@ -213,17 +213,21 @@ if(isset($_GET['halaman'])) $halaman = $_GET['halaman'];
       <label class="col-sm-10"></label>
       <button type="submit" value="SEND" id="submit" class="button button1 btnn" title="Kirim">Kirim</button>
 
+<<<<<<< HEAD
       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
       <script src="jquery-1.11.1.min.js"></script>
 
+=======
+      <script src="jquery-1.11.1.min.js"></script>
+>>>>>>> 74e81b282112c2e4f6655c7319008007e7f360df
       <!-- SCRIPT ADD MORE -->
       <script>  
        $(document).ready(function(){  
             var i=1;  
             $('#add').click(function(){  
                  i++;  
-                 $('#dynamic_field').append('<div id="row'+i+'"><label class="col-sm-2" for="keluhan" style="text-align: left;" ></label><label class="col-sm-4"><input type="text" id="keluhan" name="keluhan[]" placeholder="Masukkan Keluhan" class="form-control" /></label><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button>');  
+                 $('#dynamic_field').append('<div id="row'+i+'"><label class="col-sm-2" for="keluhan" style="text-align: left;" ></label><label class="col-sm-1"></label><label class="col-sm-4"><input type="text" id="keluhan" name="keluhan[]" placeholder="Masukkan Keluhan" class="form-control" /><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></label>');  
             });  
             $(document).on('click', '.btn_remove', function(){  
                  var button_id = $(this).attr("id");   

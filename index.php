@@ -180,8 +180,16 @@ body {
             include 'data-keluhan.php';
           }
 
+          elseif ($halaman=='hitung') {
+            include 'hitung.php';
+          }
+
           elseif ($halaman=='hitungin') {
             include 'hitungin.php';
+          }
+
+          elseif ($halaman=='hitungin1') {
+            include 'hitungin1.php';
           }
 
         ?>

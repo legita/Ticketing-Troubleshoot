@@ -23,7 +23,6 @@
                           <th><center>No.</center></th>
                           <th><center>Pelapor</center></th>
                           <th><center>Keluhan</center></th>
-                          <th><center>Penanganan</center></th>
                           <th><center>Perangkat</center></th>
                           <th><center>Tanggal</center></th>
                           <th><center>Status Berhasil</center></th>
@@ -33,7 +32,7 @@
                       <?php
                       $no = 1;
                       include '../config/koneksi.php';
-                       $query = mysqli_query($konek, "SELECT * FROM tbl_datauji where flag = '1'") or die(mysqli_error());
+                       $query = mysqli_query($konek, "SELECT * FROM tbl_datauji where flag = '1' OR berhasil = '1") or die(mysqli_error());
                         if(mysqli_num_rows($query) == 0){
                           echo '<tr><td colspan="14" align="center">Tidak ada data!</td></tr>';
                         }
@@ -44,7 +43,6 @@
                             <td><center><?php echo $no++; ?></center></td>
                             <td><?php echo $data['username']; ?></td>
                             <td><?php echo $data['keluhan']; ?></td>
-                            <td><?php echo $data['penanganan']; ?></td>
                             <td><?php echo $data['perangkat']; ?></td>
                             <td><?php echo $data['tanggal']; ?></td>
                             <td style="color:red;">

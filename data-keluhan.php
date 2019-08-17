@@ -72,9 +72,13 @@ $id_user = $_GET['id_user'];
                     <input class="form-control" id="myInput" type="text" placeholder="Search..">
                   </div>
                 </div><br>
-                <div class="col-sm-4">
-                <a href='?halaman=hitungin&gen=ok' title="Lihat Penanganan"><button type='button' class='btn btn-warning'><span class='fa fa-hourglass-half'></span>&nbsp;Proses Analisa Data keluhan</button></a>
-              </div><br>
+
+                <!-- BUTTON -->
+                <div class="col-sm-12">
+                <a href='?halaman=hitungin&gen=ok' title="Hitung Metode"><button type='button' class='btn btn-info'><span class='fa fa-hourglass-half'></span>&nbsp;Proses Analisa Data Hitungan Metode</button></a>&nbsp;&nbsp;&nbsp;
+                <a href='?halaman=hitungin1&gen=ok' title="Lihat Penanganan"><button type='button' class='btn btn-danger'><span class='fa fa-hourglass-half'></span>&nbsp;Mencari Penanganan</button></a>
+                </div><br>
+                
                 <table class="table table-striped table-bordered" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -101,6 +105,7 @@ $id_user = $_GET['id_user'];
                             <td><?php echo $data['tanggal']; ?></td>
                             <td><?php echo $data['keluhan']; ?></td>
                             <td><center>
+                              <a href='index.php?halaman=hitung&id=<?php echo $data['id_datauji']; ?>' title="Lihat Penanganan"><button type='button' class='btn btn-warning'><span class='fa fa-hourglass-half'></span></button></a>&nbsp;&nbsp;
                               <a href="config/delete_keluhan.php?id=<?php echo $data['id_datauji'];?>" title="Hapus Data" onclick="return confirm('Hapus Data ini?');"><span class="fa fa-trash" style="color:red;"></span></a></center>
                             </td>
                         </tr>
